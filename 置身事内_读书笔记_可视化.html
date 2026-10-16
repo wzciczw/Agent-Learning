@@ -1,0 +1,1624 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>《置身事内：中国政府与经济发展》图解导读</title>
+<style>
+  :root{
+    --bg:#f7f5f0;
+    --paper:#ffffff;
+    --ink:#26262b;
+    --ink-2:#5c5c66;
+    --ink-3:#8c8c96;
+    --line:#e5e0d6;
+    --line-2:#d5cec0;
+    --gov:#b0453c;       /* 政府 / 上篇 */
+    --gov-bg:#fbf0ee;
+    --mkt:#1f7a8c;       /* 市场·宏观 / 下篇 */
+    --mkt-bg:#eaf4f5;
+    --amber:#b57f16;
+    --amber-bg:#fdf5e4;
+    --indigo:#3a4a7a;
+    --indigo-bg:#eef0f7;
+    --green:#3f7a53;
+    --green-bg:#eef5f0;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"PingFang SC","Microsoft YaHei","Hiragino Sans GB","Source Han Sans SC","Noto Sans SC",system-ui,-apple-system,sans-serif;
+    font-size:15.5px;
+    line-height:1.85;
+    -webkit-font-smoothing:antialiased;
+  }
+  .serif{font-family:"Songti SC","Source Han Serif SC","Noto Serif SC","SimSun",Georgia,serif}
+
+  /* ---------- 顶部 ---------- */
+  header.hero{
+    background:
+      radial-gradient(circle at 15% 20%, rgba(176,69,60,.10), transparent 55%),
+      radial-gradient(circle at 85% 15%, rgba(31,122,140,.10), transparent 55%),
+      linear-gradient(180deg,#ffffff,#fbfaf7);
+    border-bottom:1px solid var(--line);
+    padding:56px 24px 44px;
+    text-align:center;
+  }
+  .hero .kicker{
+    display:inline-block;font-size:12.5px;letter-spacing:.22em;color:var(--ink-3);
+    border:1px solid var(--line-2);border-radius:999px;padding:5px 16px;margin-bottom:20px;
+  }
+  .hero h1{
+    font-size:40px;line-height:1.28;margin:0 0 10px;letter-spacing:.02em;font-weight:700;
+  }
+  .hero h1 .sm{display:block;font-size:19px;font-weight:400;color:var(--ink-2);letter-spacing:.06em;margin-top:12px}
+  .hero .byline{color:var(--ink-2);font-size:14.5px;margin-top:14px}
+  .hero .tsis{
+    max-width:760px;margin:26px auto 0;padding:20px 26px;background:rgba(255,255,255,.85);
+    border:1px solid var(--line);border-left:4px solid var(--gov);border-radius:10px;text-align:left;
+    font-size:16px;line-height:1.9;
+  }
+  .hero .tsis b{color:var(--gov)}
+
+  /* ---------- 导航 ---------- */
+  nav.toc{
+    position:sticky;top:0;z-index:50;background:rgba(250,249,246,.94);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);padding:10px 16px;overflow-x:auto;white-space:nowrap;
+  }
+  nav.toc a{
+    display:inline-block;color:var(--ink-2);text-decoration:none;font-size:13px;padding:5px 12px;
+    border-radius:999px;margin-right:4px;
+  }
+  nav.toc a:hover{background:#fff;color:var(--gov);box-shadow:0 1px 4px rgba(0,0,0,.06)}
+
+  /* ---------- 布局 ---------- */
+  main{max-width:1080px;margin:0 auto;padding:0 22px 90px}
+  section{padding:56px 0 8px;border-top:1px dashed var(--line-2);margin-top:36px}
+  section:first-of-type{border-top:0}
+  .sec-no{
+    display:inline-flex;align-items:center;gap:10px;font-size:12.5px;letter-spacing:.2em;
+    color:var(--ink-3);margin-bottom:8px;
+  }
+  .sec-no::before{content:"";width:26px;height:2px;background:var(--gov);display:inline-block}
+  h2{font-size:27px;margin:2px 0 6px;letter-spacing:.01em;font-weight:700}
+  h2 + .sub{color:var(--ink-2);font-size:15px;margin:0 0 26px}
+  h3{font-size:19px;margin:34px 0 12px;padding-left:12px;border-left:4px solid var(--indigo);line-height:1.4}
+  h4{font-size:15.5px;margin:20px 0 8px;color:var(--indigo)}
+  p{margin:10px 0}
+  ul,ol{margin:10px 0;padding-left:22px}
+  li{margin:6px 0}
+  em{font-style:normal;background:linear-gradient(transparent 62%, #ffe9a8 62%);padding:0 2px}
+  code{background:#f1efe9;border:1px solid var(--line);border-radius:4px;padding:1px 5px;font-size:13px}
+
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:22px 24px;margin:18px 0;
+        box-shadow:0 1px 2px rgba(0,0,0,.02),0 8px 24px -18px rgba(0,0,0,.18)}
+  .card.plain{box-shadow:none}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  @media(max-width:820px){.grid2,.grid3,.grid4{grid-template-columns:1fr}}
+
+  .pill{display:inline-block;font-size:12px;padding:2px 9px;border-radius:999px;border:1px solid;margin-right:6px}
+  .pill.gov{color:var(--gov);border-color:#e6c7c3;background:var(--gov-bg)}
+  .pill.mkt{color:var(--mkt);border-color:#bcdde2;background:var(--mkt-bg)}
+  .pill.amb{color:var(--amber);border-color:#ecdcb4;background:var(--amber-bg)}
+
+  .quote{border-left:3px solid var(--amber);background:var(--amber-bg);padding:12px 18px;border-radius:0 8px 8px 0;
+         color:#5c4a1c;font-size:14.5px;margin:14px 0}
+  .quote b{color:#8a6410}
+
+  table{border-collapse:collapse;width:100%;font-size:14px;margin:14px 0;background:#fff;
+        border:1px solid var(--line);border-radius:8px;overflow:hidden}
+  th,td{padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top;text-align:left}
+  th{background:#f4f2ec;font-weight:600;color:var(--ink-2);font-size:13px;letter-spacing:.03em}
+  tr:last-child td{border-bottom:0}
+
+  .stat{background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+  .stat .n{font-size:24px;font-weight:700;color:var(--gov);line-height:1.25;letter-spacing:-.01em}
+  .stat .n.mkt{color:var(--mkt)}
+  .stat .n.amb{color:var(--amber)}
+  .stat .l{font-size:12.5px;color:var(--ink-2);margin-top:4px;line-height:1.6}
+
+  .chapter{background:#fff;border:1px solid var(--line);border-radius:14px;margin:22px 0;overflow:hidden}
+  .chapter > .ch-head{
+    display:flex;align-items:flex-start;gap:16px;padding:18px 22px;border-bottom:1px solid var(--line);
+    background:linear-gradient(180deg,#fbfaf8,#fff);
+  }
+  .ch-num{
+    flex:0 0 auto;width:52px;height:52px;border-radius:12px;display:flex;align-items:center;justify-content:center;
+    font-size:22px;font-weight:700;color:#fff;background:var(--gov);
+  }
+  .ch-num.mkt{background:var(--mkt)}
+  .ch-head h3{border:0;padding:0;margin:0;font-size:20px}
+  .ch-head .ch-q{color:var(--ink-2);font-size:13.5px;margin-top:3px}
+  .chapter > .ch-body{padding:6px 22px 20px}
+  .ch-meta{font-size:13px;color:var(--ink-3);margin-top:2px}
+
+  .klist{margin:0;padding:0;list-style:none}
+  .klist li{position:relative;padding-left:20px;margin:9px 0;font-size:14.5px}
+  .klist li::before{content:"";position:absolute;left:4px;top:11px;width:7px;height:7px;border-radius:2px;
+                    background:var(--indigo);transform:rotate(45deg)}
+  .klist li b{color:var(--ink)}
+  .klist li span{color:var(--ink-2)}
+
+  figure{margin:20px 0;background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px;overflow:hidden}
+  figcaption{font-size:12.8px;color:var(--ink-3);text-align:center;margin-top:10px;line-height:1.7}
+  svg{display:block;width:100%;height:auto}
+
+  .note{font-size:13px;color:var(--ink-2);background:var(--indigo-bg);border:1px solid #dfe3ee;
+        border-radius:8px;padding:12px 16px;margin:14px 0}
+  .flow3{display:grid;grid-template-columns:repeat(3,1fr);gap:0;align-items:stretch}
+  @media(max-width:820px){.flow3{grid-template-columns:1fr}}
+  .ts-card{border-radius:10px;padding:16px 18px;color:#fff}
+  .ts-card h4{color:#fff;margin:0 0 6px;font-size:15px}
+  .ts-card p{font-size:13.5px;color:rgba(255,255,255,.92);margin:6px 0 0;line-height:1.75}
+  footer{text-align:center;color:var(--ink-3);font-size:12.5px;padding:40px 20px 60px;line-height:1.9}
+  @media print{
+    nav.toc{display:none}
+    body{background:#fff}
+    section{break-inside:avoid}
+    .chapter{break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="kicker serif">读 书 图 解 · 一 图 读 懂 全 书</div>
+  <h1 class="serif">置身事内<span class="sm">中国政府与经济发展</span></h1>
+  <div class="byline">兰小欢 著 ｜ 上海人民出版社 · 世纪文景 ｜ 2021 ｜ ISBN 978-7-208-17133-6</div>
+
+  <div class="tsis">
+    <b>全书的核心命题：</b>在我国，政府不但影响「蛋糕」的分配，也参与「蛋糕」的生产。
+    所以<b>不可能脱离政府谈经济</b>——必须深入了解这一政治经济机体如何运作，才可能对它作出判断。
+    <div style="margin-top:10px;color:var(--ink-2);font-size:14.5px">
+      主线只有一条：<b>地方政府的投融资</b>。上篇拆解它的微观机制，下篇推演它造成的宏观现象。
+    </div>
+  </div>
+</header>
+
+<nav class="toc">
+  <a href="#s0">全书速览</a>
+  <a href="#s1">① 问题意识</a>
+  <a href="#s2">② 写作架构</a>
+  <a href="#s3">③ 上篇·微观机制</a>
+  <a href="#s4">④ 下篇·宏观现象</a>
+  <a href="#s5">⑤ 章节联系</a>
+  <a href="#s6">⑥ 总结与转型</a>
+  <a href="#s7">⑦ 核心概念速查</a>
+  <a href="#s8">⑧ 阅读地图</a>
+</nav>
+
+<main>
+
+<!-- ================= 0 速览 ================= -->
+<section id="s0">
+  <div class="sec-no">BEFORE YOU START</div>
+  <h2>30 秒读书：一句话 + 一张图</h2>
+  <p class="sub">先把整本书压缩成一个可以装在脑子里的模型，再逐层展开细节。</p>
+
+  <figure>
+    <svg viewBox="0 0 1040 300" role="img" aria-label="全书主线图">
+      <defs>
+        <marker id="ah" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+          <path d="M0,0 L10,4 L0,8 z" fill="#9a9488"/>
+        </marker>
+      </defs>
+      <text x="20" y="30" font-size="14" font-weight="700" fill="#8c8c96">起点</text>
+      <rect x="20" y="42" width="196" height="86" rx="10" fill="#fbf0ee" stroke="#b0453c" stroke-width="1.5"/>
+      <text x="118" y="72" font-size="14.5" font-weight="700" fill="#8f362e" text-anchor="middle">地方政府</text>
+      <text x="118" y="94" font-size="14.5" font-weight="700" fill="#8f362e" text-anchor="middle">是经济发展主角</text>
+      <text x="118" y="116" font-size="12" fill="#8a6b67" text-anchor="middle">不是价格机制，也不是周期</text>
+
+      <path d="M222 85 L252 85" stroke="#9a9488" stroke-width="1.5" marker-end="url(#ah)"/>
+
+      <rect x="258" y="30" width="420" height="110" rx="12" fill="#eef0f7" stroke="#3a4a7a" stroke-width="1.5"/>
+      <text x="468" y="54" font-size="13.5" font-weight="700" fill="#3a4a7a" text-anchor="middle">上篇 · 微观机制（第一至四章）</text>
+      <text x="468" y="78" font-size="13" fill="#4b5678" text-anchor="middle">事权划分 → 财权/分税制 → 土地财政与土地金融</text>
+      <text x="468" y="100" font-size="13" fill="#4b5678" text-anchor="middle">→ 城投与政府债务 → 政府如何投资工业</text>
+      <text x="468" y="124" font-size="12" fill="#7b83a1" text-anchor="middle">回答：政府为什么、如何深度参与经济</text>
+
+      <path d="M684 85 L714 85" stroke="#9a9488" stroke-width="1.5" marker-end="url(#ah)"/>
+
+      <rect x="720" y="30" width="300" height="110" rx="12" fill="#eaf4f5" stroke="#1f7a8c" stroke-width="1.5"/>
+      <text x="870" y="54" font-size="13.5" font-weight="700" fill="#16636f" text-anchor="middle">下篇 · 宏观现象（第五至七章）</text>
+      <text x="870" y="78" font-size="13" fill="#2d6a74" text-anchor="middle">城市化失衡 · 房价与居民债务</text>
+      <text x="870" y="100" font-size="13" fill="#2d6a74" text-anchor="middle">宏观债务与金融风险</text>
+      <text x="870" y="124" font-size="13" fill="#2d6a74" text-anchor="middle">低消费 · 产能过剩 · 贸易冲突</text>
+
+      <path d="M468 148 L468 178" stroke="#9a9488" stroke-width="1.5" marker-end="url(#ah)"/>
+      <path d="M870 148 L870 178" stroke="#9a9488" stroke-width="1.5" marker-end="url(#ah)"/>
+
+      <rect x="258" y="184" width="762" height="98" rx="12" fill="#ffffff" stroke="#b57f16" stroke-width="1.5"/>
+      <text x="639" y="210" font-size="14" font-weight="700" fill="#8a6410" text-anchor="middle">第八至九章 · 总结与转型</text>
+      <text x="639" y="234" font-size="13" fill="#6b5a33" text-anchor="middle">地区间竞争（官场 + 市场）｜政府能力建设｜「生产型政府」→「服务型政府」</text>
+      <text x="639" y="258" font-size="13" fill="#6b5a33" text-anchor="middle">关键视角：区分「发展目标」与「发展过程」——实事求是，具体问题具体分析</text>
+    </svg>
+    <figcaption>图 0-1　全书主线：一条地方投融资的因果链，从微观机制走向宏观现象，最终落到政府角色转型</figcaption>
+  </figure>
+
+  <div class="grid4" style="margin-top:6px">
+    <div class="stat"><div class="n">85% / 55%</div><div class="l">地方占全国财政支出约 85%，占收入仅 50%–55%（差额靠中央转移支付）</div></div>
+    <div class="stat"><div class="n amb">89%</div><div class="l">2018 年「土地财政」收入 ≈ 地方公共预算收入的 89%，是名副其实的「第二财政」</div></div>
+    <div class="stat"><div class="n mkt">258%</div><div class="l">2018 年末我国总债务 / GDP。其中居民 54%、政府 51%、非金融企业 154%</div></div>
+    <div class="stat"><div class="n mkt">44%</div><div class="l">2018 年居民最终消费占 GDP 比重（美国近 70%）——内需不足的最直接指标</div></div>
+  </div>
+</section>
+
+<!-- ================= 1 问题意识 ================= -->
+<section id="s1">
+  <div class="sec-no">PART 01</div>
+  <h2>问题意识：这本书到底在追问什么</h2>
+  <p class="sub">不是问「政府该不该干预」，而是问「政府实际在做什么、为什么这样做、结果是什么」。</p>
+
+  <div class="grid3">
+    <div class="card">
+      <span class="pill gov">核心命题</span>
+      <h4 style="margin-top:12px">政府不只是「分蛋糕」，也「做蛋糕」</h4>
+      <p style="font-size:14px;color:var(--ink-2)">主流经济学只把政府当作提供公共物品的「有限政府」，市场负责其余配置。本书主张：中国的政府（尤其地方政府）本身就是经济发展的<b>深度参与者</b>，掌握土地、金融、国企、审批等关键资源，直接介入生产和分配环节。</p>
+    </div>
+    <div class="card">
+      <span class="pill amb">方法论立场</span>
+      <h4 style="margin-top:12px">反对「先入为主的判断」</h4>
+      <p style="font-size:14px;color:var(--ink-2)">把舶来理论当作标准去对照现实，看到不符就斥现实之非，就把「要了解的现象」变成了「讥讽的对象」，于是丧失了<b>「同情的理解」</b>的机会。本书注重描述现实，解释「是什么」和「为什么」。</p>
+    </div>
+    <div class="card">
+      <span class="pill mkt">写作对象与边界</span>
+      <h4 style="margin-top:12px">讲「政府认为该怎么办」</h4>
+      <p style="font-size:14px;color:var(--ink-2)">不可避免涉及「怎么办」时，重点解释<b>当下正在实施的政策和改革</b>，而非作者自己的方案。对读者来说，了解政府认为应该怎么办，比了解「我」认为应该怎么办重要得多。</p>
+    </div>
+  </div>
+
+  <div class="quote">
+    <b>书名的含义：</b>「置身事内」——我们不是在政府之外观察经济，而是生活在这个政治经济机体之中，我们的发展有赖于对这个机体的认知。作者要搭一座桥：一端是所学西方理论，另一端是中国现实。
+  </div>
+
+  <figure>
+    <svg viewBox="0 0 1040 250" role="img" aria-label="问题意识的三个层次">
+      <rect x="20" y="26" width="300" height="196" rx="12" fill="#fbf0ee" stroke="#d9a9a3"/>
+      <text x="170" y="58" font-size="15" font-weight="700" fill="#8f362e" text-anchor="middle">① 描述层 · 是什么</text>
+      <line x1="56" y1="74" x2="284" y2="74" stroke="#e6c7c3"/>
+      <text x="170" y="102" font-size="13" fill="#7a4a44" text-anchor="middle">地方政府有哪些权力、</text>
+      <text x="170" y="124" font-size="13" fill="#7a4a44" text-anchor="middle">钱从哪里来、花到哪里去？</text>
+      <text x="170" y="152" font-size="13" fill="#7a4a44" text-anchor="middle">城投、土地财政、招商引资</text>
+      <text x="170" y="174" font-size="13" fill="#7a4a44" text-anchor="middle">到底怎么运转？</text>
+      <text x="170" y="204" font-size="12" fill="#a8807a" text-anchor="middle">→ 上篇第 1–4 章</text>
+
+      <rect x="360" y="26" width="300" height="196" rx="12" fill="#eef0f7" stroke="#aab3cd"/>
+      <text x="510" y="58" font-size="15" font-weight="700" fill="#3a4a7a" text-anchor="middle">② 因果层 · 为什么</text>
+      <line x1="396" y1="74" x2="624" y2="74" stroke="#dfe3ee"/>
+      <text x="510" y="102" font-size="13" fill="#4b5678" text-anchor="middle">这套模式为什么会形成？</text>
+      <text x="510" y="124" font-size="13" fill="#4b5678" text-anchor="middle">又为什么必须改变？</text>
+      <text x="510" y="152" font-size="13" fill="#4b5678" text-anchor="middle">它的代价：高房价、债务、</text>
+      <text x="510" y="174" font-size="13" fill="#4b5678" text-anchor="middle">消费不足、贸易冲突</text>
+      <text x="510" y="204" font-size="12" fill="#7b83a1" text-anchor="middle">→ 下篇第 5–7 章</text>
+
+      <rect x="700" y="26" width="320" height="196" rx="12" fill="#fdf5e4" stroke="#e0c98e"/>
+      <text x="860" y="58" font-size="15" font-weight="700" fill="#8a6410" text-anchor="middle">③ 评判层 · 怎么办</text>
+      <line x1="740" y1="74" x2="980" y2="74" stroke="#ecdcb4"/>
+      <text x="860" y="102" font-size="13" fill="#6b5a33" text-anchor="middle">政府能力如何建设？</text>
+      <text x="860" y="124" font-size="13" fill="#6b5a33" text-anchor="middle">「生产型政府」如何转向</text>
+      <text x="860" y="146" font-size="13" fill="#6b5a33" text-anchor="middle">「服务型政府」？</text>
+      <text x="860" y="174" font-size="13" fill="#6b5a33" text-anchor="middle">发展目标 ≠ 发展过程</text>
+      <text x="860" y="204" font-size="12" fill="#a08a55" text-anchor="middle">→ 第 8 章 + 结束语</text>
+    </svg>
+    <figcaption>图 1-1　「是什么 → 为什么 → 怎么办」三层的分工，正好对应全书三部分的排布</figcaption>
+  </figure>
+
+  <div class="note">
+    <b>全书反复出现的三句方法论语：</b>
+    ①「不能脱离政府来谈经济」；②「现实世界没有黑白分明的『市场』和『政府』分界，只有利益关系环环相扣的各种组合」；
+    ③「实事求是，具体问题具体分析」——不预设「最优」，只在特定时空约束下考察改革的效果与代价。
+  </div>
+</section>
+
+<!-- ================= 2 写作架构 ================= -->
+<section id="s2">
+  <div class="sec-no">PART 02</div>
+  <h2>写作架构：一条主线，两大板块，九个层级</h2>
+  <p class="sub">全书以「地方政府投融资」为唯一主线贯穿，上篇交代机制来源，下篇交代机制后果。</p>
+
+  <figure>
+    <svg viewBox="0 0 1040 620" role="img" aria-label="全书写作架构树">
+      <!-- 根 -->
+      <rect x="360" y="14" width="320" height="52" rx="10" fill="#3a4a7a"/>
+      <text x="520" y="38" font-size="15" font-weight="700" fill="#ffffff" text-anchor="middle">主线：地方政府的投融资</text>
+      <text x="520" y="57" font-size="12" fill="#c9d0e4" text-anchor="middle">前言 · 从了解现状开始（确立问题意识）</text>
+
+      <path d="M520 66 L520 88" stroke="#c3bcae" stroke-width="1.6"/>
+      <path d="M520 88 L200 88 L200 108" stroke="#c3bcae" stroke-width="1.6" fill="none"/>
+      <path d="M520 88 L840 88 L840 108" stroke="#c3bcae" stroke-width="1.6" fill="none"/>
+
+      <!-- 上篇 -->
+      <rect x="60" y="108" width="280" height="44" rx="9" fill="#b0453c"/>
+      <text x="200" y="128" font-size="14" font-weight="700" fill="#fff" text-anchor="middle">上篇　微观机制</text>
+      <text x="200" y="145" font-size="11.5" fill="#f2d5d1" text-anchor="middle">政府为什么、如何参与经济</text>
+
+      <!-- 下篇 -->
+      <rect x="700" y="108" width="280" height="44" rx="9" fill="#1f7a8c"/>
+      <text x="840" y="128" font-size="14" font-weight="700" fill="#fff" text-anchor="middle">下篇　宏观现象</text>
+      <text x="840" y="145" font-size="11.5" fill="#cde9ec" text-anchor="middle">这些行为造成了什么后果</text>
+
+      <!-- 上篇四章 -->
+      <g font-size="12.5">
+        <rect x="30" y="176" width="340" height="64" rx="8" fill="#fbf0ee" stroke="#e0b8b3"/>
+        <text x="46" y="199" font-weight="700" fill="#8f362e">第一章　地方政府的权力与事务</text>
+        <text x="46" y="220" fill="#7a4a44">事权划分三原则：规模经济 · 信息复杂性 · 激励相容</text>
+
+        <rect x="30" y="254" width="340" height="76" rx="8" fill="#fbf0ee" stroke="#e0b8b3"/>
+        <text x="46" y="277" font-weight="700" fill="#8f362e">第二章　财税与政府行为</text>
+        <text x="46" y="298" fill="#7a4a44">分税制改革 → 土地财政 → 纵向/横向不平衡</text>
+        <text x="46" y="317" fill="#a8807a" font-size="11.5">「决定了干哪些事，才能决定用哪些资源」</text>
+
+        <rect x="30" y="344" width="340" height="76" rx="8" fill="#fbf0ee" stroke="#e0b8b3"/>
+        <text x="46" y="367" font-weight="700" fill="#8f362e">第三章　政府投融资与债务</text>
+        <text x="46" y="388" fill="#7a4a44">城投公司与土地金融 · 地方政府债务 · 官员激励</text>
+        <text x="46" y="407" fill="#a8807a" font-size="11.5">土地财政嫁接资本市场 + 杠杆 = 土地金融</text>
+
+        <rect x="30" y="434" width="340" height="76" rx="8" fill="#fbf0ee" stroke="#e0b8b3"/>
+        <text x="46" y="457" font-weight="700" fill="#8f362e">第四章　工业化中的政府角色</text>
+        <text x="46" y="478" fill="#7a4a44">京东方与政府投资 · 光伏与政府补贴 · 产业引导基金</text>
+        <text x="46" y="497" fill="#a8807a" font-size="11.5">同一条投融资逻辑，投资对象变成工业企业</text>
+      </g>
+
+      <!-- 下篇三章 -->
+      <g font-size="12.5">
+        <rect x="670" y="176" width="340" height="64" rx="8" fill="#eaf4f5" stroke="#aed3d9"/>
+        <text x="686" y="199" font-weight="700" fill="#16636f">第五章　城市化与不平衡</text>
+        <text x="686" y="220" fill="#2d6a74">房价与居民债务 · 要素市场改革 · 贫富差距</text>
+
+        <rect x="670" y="254" width="340" height="76" rx="8" fill="#eaf4f5" stroke="#aed3d9"/>
+        <text x="686" y="277" font-weight="700" fill="#16636f">第六章　债务与风险</text>
+        <text x="686" y="298" fill="#2d6a74">债务与经济衰退 · 欧美教训 · 中国情况 · 化解之道</text>
+        <text x="686" y="317" fill="#4f8189" font-size="11.5">政府债 + 居民债 + 企业债的合流</text>
+
+        <rect x="670" y="344" width="340" height="76" rx="8" fill="#eaf4f5" stroke="#aed3d9"/>
+        <text x="686" y="367" font-weight="700" fill="#16636f">第七章　国内国际失衡</text>
+        <text x="686" y="388" fill="#2d6a74">低消费与产能过剩 · 中美贸易冲突 · 再平衡与双循环</text>
+        <text x="686" y="407" fill="#4f8189" font-size="11.5">国内结构失衡 = 对外贸易失衡的根</text>
+      </g>
+
+      <!-- 合流 -->
+      <path d="M200 510 L200 552 L520 552" stroke="#c3bcae" stroke-width="1.6" fill="none"/>
+      <path d="M840 420 L840 552 L520 552" stroke="#c3bcae" stroke-width="1.6" fill="none"/>
+      <path d="M520 552 L520 566" stroke="#c3bcae" stroke-width="1.6"/>
+
+      <rect x="240" y="566" width="560" height="44" rx="9" fill="#b57f16"/>
+      <text x="520" y="586" font-size="13.5" font-weight="700" fill="#fff" text-anchor="middle">第八章　总结：政府与经济发展　｜　结束语</text>
+      <text x="520" y="604" font-size="12" fill="#f7e9c9" text-anchor="middle">地区间竞争 · 政府的发展与转型 · 发展目标与发展过程</text>
+    </svg>
+    <figcaption>图 2-1　全书架构树：从左到右是「机制 → 后果」，自上而下是「是什么 → 为什么 → 怎么办」；四个上篇章节层层递进，三个下篇章节层层外扩</figcaption>
+  </figure>
+
+  <h3>为什么是这个顺序：一条不容颠倒的因果链</h3>
+  <figure>
+    <svg viewBox="0 0 1040 210" role="img" aria-label="因果链">
+      <defs>
+        <marker id="ah2" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">
+          <path d="M0,0 L9,3.5 L0,7 z" fill="#8d8578"/>
+        </marker>
+      </defs>
+      <g font-size="12" text-anchor="middle">
+        <rect x="14" y="70" width="140" height="66" rx="8" fill="#fbf0ee" stroke="#b0453c"/>
+        <text x="84" y="94" font-size="12.5" font-weight="700" fill="#8f362e">① 事权</text>
+        <text x="84" y="114" fill="#7a4a44">政府要办哪些事</text>
+
+        <rect x="176" y="70" width="140" height="66" rx="8" fill="#fbf0ee" stroke="#b0453c"/>
+        <text x="246" y="94" font-size="12.5" font-weight="700" fill="#8f362e">② 财权</text>
+        <text x="246" y="114" fill="#7a4a44">分税制 + 转移支付</text>
+
+        <rect x="338" y="70" width="140" height="66" rx="8" fill="#fbf0ee" stroke="#b0453c"/>
+        <text x="408" y="94" font-size="12.5" font-weight="700" fill="#8f362e">③ 土地财政</text>
+        <text x="408" y="114" fill="#7a4a44">低价工业地 + 高价商住地</text>
+
+        <rect x="500" y="70" width="140" height="66" rx="8" fill="#fbf0ee" stroke="#b0453c"/>
+        <text x="570" y="94" font-size="12.5" font-weight="700" fill="#8f362e">④ 土地金融</text>
+        <text x="570" y="114" fill="#7a4a44">城投抵押土地→借贷</text>
+
+        <rect x="662" y="70" width="140" height="66" rx="8" fill="#eaf4f5" stroke="#1f7a8c"/>
+        <text x="732" y="94" font-size="12.5" font-weight="700" fill="#16636f">⑤ 政府投资</text>
+        <text x="732" y="114" fill="#2d6a74">基建 + 工业 + 产业基金</text>
+
+        <rect x="824" y="70" width="200" height="66" rx="8" fill="#eaf4f5" stroke="#1f7a8c"/>
+        <text x="924" y="94" font-size="12.5" font-weight="700" fill="#16636f">⑥ 宏观后果</text>
+        <text x="924" y="114" fill="#2d6a74">失衡 · 债务 · 贸易冲突</text>
+      </g>
+      <path d="M156 103 L172 103" stroke="#8d8578" stroke-width="1.4" marker-end="url(#ah2)"/>
+      <path d="M318 103 L334 103" stroke="#8d8578" stroke-width="1.4" marker-end="url(#ah2)"/>
+      <path d="M480 103 L496 103" stroke="#8d8578" stroke-width="1.4" marker-end="url(#ah2)"/>
+      <path d="M642 103 L658 103" stroke="#8d8578" stroke-width="1.4" marker-end="url(#ah2)"/>
+      <path d="M804 103 L820 103" stroke="#8d8578" stroke-width="1.4" marker-end="url(#ah2)"/>
+
+      <text x="520" y="40" font-size="13" fill="#5c5c66" text-anchor="middle">钱不够 → 找地 → 用地撬钱 → 拿钱投资 → 投资改变整个宏观结构</text>
+      <text x="520" y="178" font-size="12.5" fill="#8c8c96" text-anchor="middle">每一步都是被上一步「逼」出来的：分税制把钱收走，土地财政才登场；土地财政不够用，土地金融才登场</text>
+    </svg>
+    <figcaption>图 2-2　因果链：这本书的解释力，来自它把每个制度安排都还原成前一个约束下的「解」</figcaption>
+  </figure>
+</section>
+
+<!-- ================= 3 上篇 ================= -->
+<section id="s3">
+  <div class="sec-no">PART 03</div>
+  <h2>上篇 · 微观机制：四个章节的关键知识脉络</h2>
+  <p class="sub">第 1 章定事权，第 2 章定财权，第 3 章讲钱怎么撬、债怎么欠，第 4 章讲钱投到工业里去会怎样。</p>
+
+  <!-- 第一章 -->
+  <div class="chapter">
+    <div class="ch-head">
+      <div class="ch-num">1</div>
+      <div>
+        <h3>地方政府的权力与事务</h3>
+        <div class="ch-q">核心问题：地方政府能办哪些事、有多大自主权？——划分事权的底层逻辑是什么？</div>
+        <div class="ch-meta">五节：政府治理的特点｜外部性与规模经济｜复杂信息｜激励相容｜招商引资</div>
+      </div>
+    </div>
+    <div class="ch-body">
+      <h4>起点：规模与差异</h4>
+      <ul class="klist">
+        <li><b>五级体系</b><span>：中央—省—市—县区—乡镇；广东、江苏若单独计算，是世界第 13、14 大经济体。</span></li>
+        <li><b>差异极大</b><span>：新疆面积是海南 47 倍；广东人口是西藏 33 倍、GDP 是 62 倍；北京人均 GDP 是甘肃 5 倍。这种差距远大于美国各州（美国最富州仅是最穷州的 2.3 倍）。</span></li>
+      </ul>
+
+      <h4>过程：事权划分的三大原则</h4>
+      <figure>
+        <svg viewBox="0 0 1040 330" role="img" aria-label="事权划分三原则">
+          <rect x="180" y="16" width="680" height="52" rx="10" fill="#eef0f7" stroke="#3a4a7a" stroke-width="1.5"/>
+          <text x="520" y="40" font-size="14.5" font-weight="700" fill="#3a4a7a" text-anchor="middle">共同主题：处理不同群体的利益差别与冲突</text>
+          <text x="520" y="59" font-size="12" fill="#7b83a1" text-anchor="middle">若群体间完全没有差别和冲突，事权如何划分就不重要</text>
+
+          <path d="M520 68 L520 86 L200 86 L200 104" stroke="#c3bcae" stroke-width="1.5" fill="none"/>
+          <path d="M520 86 L520 104" stroke="#c3bcae" stroke-width="1.5" fill="none"/>
+          <path d="M520 68 L520 86 L840 86 L840 104" stroke="#c3bcae" stroke-width="1.5" fill="none"/>
+
+          <rect x="40" y="104" width="320" height="206" rx="10" fill="#fbf0ee" stroke="#d9a9a3"/>
+          <text x="200" y="132" font-size="14" font-weight="700" fill="#8f362e" text-anchor="middle">① 外部性与规模经济</text>
+          <line x1="72" y1="146" x2="328" y2="146" stroke="#e6c7c3"/>
+          <text x="200" y="170" font-size="12.5" fill="#7a4a44" text-anchor="middle">「人的行为影响到了别人」</text>
+          <text x="200" y="194" font-size="12.5" fill="#7a4a44" text-anchor="middle">受益范围 = 行政边界</text>
+          <text x="200" y="218" font-size="12.5" fill="#7a4a44" text-anchor="middle">人口密度（胡焕庸线：东 43% 面积住 94% 人口）</text>
+          <text x="200" y="242" font-size="12.5" fill="#7a4a44" text-anchor="middle">地理（随山川形变）· 语言文化差异</text>
+          <text x="200" y="272" font-size="12.5" font-weight="700" fill="#8f362e" text-anchor="middle">应用：行政交界地带（「三不管」）</text>
+          <text x="200" y="294" font-size="12" fill="#a8807a" text-anchor="middle">省界 15 公里内占国土 1/6，却集中了逾半贫困县</text>
+
+          <rect x="380" y="104" width="280" height="206" rx="10" fill="#eef0f7" stroke="#aab3cd"/>
+          <text x="520" y="132" font-size="14" font-weight="700" fill="#3a4a7a" text-anchor="middle">② 信息复杂性</text>
+          <line x1="412" y1="146" x2="628" y2="146" stroke="#dfe3ee"/>
+          <text x="520" y="170" font-size="12.5" fill="#4b5678" text-anchor="middle">上级：形式权威（名义最终决定权）</text>
+          <text x="520" y="194" font-size="12.5" fill="#4b5678" text-anchor="middle">下级：实际权威（信息优势）</text>
+          <text x="520" y="222" font-size="12.5" fill="#4b5678" text-anchor="middle">文山会海 · 层层加码 · 数据隐瞒</text>
+          <text x="520" y="250" font-size="12.5" font-weight="700" fill="#3a4a7a" text-anchor="middle">权力的实质 = 说不清时由谁拍板</text>
+          <text x="520" y="272" font-size="12" fill="#7b83a1" text-anchor="middle">（合同理论中的「剩余控制权」）</text>
+          <text x="520" y="296" font-size="12" fill="#7b83a1" text-anchor="middle">→ 一把手负责制、权力的个人化</text>
+
+          <rect x="680" y="104" width="320" height="206" rx="10" fill="#fdf5e4" stroke="#e0c98e"/>
+          <text x="840" y="132" font-size="14" font-weight="700" fill="#8a6410" text-anchor="middle">③ 激励相容</text>
+          <line x1="712" y1="146" x2="968" y2="146" stroke="#ecdcb4"/>
+          <text x="840" y="170" font-size="12.5" fill="#6b5a33" text-anchor="middle">一方想做的事，另一方有意愿有能力做好</text>
+          <text x="840" y="196" font-size="12.5" fill="#6b5a33" text-anchor="middle">具体明确的事务 → 垂直管理（海关）</text>
+          <text x="840" y="220" font-size="12.5" fill="#6b5a33" text-anchor="middle">宏观宽泛的事务 → 地方管理（发展经济）</text>
+          <text x="840" y="248" font-size="12.5" font-weight="700" fill="#8a6410" text-anchor="middle">属地管理 + 制度化 + 外部竞争约束</text>
+          <text x="840" y="274" font-size="12" fill="#a08a55" text-anchor="middle">案例：工商 1999 收归省管→2011 回归地方；</text>
+          <text x="840" y="294" font-size="12" fill="#a08a55" text-anchor="middle">环保 2016 上收省级垂直管理</text>
+        </svg>
+        <figcaption>图 3-1　事权划分三原则：三种视角看同一个现象，互不冲突，彼此相通</figcaption>
+      </figure>
+
+      <h4>落点：招商引资是理解地方政府的入口</h4>
+      <ul class="klist">
+        <li><b>不只是「公共服务」</b><span>：地方政府本身就是经济发展的深度参与者，很多地方搞「全民招商」（教育、卫生部门也要熟悉招商政策）。</span></li>
+        <li><b>资源工具箱</b><span>：土地（政府是城市土地所有者，工业用地低价转让 + 「七通一平」）｜金融（投资平台入股、协助贷款）｜补贴与税收优惠（「三免三减半」、高管个税返还）｜法律与政策协助（牌照、许可）｜劳动力与配套（职工宿舍、公交、人才住房补贴）。</span></li>
+        <li><b>结论</b><span>：对企业至关重要的生产要素（土地、资金、劳动力、科技），地方政府几乎都有很强的干预能力——这就是「混合经济」体系。</span></li>
+      </ul>
+      <div class="quote">「在我国，想脱离政府来了解经济，是不可能的。」——本章结语，也是全书的公理。</div>
+    </div>
+  </div>
+
+  <!-- 第二章 -->
+  <div class="chapter">
+    <div class="ch-head">
+      <div class="ch-num">2</div>
+      <div>
+        <h3>财税与政府行为</h3>
+        <div class="ch-q">核心问题：钱怎么分？分税制为什么是理解此后一切地方政府行为的分水岭？</div>
+        <div class="ch-meta">三节：分税制改革｜土地财政｜纵向不平衡与横向不平衡</div>
+      </div>
+    </div>
+    <div class="ch-body">
+      <h4>第一节｜分税制改革（1994）：从「财政包干」到「中央集权」</h4>
+      <figure>
+        <svg viewBox="0 0 1040 300" role="img" aria-label="分税制改革因果图">
+          <defs>
+            <marker id="ah3" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">
+              <path d="M0,0 L9,3.5 L0,7 z" fill="#8d8578"/>
+            </marker>
+          </defs>
+          <rect x="20" y="24" width="240" height="116" rx="10" fill="#fbf0ee" stroke="#d9a9a3"/>
+          <text x="140" y="48" font-size="13.5" font-weight="700" fill="#8f362e" text-anchor="middle">1985–1993 财政包干</text>
+          <text x="140" y="72" font-size="12" fill="#7a4a44" text-anchor="middle">「分灶吃饭」：交完中央，剩下都是自己的</text>
+          <text x="140" y="94" font-size="12" fill="#7a4a44" text-anchor="middle">北京：递增包干（基数 + 4%）</text>
+          <text x="140" y="114" font-size="12" fill="#7a4a44" text-anchor="middle">广东：上解 14 亿、年增 9%</text>
+          <text x="140" y="132" font-size="12" fill="#7a4a44" text-anchor="middle">上海：定额上解 105 亿（占 65%）</text>
+
+          <rect x="292" y="24" width="240" height="116" rx="10" fill="#fdf5e4" stroke="#e0c98e"/>
+          <text x="412" y="48" font-size="13.5" font-weight="700" fill="#8a6410" text-anchor="middle">后果：「两个比重」双降</text>
+          <text x="412" y="74" font-size="12" fill="#6b5a33" text-anchor="middle">中央占全国财政收入比重↓</text>
+          <text x="412" y="96" font-size="12" fill="#6b5a33" text-anchor="middle">全国财政收入占 GDP 比重↓</text>
+          <text x="412" y="120" font-size="12" fill="#6b5a33" text-anchor="middle">地方「藏富于企业」，做大预算外收入</text>
+          <text x="412" y="136" font-size="11.5" fill="#a08a55" text-anchor="middle">1992 年预算外收入 = 预算内的 86%</text>
+
+          <rect x="564" y="24" width="226" height="116" rx="10" fill="#eef0f7" stroke="#aab3cd"/>
+          <text x="677" y="48" font-size="13.5" font-weight="700" fill="#3a4a7a" text-anchor="middle">1994 分税制改革</text>
+          <text x="677" y="72" font-size="12" fill="#4b5678" text-anchor="middle">中央税 / 地方税 / 共享税</text>
+          <text x="677" y="94" font-size="12" fill="#4b5678" text-anchor="middle">国税、地税分设（2018 年再合并）</text>
+          <text x="677" y="116" font-size="12" fill="#4b5678" text-anchor="middle">增值税：中央 75%，地方 25%</text>
+          <text x="677" y="134" font-size="11.5" fill="#7b83a1" text-anchor="middle">设「税收返还」，以 1993 年为基年</text>
+
+          <rect x="822" y="24" width="198" height="116" rx="10" fill="#eaf4f5" stroke="#1f7a8c"/>
+          <text x="921" y="48" font-size="13.5" font-weight="700" fill="#16636f" text-anchor="middle">改革成效</text>
+          <text x="921" y="74" font-size="12" fill="#2d6a74" text-anchor="middle">中央占比 22% → 55%</text>
+          <text x="921" y="96" font-size="12" fill="#2d6a74" text-anchor="middle">财政收入占 GDP 11% → 20%+</text>
+          <text x="921" y="120" font-size="12" fill="#2d6a74" text-anchor="middle">增强宏观调控能力</text>
+          <text x="921" y="138" font-size="11.5" fill="#4f8189" text-anchor="middle">也彻底改变了地方发展模式</text>
+
+          <path d="M260 82 L288 82" stroke="#8d8578" stroke-width="1.4" marker-end="url(#ah3)"/>
+          <path d="M532 82 L560 82" stroke="#8d8578" stroke-width="1.4" marker-end="url(#ah3)"/>
+          <path d="M790 82 L818 82" stroke="#8d8578" stroke-width="1.4" marker-end="url(#ah3)"/>
+
+          <rect x="292" y="176" width="716" height="98" rx="10" fill="#fff" stroke="#d5cec0" stroke-dasharray="5 4"/>
+          <text x="650" y="200" font-size="13" font-weight="700" fill="#5c5c66" text-anchor="middle">改革是一场真刀真枪的央地博弈</text>
+          <text x="650" y="224" font-size="12.5" fill="#6b6b73" text-anchor="middle">朱镕基带队两个月跑了十几个省，一个省一个省地「面对面算账」；广东最终提出两个条件：</text>
+          <text x="650" y="246" font-size="12.5" fill="#6b6b73" text-anchor="middle">① 以 1993 年为基年　② 减免税过渡。结果 1993 年第四季度出现突击征税狂潮，</text>
+          <text x="650" y="266" font-size="12.5" fill="#6b6b73" text-anchor="middle">地方税收全年增长 50%–60%。2002 年所得税改革（六四分成）时，突击征税再次上演。</text>
+        </svg>
+        <figcaption>图 3-2　分税制改革：一个被逼出来的制度，也是一切后续故事的总开关</figcaption>
+      </figure>
+
+      <h4>第二节｜土地财政：钱从哪里补回来</h4>
+      <div class="grid2">
+        <div class="card plain" style="background:var(--gov-bg);border-color:#e6c7c3">
+          <h4 style="color:var(--gov);margin-top:0">两把算盘：低价工业地 + 高价商住地</h4>
+          <ul class="klist" style="margin-top:8px">
+            <li><b>工业用地</b><span>：约占出让面积一半，但价格极低（2000 年 444 元/㎡ → 2018 年 820 元/㎡，仅涨 85%）。目的是招商引资、留住税源与就业，工业用地竞争激烈，抬不起价。</span></li>
+            <li><b>商住用地</b><span>：面积相同，贡献几乎全部土地转让收入。商业用地价格涨 4.6 倍，住宅用地涨 7.4 倍。</span></li>
+          </ul>
+          <div class="quote" style="margin-top:12px">所以「土地财政」的实质是 <b>「房地产财政」</b>。</div>
+        </div>
+        <div class="card plain">
+          <h4 style="margin-top:0">「土地财政」到底有多大</h4>
+          <table style="margin-top:6px">
+            <tr><th>口径</th><th>2018 年规模</th></tr>
+            <tr><td>国有土地使用权出让金收入</td><td>62,910 亿元</td></tr>
+            <tr><td>与土地直接相关的四税</td><td>15,081 亿元（占地方公共预算收入 15%）</td></tr>
+            <tr><td>房地产/建筑业贡献的增值税+所得税（地方留成）</td><td>占地方公共预算收入 9%</td></tr>
+            <tr><td><b>加总 ≈ 地方公共预算收入</b></td><td><b>89%</b>（「第二财政」）</td></tr>
+          </table>
+          <div class="note" style="margin-top:8px">注意：土地出让要付出征地拆迁与「七通一平」成本。2018 年出让金收入 62,910 亿元，支出 68,167 亿元——单看这一项其实入不敷出。政府要的从来不是卖地本身，而是土地开发之后带来的工商业经济活动。</div>
+        </div>
+      </div>
+
+      <div class="quote">
+        <b>张五常的商场比喻：</b>地方政府就像一家商场，招商引资就是引入商铺。商铺交一笔低廉的「入场费」（工业用地转让费），但营业收入要和商场分成（增值税，有流水就要分）。商场要追求<b>总体收入最大化</b>，所以要平衡入门费与租金、平衡不同商铺——对能带来大客流的明星商铺，不但免入场费，还可以降分成，甚至倒贴（补贴）。
+      </div>
+
+      <h4>第三节｜纵向不平衡与横向不平衡</h4>
+      <ul class="klist">
+        <li><b>纵向不平衡（层级之间）</b><span>：钱越往基层分得越少，任务却越来越多——「财权层层上收，事权层层下压」。90 年代末的顺口溜：「中央财政蒸蒸日上，省级财政稳稳当当，市级财政摇摇晃晃，县级财政哭爹叫娘，乡级财政精精光光。」</span></li>
+        <li><b>由此引发的改革</b><span>：农村税费改革（2000 年起，2006 年彻底废止农业税）｜把农村基本公共服务纳入公共财政（农村义务教育经费保障、新农合、新农保）｜转移支付中加入激励（2005 年「三奖一补」）｜「乡财县管」「扩权强县」「财政省直管县」——实质上把五级财政在管理上拉平为三级。</span></li>
+        <li><b>横向不平衡（地区之间）</b><span>：1995–2018 年转移支付总额从 665 亿元增至 61,649 亿元，增长 93 倍，80% 以上投向中西部。省一级人均财政支出差距被显著拉平，但到了县一级又放大（2009 年最高的 1% 的县是最低的 1% 的县的 19 倍）。</span></li>
+        <li><b>一个反直觉的机制</b><span>：专项转移支付本意是约束用途，实际上反而加剧地区不平等——因为它倾向「突出重点、择优支持」，2015 年前还要求地方配套资金，且审批中人情关系难免（「跑部钱进」）。有钱的地方反而更容易拿到钱。</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 第三章 -->
+  <div class="chapter">
+    <div class="ch-head">
+      <div class="ch-num">3</div>
+      <div>
+        <h3>政府投融资与债务</h3>
+        <div class="ch-q">核心问题：土地如何从「财政」升级为「金融」？天量债务又是怎么滚起来的？</div>
+        <div class="ch-meta">三节：城投公司与土地金融｜地方政府债务｜招商引资中的地方官员</div>
+      </div>
+    </div>
+    <div class="ch-body">
+      <h4>核心跃迁：土地财政 → 土地金融</h4>
+      <figure>
+        <svg viewBox="0 0 1040 330" role="img" aria-label="土地金融闭环">
+          <defs>
+            <marker id="ah4" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">
+              <path d="M0,0 L9,3.5 L0,7 z" fill="#b0453c"/>
+            </marker>
+          </defs>
+          <text x="520" y="26" font-size="14" font-weight="700" fill="#8f362e" text-anchor="middle">「土地金融」闭环：把未来的土地收益抵押到今天，借来钱投资</text>
+
+          <rect x="30" y="58" width="180" height="70" rx="9" fill="#fbf0ee" stroke="#b0453c" stroke-width="1.4"/>
+          <text x="120" y="84" font-size="13" font-weight="700" fill="#8f362e" text-anchor="middle">地方政府</text>
+          <text x="120" y="106" font-size="11.5" fill="#7a4a44" text-anchor="middle">法律规定不能直接贷款/发债</text>
+
+          <rect x="250" y="58" width="180" height="70" rx="9" fill="#fbf0ee" stroke="#b0453c" stroke-width="1.4"/>
+          <text x="340" y="80" font-size="13" font-weight="700" fill="#8f362e" text-anchor="middle">城投公司</text>
+          <text x="340" y="100" font-size="11.5" fill="#7a4a44" text-anchor="middle">（融资平台）</text>
+          <text x="340" y="118" font-size="11.5" fill="#a8807a" text-anchor="middle">土地注入 / 政府补贴</text>
+
+          <rect x="470" y="58" width="200" height="70" rx="9" fill="#fdf5e4" stroke="#b57f16" stroke-width="1.4"/>
+          <text x="570" y="82" font-size="13" font-weight="700" fill="#8a6410" text-anchor="middle">银行贷款 + 城投债</text>
+          <text x="570" y="104" font-size="11.5" fill="#6b5a33" text-anchor="middle">土地抵押 / 出让收益质押</text>
+          <text x="570" y="120" font-size="11.5" fill="#a08a55" text-anchor="middle">背后是政府隐性担保</text>
+
+          <rect x="710" y="58" width="180" height="70" rx="9" fill="#eaf4f5" stroke="#1f7a8c" stroke-width="1.4"/>
+          <text x="800" y="80" font-size="13" font-weight="700" fill="#16636f" text-anchor="middle">基础设施投资</text>
+          <text x="800" y="100" font-size="11.5" fill="#2d6a74" text-anchor="middle">城市扩张 · 招商引资</text>
+          <text x="800" y="118" font-size="11.5" fill="#4f8189" text-anchor="middle">「七通一平」· 园区</text>
+
+          <rect x="920" y="58" width="100" height="70" rx="9" fill="#eaf4f5" stroke="#1f7a8c" stroke-width="1.4"/>
+          <text x="970" y="84" font-size="12.5" font-weight="700" fill="#16636f" text-anchor="middle">地价上涨</text>
+          <text x="970" y="106" font-size="11.5" fill="#2d6a74" text-anchor="middle">税收增加</text>
+
+          <path d="M210 93 L246 93" stroke="#b0453c" stroke-width="1.5" marker-end="url(#ah4)"/>
+          <path d="M430 93 L466 93" stroke="#b0453c" stroke-width="1.5" marker-end="url(#ah4)"/>
+          <path d="M670 93 L706 93" stroke="#b0453c" stroke-width="1.5" marker-end="url(#ah4)"/>
+          <path d="M890 93 L916 93" stroke="#b0453c" stroke-width="1.5" marker-end="url(#ah4)"/>
+
+          <path d="M970 128 C970 190, 340 200, 340 132" stroke="#b0453c" stroke-width="1.5" fill="none" marker-end="url(#ah4)" stroke-dasharray="6 4"/>
+          <text x="620" y="196" font-size="12" fill="#8f362e" text-anchor="middle">偿还本息 → 继续注入土地资产 → 借新还旧、规模越滚越大</text>
+
+          <rect x="30" y="230" width="990" height="82" rx="10" fill="#fff0ee" stroke="#e08f86"/>
+          <text x="525" y="256" font-size="13.5" font-weight="700" fill="#a1352b" text-anchor="middle">整套模式的命门只有一个：地价必须持续上涨</text>
+          <text x="525" y="280" font-size="12.5" fill="#8f362e" text-anchor="middle">只要经济持续增长，城市扩张、地价上涨，就能还本付息；一旦增速放缓、地价下跌、土地出让收入减少，</text>
+          <text x="525" y="300" font-size="12.5" fill="#8f362e" text-anchor="middle">累积的债务就变成沉重负担，可能压垮融资平台甚至地方政府。</text>
+        </svg>
+        <figcaption>图 3-3　土地金融闭环：注意虚线那一段——模式的可持续性完全押在「地价只涨不跌」上</figcaption>
+      </figure>
+
+      <h4>第一节｜城投公司与土地金融（三种典型形态）</h4>
+      <table>
+        <tr><th>形态</th><th>代表案例</th><th>运转方式</th></tr>
+        <tr><td>政府一手包办<br/>（文旅/城市更新）</td><td>成都「宽窄巷子」<br/>（成都文旅集团）</td><td>2003 年启动、2019 年首期完成，整整 16 年；投入约 6.5 亿元。三个平台特征：持有大量政府取得的土地｜盈利依赖政府补贴（2015–16 净利 6,600 万，补贴超 2 亿）｜政府隐性担保支撑大量借款（授信 176 亿，债项评级 AA+）。</td></tr>
+        <tr><td>国企分工<br/>（工业园区）</td><td>苏州工业园区<br/>（兆润集团 + 中新集团）</td><td>兆润负责土地一级开发（「土地金融」典型：管委会以土地作价注入 → 拆迁与「九通一平」→ 管委会回购 → 招拍挂出让）；中新集团负责建设、招商、运营。高峰期兆润长期抵押借款超 200 亿、质押借款超 100 亿。</td></tr>
+        <tr><td>民企全包<br/>（产城结合）</td><td>河北固安高新区<br/>（华夏幸福）</td><td>政府划出超 170 平方公里；企业负责拆迁、平整与二级开发，靠开发房地产获快钱反哺产业园区；并以「产业发展服务费」名义与政府分成园区税收（地方留存部分）。</td></tr>
+      </table>
+      <div class="note"><b>PPP 的中国特色：</b>截至 2020 年 5 月，全国入库 PPP 项目 9,575 个、总额近 15 万亿元，但真正开工的只有四成；而且「社会资本」大多不是民企，而是融资平台或其他国企——落地项目中民营企业参与率不过三成。</div>
+
+      <h4>第二节｜地方政府债务：从「4 万亿」到大水漫灌</h4>
+      <div class="grid2">
+        <div class="card plain">
+          <h4 style="margin-top:0">债务是怎么爆发的</h4>
+          <ul class="klist">
+            <li><b>导火索</b><span>：2008–2009 年为应对全球金融危机推出「4 万亿」计划（中央 1.18 万亿 + 地方 2.82 万亿），并放宽对融资平台和银行信贷的限制。</span></li>
+            <li><b>爆发速度</b><span>：融资平台公司从 2008 年的 3,000 余家骤增至 2009 年的 8,000 余家，其中约六成是县级平台。</span></li>
+            <li><b>规模估计</b><span>：2015–2017 年间地方债务总额约四五十万亿元，占 GDP 五六成，其中三四成是隐性负债。项目回报率极低——1,109 家融资平台 2016 年的资产回报率中位数仅 0.8%。</span></li>
+            <li><b>还款能力</b><span>：2017 年除北京、上海、广东、福建、四川、安徽外，其他省份融资平台的平均收入（扣除政府补贴）都覆盖不了债务利息。</span></li>
+          </ul>
+        </div>
+        <div class="card plain">
+          <h4 style="margin-top:0">四项治理改革</h4>
+          <ul class="klist">
+            <li><b>① 债务置换</b><span>（2015 新预算法后至 2019 基本完成）：用地方政府公债替换平台贷款与城投债，利率从 7%–8% 降至约 4%，期限拉长，抑制利率功能被扭曲的问题。限额管理是硬约束，但不够灵活。</span></li>
+            <li><b>② 推动融资平台转型</b><span>：剥离政府融资功能、破除隐性担保；法院多起判例认定政府担保函无效；2017 年财政部问责多起违规担保。</span></li>
+            <li><b>③ 约束金融机构</b><span>：避免资金大量流入融资平台，难点在影子银行（2018 年「资管新规」，详见第六章）。</span></li>
+            <li><b>④ 问责官员</b><span>：2016 年起对过度负债终身追责，2018 年《地方政府隐性债务问责办法》。</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <h4>第三节｜官员：为什么地方政府这么爱投资</h4>
+      <ul class="klist">
+        <li><b>组织特征</b><span>：地方官员是官僚体系的绝对主体——按公务员总数算，中央只占 6%（含事业单位则 4%），美国为 19%、日本 14%、德国 11%、OECD 平均 41%。</span></li>
+        <li><b>「胡萝卜 + 大棒」</b><span>：经济表现是主官主要政绩，与升迁挂钩；对绝大多数公务员而言，实际收入与本地财政紧密相关。</span></li>
+        <li><b>「政治—投资周期」</b><span>：市委书记/市长在一市平均任期 3.8 年（中位数 3 年），但基建或工业项目最快也要两三年完成 → 上任头两年投资快速上涨、土地出让增加；全国每年约三成地级市更换主官 → 城市「摊大饼」式扩张。</span></li>
+        <li><b>考核改革</b><span>：2013 年中组部通知明确「不能仅仅把地区生产总值及增长率作为考核评价政绩的主要指标」；此后 GDP 增长率与固定资产投资增长率开始下降。</span></li>
+        <li><b>腐败的两种类型</b><span>：<b>掠夺式腐败</b>（对民营敲诈、索贿、挪用）严重损害增长与产权，已大幅减少；<b>官商勾连式腐败</b>（招商引资中的权钱交易）短期可与增长并存，但带来四大恶果：经济结构扭曲/信贷错配推升债务/扩大贫富差距/形成利益集团。营商环境排名从 2010 年全球第 89 位升至 2020 年第 31 位。</span></li>
+      </ul>
+      <div class="quote"><b>本章结语（全书最关键的判断之一）：</b>债务问题的根源<b>不在收入不够，而在支出太多</b>——因为政府承担了发展经济的任务，要扮演的角色太多。因此改革之道在于简政放权，从生产投资型政府向服务型政府逐步转型。</div>
+    </div>
+  </div>
+
+  <!-- 第四章 -->
+  <div class="chapter">
+    <div class="ch-head">
+      <div class="ch-num">4</div>
+      <div>
+        <h3>工业化中的政府角色</h3>
+        <div class="ch-q">核心问题：同一套投融资逻辑，投到工业里会怎样？产业政策到底有没有用、什么条件下有用？</div>
+        <div class="ch-meta">三节：京东方与政府投资｜光伏发展与政府补贴｜政府产业引导基金</div>
+      </div>
+    </div>
+    <div class="ch-body">
+      <p>本章用「两个行业 + 一个工具」把抽象争论落地。作者的立场：<em>产业政策有成功有失败，市场决策也有成功有失败；用一种成功去质疑另一种失败，争论没有尽头</em>。</p>
+
+      <figure>
+        <svg viewBox="0 0 1040 250" role="img" aria-label="政府投资工业的三种方式">
+          <rect x="16" y="18" width="328" height="214" rx="12" fill="#fbf0ee" stroke="#d9a9a3"/>
+          <text x="180" y="46" font-size="14" font-weight="700" fill="#8f362e" text-anchor="middle">① 直接股权 + 银团贷款</text>
+          <text x="180" y="66" font-size="12" fill="#a8807a" text-anchor="middle">案例：京东方 · TCL 华星光电</text>
+          <line x1="48" y1="78" x2="312" y2="78" stroke="#e6c7c3"/>
+          <text x="180" y="100" font-size="12.5" fill="#7a4a44" text-anchor="middle">模式：「扩充资本金 + 银团贷款」</text>
+          <text x="180" y="122" font-size="12.5" fill="#7a4a44" text-anchor="middle">地方城投定向增发 / 土地收益入股</text>
+          <text x="180" y="144" font-size="12.5" fill="#7a4a44" text-anchor="middle">国开行牵头银团 · 委托贷款贴息</text>
+          <text x="180" y="172" font-size="12.5" font-weight="700" fill="#8f362e" text-anchor="middle">京东方前六大股东中</text>
+          <text x="180" y="192" font-size="12.5" font-weight="700" fill="#8f362e" text-anchor="middle">北京、合肥、重庆国资合计占股 23.8%</text>
+          <text x="180" y="216" font-size="11.5" fill="#a8807a" text-anchor="middle">合肥 6 代线：投资 175 亿，政府承诺出资 60 亿、兜底 90 亿</text>
+
+          <rect x="356" y="18" width="328" height="214" rx="12" fill="#fdf5e4" stroke="#e0c98e"/>
+          <text x="520" y="46" font-size="14" font-weight="700" fill="#8a6410" text-anchor="middle">② 补贴与价格机制</text>
+          <text x="520" y="66" font-size="12" fill="#a08a55" text-anchor="middle">案例：光伏产业</text>
+          <line x1="388" y1="78" x2="652" y2="78" stroke="#ecdcb4"/>
+          <text x="520" y="100" font-size="12.5" fill="#6b5a33" text-anchor="middle">标杆电价（FiT）：电网以固定价长期收购</text>
+          <text x="520" y="122" font-size="12.5" fill="#6b5a33" text-anchor="middle">2011 年 1.15 元/度 →2013 分区 0.9/0.98/1 元</text>
+          <text x="520" y="144" font-size="12.5" fill="#6b5a33" text-anchor="middle">补贴逐年下调，倒逼降本</text>
+          <text x="520" y="172" font-size="12.5" font-weight="700" fill="#8a6410" text-anchor="middle">2010–2019：组件价格 ↓85%，全球装机 ↑16 倍</text>
+          <text x="520" y="196" font-size="12" fill="#a08a55" text-anchor="middle">中国光伏产能已占全球约八成</text>
+          <text x="520" y="218" font-size="11.5" fill="#a08a55" text-anchor="middle">代价：补贴欠款 2018 年 6 月达 1,200 亿元；「531 新政」急刹车</text>
+
+          <rect x="696" y="18" width="328" height="214" rx="12" fill="#eaf4f5" stroke="#aed3d9"/>
+          <text x="860" y="46" font-size="14" font-weight="700" fill="#16636f" text-anchor="middle">③ 政府产业引导基金</text>
+          <text x="860" y="66" font-size="12" fill="#4f8189" text-anchor="middle">案例：大基金 · 深创投 · 合肥芯屏</text>
+          <line x1="728" y1="78" x2="992" y2="78" stroke="#bcdde2"/>
+          <text x="860" y="100" font-size="12.5" fill="#2d6a74" text-anchor="middle">政府做 LP，把钱交给市场化 GP</text>
+          <text x="860" y="122" font-size="12.5" fill="#2d6a74" text-anchor="middle">「母基金 / 基金中的基金」</text>
+          <text x="860" y="144" font-size="12.5" fill="#2d6a74" text-anchor="middle">投向战略新兴产业，不做基建房地产</text>
+          <text x="860" y="172" font-size="12.5" font-weight="700" fill="#16636f" text-anchor="middle">2013 年 400 亿 → 2016 年超 1 万亿</text>
+          <text x="860" y="196" font-size="12" fill="#4f8189" text-anchor="middle">2014 年爆发：新版预算法 + 清理税收优惠</text>
+          <text x="860" y="218" font-size="11.5" fill="#4f8189" text-anchor="middle">风险：名股实债、地域属性与资本无边界冲突</text>
+        </svg>
+        <figcaption>图 3-4　政府介入工业的三种方式：从「出钱建厂」到「补贴市场」再到「做基金 LP」，市场化程度逐步提高</figcaption>
+      </figure>
+
+      <h4>第一节｜京东方：为什么政府要投「看不见回报」的重资产</h4>
+      <ul class="klist">
+        <li><b>行业特征</b><span>：液晶面板一条线投资动辄百亿，规模经济极强，新进入者必遭在位者打压。2001–2006 年，三星、LG、奇美、友达等六家在韩国与中国台湾开了 53 次「晶体会议」联手操纵价格，液晶面板一度占电视总成本八成。2012 年我国进口面板总值 500 亿美元，仅次于集成电路、石油和铁矿石。</span></li>
+        <li><b>结果</b><span>：2020 年大陆企业在全球面板市场占有率接近四成，成为世界第一。27 寸显示器从 2008 年 7,599 元降到 2020 年 949 元。</span></li>
+        <li><b>关键转折</b><span>：夏普两次「搅局」（深圳「聚龙计划」、上海上广电），把机会让给了合肥与成都。2008 年的合肥，财政预算收入 301 亿元、归属地方仅 161 亿元，却敢投一条 175 亿元的 6 代线，一度传说要停掉地铁项目。</span></li>
+        <li><b>经济启示（四层）</b><span>：① 国际市场上国界与政治造成的扭曲非常多，只有行政力量能破解，但关键还看国内市场规模；② 政府投资上游产业会促进下游产业（韩国 1973 年「六大战略行业」培育出浦项制铁、三星电子与现代汽车）；③ 规模经济与产业集聚刺激技术创新，创新只能自己「边做边学」；④ <b>「比较优势」具有很大不确定性，可以靠人为创造</b>——韩国 1990 年最具比较优势的十大出口品，1970 年根本不存在。</span></li>
+        <li><b>地方竞争逻辑</b><span>：产业集群落在哪个城市有很多偶然因素；一旦形成就自我强化。合肥用京东方积累的产业基础，又吸引了兆易创新、长鑫存储。2008–2019 年合肥实际 GDP 上涨 3.4 倍（全国 2.3 倍）。</span></li>
+      </ul>
+
+      <h4>第二节｜光伏：补贴了不见得成功，但不补贴行业根本不会存在</h4>
+      <div class="grid2">
+        <div class="card plain">
+          <h4 style="margin-top:0">从「三头在外」到全球龙头</h4>
+          <ul class="klist">
+            <li><b>三头在外</b><span>：需求与市场在海外、关键技术与设备在海外、关键原材料也在海外——基本是代工。</span></li>
+            <li><b>破产潮</b><span>：2009–2011 年欧美需求萎缩 + 「双反」调查，尚德、赛维等明星企业相继倒下。</span></li>
+            <li><b>转向国内</b><span>：2011 年中央开始「标杆电价」补贴，2013 年起分区定价；2016–2017 年我国组件产量占全球 73%、装机占全球 51%。</span></li>
+            <li><b>关键洞察</b><span>：企业不是「人」，破产后积累的技术、人才、行业知识不会消失，需求回暖即可重新整合。</span></li>
+          </ul>
+        </div>
+        <div class="card plain" style="background:var(--amber-bg);border-color:#ecdcb4">
+          <h4 style="margin-top:0;color:var(--amber)">关于「重复建设」的核心判断</h4>
+          <p style="font-size:14px">过度投资和产能过剩本身是市场经济的常态（投资面对不可知未来，且不可逆）。在中国，三个因素加剧了重复投资：</p>
+          <ul class="klist" style="margin:8px 0">
+            <li>能观察到发达国家的需求与技术路径，机会似乎确定；</li>
+            <li>优惠政策多发生在建厂阶段，且领导更换频繁，必须「大干快上」；</li>
+            <li>地方往往追随中央产业政策方向，哪怕本地条件不够。</li>
+          </ul>
+          <p style="font-size:14px"><b>但重复投资并不总是坏事</b>：① 工厂承担了「学校」的功能——工业化最核心的一环是把农民变成工人；② 蜂拥而上加剧竞争，逼出「成本创新」。</p>
+          <div class="quote" style="background:#fff8e6;border-left-color:#b57f16">所以不管有没有政府扶持，<b>要害都不是「重复建设」，而是「保持竞争」</b>。市场经济的根本优势不是决策优势，而是可以不断试错、优胜劣汰。</div>
+        </div>
+      </div>
+      <p><b>政策必须内建退出机制，且低效企业破产渠道要顺畅。</b>反面案例是江西赛维：2016 年总资产 137 亿元、负债却高达 516 亿元，地方政府屡次注资救助、主导重整、地方法院强制裁决，引发广泛关注。对照组是无锡尚德与上海超日——更市场化的重整，债权人受偿率明显更高，被最高法列为 2016 年十大破产重整典型案例。</p>
+
+      <h4>第三节｜政府产业引导基金：用市场化的方式花财政的钱</h4>
+      <figure>
+        <svg viewBox="0 0 1040 200" role="img" aria-label="私募基金与引导基金结构">
+          <defs>
+            <marker id="ah5" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">
+              <path d="M0,0 L9,3.5 L0,7 z" fill="#8d8578"/>
+            </marker>
+          </defs>
+          <rect x="16" y="56" width="230" height="88" rx="10" fill="#eaf4f5" stroke="#1f7a8c" stroke-width="1.4"/>
+          <text x="131" y="80" font-size="13" font-weight="700" fill="#16636f" text-anchor="middle">LP（出钱的人）</text>
+          <text x="131" y="102" font-size="12" fill="#2d6a74" text-anchor="middle">政府引导基金是最大一类</text>
+          <text x="131" y="124" font-size="12" fill="#2d6a74" text-anchor="middle">（大基金 / 深创投 / 各地母基金）</text>
+
+          <rect x="404" y="56" width="230" height="88" rx="10" fill="#eef0f7" stroke="#3a4a7a" stroke-width="1.4"/>
+          <text x="519" y="80" font-size="13" font-weight="700" fill="#3a4a7a" text-anchor="middle">GP（管钱的人）</text>
+          <text x="519" y="102" font-size="12" fill="#4b5678" text-anchor="middle">市场化私募基金管理人</text>
+          <text x="519" y="124" font-size="12" fill="#4b5678" text-anchor="middle">管理费 1.5%–2.5% + 收益 20%</text>
+
+          <rect x="792" y="56" width="232" height="88" rx="10" fill="#fdf5e4" stroke="#b57f16" stroke-width="1.4"/>
+          <text x="908" y="80" font-size="13" font-weight="700" fill="#8a6410" text-anchor="middle">被投企业</text>
+          <text x="908" y="102" font-size="12" fill="#6b5a33" text-anchor="middle">未上市的战略新兴产业公司</text>
+          <text x="908" y="124" font-size="12" fill="#6b5a33" text-anchor="middle">上市 / 转让 / 并购退出</text>
+
+          <path d="M246 100 L400 100" stroke="#8d8578" stroke-width="1.5" marker-end="url(#ah5)"/>
+          <path d="M634 100 L788 100" stroke="#8d8578" stroke-width="1.5" marker-end="url(#ah5)"/>
+
+          <text x="323" y="88" font-size="11.5" fill="#6b6b73" text-anchor="middle">出资</text>
+          <text x="323" y="120" font-size="11.5" fill="#6b6b73" text-anchor="middle">政府 LP 一般 ≤20%</text>
+          <text x="711" y="88" font-size="11.5" fill="#6b6b73" text-anchor="middle">投资</text>
+          <text x="711" y="120" font-size="11.5" fill="#6b6b73" text-anchor="middle">引入社会资本放大杠杆</text>
+
+          <text x="520" y="34" font-size="12.5" fill="#5c5c66" text-anchor="middle">有限合伙制：出钱的是 LP，做决策的是 GP，设固定存续期（7–10 年），经历募、投、管、退四阶段</text>
+          <text x="520" y="178" font-size="12" fill="#8c8c96" text-anchor="middle">四类体制性困难：保值增值 vs 风险投资｜财政资金地域属性 vs 资本无边界（易变「名股实债」）｜资本市场波动｜薪酬激励机制</text>
+        </svg>
+        <figcaption>图 3-5　政府引导基金：把「补贴」换成「股权」，把「政府决策」换成「市场化决策」，但财政资金的地域属性与股权投资的市场逻辑之间存在根本张力</figcaption>
+      </figure>
+      <div class="quote"><b>本章结语，也是上篇的收束：</b>政府和市场间没有黑白分明的界限，几乎所有重要现象，都是这两种组织和资源互动的结果。这套模式成就有目共睹，但会带来：与土地相关的腐败｜城市化以「地」为本忽略「人」｜房价飞涨、债务急升｜经济过度依赖投资（内需不足 + 产能外溢）——这些正是下篇的主题。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 4 下篇 ================= -->
+<section id="s4">
+  <div class="sec-no">PART 04</div>
+  <h2>下篇 · 宏观现象：上篇模式的三个「代价」</h2>
+  <p class="sub">第 5 章讲「重土地轻人」的代价，第 6 章讲「重规模重扩张」的代价，第 7 章讲「重投资重生产轻消费」的代价。</p>
+
+  <figure>
+    <svg viewBox="0 0 1040 150" role="img" aria-label="上篇模式三大特点及其代价">
+      <rect x="16" y="18" width="322" height="114" rx="10" fill="#fbf0ee" stroke="#d9a9a3"/>
+      <text x="177" y="44" font-size="13.5" font-weight="700" fill="#8f362e" text-anchor="middle">特点一 · 重土地、轻人</text>
+      <text x="177" y="68" font-size="12.5" fill="#7a4a44" text-anchor="middle">换来了极快的城市化与基建</text>
+      <text x="177" y="90" font-size="12.5" fill="#7a4a44" text-anchor="middle">代价：公共服务不足、房价高企、</text>
+      <text x="177" y="110" font-size="12.5" fill="#7a4a44" text-anchor="middle">居民债务重、地区与贫富差距大</text>
+      <text x="177" y="128" font-size="11.5" font-weight="700" fill="#a8807a" text-anchor="middle">→ 第五章</text>
+
+      <rect x="358" y="18" width="322" height="114" rx="10" fill="#fdf5e4" stroke="#e0c98e"/>
+      <text x="519" y="44" font-size="13.5" font-weight="700" fill="#8a6410" text-anchor="middle">特点二 · 重规模、重扩张</text>
+      <text x="519" y="68" font-size="12.5" fill="#6b5a33" text-anchor="middle">换来了企业成长与快速工业化</text>
+      <text x="519" y="90" font-size="12.5" fill="#6b5a33" text-anchor="middle">代价：政府、企业、居民三部门</text>
+      <text x="519" y="110" font-size="12.5" fill="#6b5a33" text-anchor="middle">债务互相作用，放大金融风险</text>
+      <text x="519" y="128" font-size="11.5" font-weight="700" fill="#a08a55" text-anchor="middle">→ 第六章</text>
+
+      <rect x="700" y="18" width="322" height="114" rx="10" fill="#eaf4f5" stroke="#aed3d9"/>
+      <text x="861" y="44" font-size="13.5" font-weight="700" fill="#16636f" text-anchor="middle">特点三 · 重投资、重生产、轻消费</text>
+      <text x="861" y="68" font-size="12.5" fill="#2d6a74" text-anchor="middle">换来快速增长与「世界工厂」</text>
+      <text x="861" y="90" font-size="12.5" fill="#2d6a74" text-anchor="middle">代价：居民收入与消费占比偏低，</text>
+      <text x="861" y="110" font-size="12.5" fill="#2d6a74" text-anchor="middle">产能外溢、贸易冲突</text>
+      <text x="861" y="128" font-size="11.5" font-weight="700" fill="#4f8189" text-anchor="middle">→ 第七章</text>
+    </svg>
+    <figcaption>图 4-0　下篇三章与上篇模式三大特点的对位关系</figcaption>
+  </figure>
+
+  <!-- 第五章 -->
+  <div class="chapter">
+    <div class="ch-head">
+      <div class="ch-num mkt">5</div>
+      <div>
+        <h3>城市化与不平衡</h3>
+        <div class="ch-q">核心问题：房价为什么这么贵？地区差距与贫富差距从何而来？为什么要素市场化改革是关键？</div>
+        <div class="ch-meta">三节：房价与居民债务｜不平衡与要素市场改革｜经济发展与贫富差距</div>
+      </div>
+    </div>
+    <div class="ch-body">
+      <h4>第一节｜房价与居民债务：一条「一荣俱荣、一损俱损」的链条</h4>
+      <figure>
+        <svg viewBox="0 0 1040 220" role="img" aria-label="房价与债务链条">
+          <defs>
+            <marker id="ah6" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">
+              <path d="M0,0 L9,3.5 L0,7 z" fill="#1f7a8c"/>
+            </marker>
+          </defs>
+          <g text-anchor="middle">
+            <rect x="20" y="70" width="150" height="62" rx="8" fill="#eaf4f5" stroke="#1f7a8c" stroke-width="1.4"/>
+            <text x="95" y="94" font-size="13" font-weight="700" fill="#16636f">经济增长</text>
+            <text x="95" y="116" font-size="11.5" fill="#2d6a74">人口涌入城市</text>
+
+            <rect x="194" y="70" width="150" height="62" rx="8" fill="#eaf4f5" stroke="#1f7a8c" stroke-width="1.4"/>
+            <text x="269" y="94" font-size="13" font-weight="700" fill="#16636f">房价上涨</text>
+            <text x="269" y="116" font-size="11.5" fill="#2d6a74">商住用地供给受限</text>
+
+            <rect x="368" y="70" width="150" height="62" rx="8" fill="#eaf4f5" stroke="#1f7a8c" stroke-width="1.4"/>
+            <text x="443" y="94" font-size="13" font-weight="700" fill="#16636f">地价上涨</text>
+            <text x="443" y="116" font-size="11.5" fill="#2d6a74">「地王」频出</text>
+
+            <rect x="542" y="70" width="150" height="62" rx="8" fill="#fdf5e4" stroke="#b57f16" stroke-width="1.4"/>
+            <text x="617" y="94" font-size="13" font-weight="700" fill="#8a6410">地方财政</text>
+            <text x="617" y="116" font-size="11.5" fill="#6b5a33">土地收入 + 抵押融资</text>
+
+            <rect x="716" y="70" width="150" height="62" rx="8" fill="#fdf5e4" stroke="#b57f16" stroke-width="1.4"/>
+            <text x="791" y="94" font-size="13" font-weight="700" fill="#8a6410">基础设施投资</text>
+            <text x="791" y="116" font-size="11.5" fill="#6b5a33">进一步拉动增长</text>
+
+            <rect x="890" y="70" width="134" height="62" rx="8" fill="#fbf0ee" stroke="#b0453c" stroke-width="1.4"/>
+            <text x="957" y="94" font-size="13" font-weight="700" fill="#8f362e">居民按揭</text>
+            <text x="957" y="116" font-size="11.5" fill="#7a4a44">债务负担上升</text>
+          </g>
+          <path d="M170 101 L190 101" stroke="#1f7a8c" stroke-width="1.4" marker-end="url(#ah6)"/>
+          <path d="M344 101 L364 101" stroke="#1f7a8c" stroke-width="1.4" marker-end="url(#ah6)"/>
+          <path d="M518 101 L538 101" stroke="#1f7a8c" stroke-width="1.4" marker-end="url(#ah6)"/>
+          <path d="M692 101 L712 101" stroke="#1f7a8c" stroke-width="1.4" marker-end="url(#ah6)"/>
+
+          <path d="M866 70 C900 40, 880 30, 791 40" stroke="#b0453c" stroke-width="1.3" fill="none" stroke-dasharray="5 4"/>
+          <text x="866" y="28" font-size="11.5" fill="#8f362e" text-anchor="middle">投资反哺增长</text>
+          <text x="520" y="176" font-size="12.5" fill="#5c5c66" text-anchor="middle">房价连着地价，地价连着财政，财政连着基础设施投资，于是经济增长、地方财政、银行、房地产之间</text>
+          <text x="520" y="198" font-size="12.5" font-weight="700" fill="#8f362e" text-anchor="middle">就形成了「一荣俱荣，一损俱损」的复杂关系。而按揭最终要靠买房者的收入来还。</text>
+        </svg>
+        <figcaption>图 4-1　土地资本化的实质是「个人收入的资本化」——支撑房价和地价的是人的收入，所以忽略「人」的城市化必然入歧途</figcaption>
+      </figure>
+
+      <div class="grid2">
+        <div class="card plain">
+          <h4 style="margin-top:0">供需失衡的地理错配（关键机制）</h4>
+          <ul class="klist">
+            <li>2006–2014 年，500 万人和 1,000 万人以上大城市城区人口增量占全国近四成，<b>居住用地增量却仅占两成</b>。</li>
+            <li>建设用地指标严格管理且<b>不能跨省交易</b>；2003 年后为支持西部大开发、限制大城市规模，指标反而更向中西部和中小城市倾斜。</li>
+            <li>2003 年中西部新增土地供给占比不足三成，2014 年升至六成；中小城市建成区占比从近一半升到 64%。</li>
+            <li><b>土地流向与人口流向背道而驰</b>，地区间房价差距越拉越大。「东边干旱，西边浇水」。</li>
+          </ul>
+        </div>
+        <div class="card plain" style="background:var(--mkt-bg);border-color:#bcdde2">
+          <h4 style="margin-top:0;color:var(--mkt)">中国的居民债务画像</h4>
+          <ul class="klist">
+            <li>2018 年末居民债务/GDP ≈ <b>54%</b>；2019 年城镇居民平均债务收入比 <b>1.6</b>。</li>
+            <li>居民负债中 <b>76% 是房贷</b>；房产占家庭资产近七成（美国居民财富 72% 是金融资产）。</li>
+            <li>年收入 6 万元以下家庭债务收入比接近 <b>3</b>。</li>
+            <li>2014–2017 年，收入最低的 50% 的人储蓄基本为零甚至为负 → 「消费下渗」。</li>
+            <li><b>但不太可能爆发美式危机</b>：首付比例一般 30%（美国危机前可为零）｜RMBS 仅占按揭总量约 3%（美国 63%）｜资本账户管制。</li>
+          </ul>
+        </div>
+      </div>
+
+      <h4>第二节｜不平衡与要素市场改革：平衡的是「人均」而非「规模」</h4>
+      <figure>
+        <svg viewBox="0 0 1040 210" role="img" aria-label="规模不平衡与人均平衡">
+          <rect x="16" y="18" width="490" height="176" rx="12" fill="#eaf4f5" stroke="#aed3d9"/>
+          <text x="261" y="44" font-size="13.5" font-weight="700" fill="#16636f" text-anchor="middle">美国：规模不平衡，人均基本平衡</text>
+          <line x1="60" y1="160" x2="462" y2="160" stroke="#b9c9cc"/>
+          <g>
+            <rect x="70" y="90" width="34" height="70" fill="#7fb8c0"/>
+            <rect x="118" y="126" width="34" height="34" fill="#7fb8c0"/>
+            <rect x="166" y="118" width="34" height="42" fill="#7fb8c0"/>
+            <rect x="214" y="138" width="34" height="22" fill="#7fb8c0"/>
+            <rect x="262" y="130" width="34" height="30" fill="#7fb8c0"/>
+            <rect x="310" y="142" width="34" height="18" fill="#7fb8c0"/>
+            <rect x="358" y="146" width="34" height="14" fill="#7fb8c0"/>
+            <rect x="406" y="150" width="34" height="10" fill="#7fb8c0"/>
+          </g>
+          <polyline points="87,92 135,128 183,120 231,140 279,132 327,144 375,148 423,152"
+                    fill="none" stroke="#b57f16" stroke-width="2.6"/>
+          <text x="80" y="184" font-size="11.5" fill="#4f8189">各州 GDP 占比（柱）与人口占比（折线）高度贴合 → 人均 GDP 差别很小</text>
+          <text x="452" y="80" font-size="11.5" fill="#b57f16" text-anchor="end">人口占比</text>
+
+          <rect x="534" y="18" width="490" height="176" rx="12" fill="#fbf0ee" stroke="#d9a9a3"/>
+          <text x="779" y="44" font-size="13.5" font-weight="700" fill="#8f362e" text-anchor="middle">中国：柱与折线大幅错位</text>
+          <line x1="578" y1="160" x2="980" y2="160" stroke="#dbc0bc"/>
+          <g>
+            <rect x="588" y="76" width="34" height="84" fill="#d89189"/>
+            <rect x="636" y="86" width="34" height="74" fill="#d89189"/>
+            <rect x="684" y="96" width="34" height="64" fill="#d89189"/>
+            <rect x="732" y="120" width="34" height="40" fill="#d89189"/>
+            <rect x="780" y="126" width="34" height="34" fill="#d89189"/>
+            <rect x="828" y="132" width="34" height="28" fill="#d89189"/>
+            <rect x="876" y="136" width="34" height="24" fill="#d89189"/>
+            <rect x="924" y="140" width="34" height="20" fill="#d89189"/>
+          </g>
+          <polyline points="605,116 653,124 701,132 749,138 797,138 845,136 893,134 941,132"
+                    fill="none" stroke="#b57f16" stroke-width="2.6" stroke-dasharray="6 4"/>
+          <text x="600" y="184" font-size="11.5" fill="#a8807a">广东、江苏、浙江、上海、北京：人口少、经济大 → 相对富有</text>
+          <text x="972" y="184" font-size="11.5" fill="#a8807a" text-anchor="end">其他省份：人多钱少</text>
+        </svg>
+        <figcaption>图 4-2　「规模平衡」不可能也不必要，目标是「人均平衡」——而实现人均平衡的关键是<b>劳动力自由流动</b></figcaption>
+      </figure>
+
+      <ul class="klist">
+        <li><b>为什么大城市还需要低技能劳动者</b><span>：大城市市场规模大、分工细，早点摊、家政、外卖、快递、代驾的收入都不低。这些工作支撑着大城市的繁华和所谓「高端人才」的生活质量——若只想要高技能人才，服务业价格会上涨、生活质量下降，高端人才最终也会离开。</span></li>
+        <li><b>土地改革</b><span>：2015 年起 33 个试点县市试行「三块地」改革（农村土地征收、集体经营性建设用地入市、宅基地制度）。重庆「地票」是著名创新：农民进城后把闲置宅基地复耕成耕地，换得「地票」在交易所卖出，每年为重庆主城区额外供应约 2 万亩建设用地。2019 年《土地管理法》修正案首次在法律上确认集体经营性建设用地可直接出让、出租、作价入股——<b>城市政府对土地供应的垄断被打破</b>。</span></li>
+        <li><b>户籍改革</b><span>：2014 年起建立城乡统一的「居民户口」登记制度；2016 年推行「人地挂钩」；2019 年发改委分级放开落户限制（100–300 万人口城市全面取消落户限制）；2020 年南昌、昆明、济南等省会宣布「零门槛」落户。2020 年《要素市场化配置意见》确立「以经常居住地登记户口」「公共服务与常住人口挂钩」。</span></li>
+      </ul>
+
+      <h4>第三节｜经济发展与贫富差距</h4>
+      <div class="grid3">
+        <div class="card plain" style="background:var(--green-bg);border-color:#cfe0d6">
+          <h4 style="margin-top:0;color:var(--green)">成就：全球减贫主要来自中国</h4>
+          <p style="font-size:14px">全球极端贫困人口从 1981 年 19 亿降到 2015 年 7 亿。若不算中国，同期只减少不到 3 亿。按购买力平价，2016 年全球最富的一半人中约 22% 是中国人（中国人口占全球 19%）。</p>
+        </div>
+        <div class="card plain" style="background:#fdf5e4;border-color:#e0c98e">
+          <h4 style="margin-top:0;color:var(--amber)">差距：在扩大，但增长是普惠的</h4>
+          <p style="font-size:14px">基尼系数从 80 年代初约 0.3 升到 2017 年 0.47。但 1988–2018 年城乡居民人均实际可支配收入均增长 8–10 倍——所有人分到的蛋糕都比以前大得多。</p>
+        </div>
+        <div class="card plain" style="background:var(--gov-bg);border-color:#e6c7c3">
+          <h4 style="margin-top:0;color:var(--gov)">代际变化：财富比收入更重要了</h4>
+          <p style="font-size:14px">「70 后」主要靠自己打拼；「80 后」「90 后」受父母财富影响明显上升，核心是房产。有形资产可无损耗传承，人力资本则会「均值回归」。</p>
+        </div>
+      </div>
+      <p><b>对不平等的容忍度</b>取决于三件事：<em>经济增速</em>（「隧道效应」：两条车道一动一静时，静的那条最焦虑）、<em>人群相似性</em>（若掺入人种、肤色、种姓等因素，穷人更容易愤怒绝望）、<em>家庭观念</em>（子女发展得好，容忍度更高）。作者提醒：库兹涅茨「倒 U 形曲线」只是欧美「二战」前后的特例，拉长时间看是起伏的「波浪形」；<b>不存在自动降低不平等的经济力量，「先富带动后富」不会自然发生，需要政策干预</b>。</p>
+    </div>
+  </div>
+
+  <!-- 第六章 -->
+  <div class="chapter">
+    <div class="ch-head">
+      <div class="ch-num mkt">6</div>
+      <div>
+        <h3>债务与风险</h3>
+        <div class="ch-q">核心问题：债务为什么危险？欧美踩过哪些坑？中国的债务特殊在哪、又该怎么化解？</div>
+        <div class="ch-meta">四节：债务与经济衰退｜债台为何高筑（欧美的教训）｜中国的债务与风险｜化解债务风险</div>
+      </div>
+    </div>
+    <div class="ch-body">
+      <h4>第一节｜债务为什么会引发衰退：两条传导链</h4>
+      <div class="grid2">
+        <div class="card plain" style="background:var(--gov-bg);border-color:#e6c7c3">
+          <h4 style="margin-top:0;color:var(--gov)">链条一：负债率高 → 资产价格跳水</h4>
+          <p style="font-size:14px">收入不够还本甚至不够还息 → 只能变卖资产 → 抛售的人一多，资产价格跳水。案例：2008–09 年美国房价不到一年跌两成；2011–12 年温州房价一年跌近三成；2013–14 年内蒙古、晋陕煤炭企业崩盘后大幅折价变卖豪车房产。</p>
+        </div>
+        <div class="card plain" style="background:var(--gov-bg);border-color:#e6c7c3">
+          <h4 style="margin-top:0;color:var(--gov)">链条二：资产价格跌 → 信贷收缩 → 资金链断裂</h4>
+          <p style="font-size:14px">抵押物价值跳水 → 银行坏账飙升 → 大幅压缩信贷 → 债务人借不到钱。案例：爱尔兰信贷增速从 2004–08 年均 20% 剧烈收缩至 2009–13 年的 1.3%。危机往往殃及债务健康的部门。</p>
+        </div>
+      </div>
+      <div class="quote">
+        <b>「债务—通缩循环」：</b>一起勒紧裤腰带 → 甲的支出就是乙的收入 → 收入一起减少 → 若收入下降比债务还快，<b>债务负担不降反升</b>；物价下跌使钱更值钱，实际债务负担更重。
+        此外，债务危机对穷人和富人打击高度不对称——法律优先保护债权人，<b>债务常常把风险集中到承受能力最弱的穷人身上</b>（西班牙：破产也免不掉按揭本金）。
+      </div>
+
+      <h4>第二节｜欧美的教训：银行是金融风险的核心</h4>
+      <figure>
+        <svg viewBox="0 0 1040 250" role="img" aria-label="银行风险的四个来源">
+          <text x="520" y="28" font-size="14" font-weight="700" fill="#5c5c66" text-anchor="middle">银行为什么容易出事：四个结构性原因</text>
+          <g>
+            <rect x="16" y="46" width="240" height="182" rx="10" fill="#fbf0ee" stroke="#d9a9a3"/>
+            <text x="136" y="72" font-size="13" font-weight="700" fill="#8f362e" text-anchor="middle">① 规模大、杠杆高</text>
+            <text x="136" y="98" font-size="12" fill="#7a4a44" text-anchor="middle">2008 年前美国银行业资产</text>
+            <text x="136" y="118" font-size="12" fill="#7a4a44" text-anchor="middle">已超 GDP，自有资本仅约 5%</text>
+            <text x="136" y="144" font-size="12" font-weight="700" fill="#8f362e" text-anchor="middle">平均杠杆 20 倍</text>
+            <text x="136" y="170" font-size="12" fill="#7a4a44" text-anchor="middle">理论上亏 5% 即蚀光本钱</text>
+            <text x="136" y="196" font-size="11.5" fill="#a8807a" text-anchor="middle">德意志银行 52 倍、瑞银 58 倍</text>
+            <text x="136" y="216" font-size="11.5" fill="#a8807a" text-anchor="middle">雷曼兄弟近 28 倍</text>
+
+            <rect x="268" y="46" width="240" height="182" rx="10" fill="#fdf5e4" stroke="#e0c98e"/>
+            <text x="388" y="72" font-size="13" font-weight="700" fill="#8a6410" text-anchor="middle">② 期限不匹配</text>
+            <text x="388" y="98" font-size="12" fill="#6b5a33" text-anchor="middle">借进来的是短期（活期存款）</text>
+            <text x="388" y="118" font-size="12" fill="#6b5a33" text-anchor="middle">贷出去的是长期（企业贷款）</text>
+            <text x="388" y="146" font-size="12" font-weight="700" fill="#8a6410" text-anchor="middle">→ 挤提风险</text>
+            <text x="388" y="172" font-size="12" fill="#6b5a33" text-anchor="middle">存款保险只保护个人存款，</text>
+            <text x="388" y="192" font-size="12" fill="#6b5a33" text-anchor="middle">货币基金/对冲基金不受保护</text>
+            <text x="388" y="216" font-size="11.5" fill="#a08a55" text-anchor="middle">1998 年长期资本管理公司即为例证</text>
+
+            <rect x="520" y="46" width="240" height="182" rx="10" fill="#eaf4f5" stroke="#aed3d9"/>
+            <text x="640" y="72" font-size="13" font-weight="700" fill="#16636f" text-anchor="middle">③ 信贷与房地产绑定</text>
+            <text x="640" y="98" font-size="12" fill="#2d6a74" text-anchor="middle">土地房子是最好的抵押物</text>
+            <text x="640" y="126" font-size="12" font-weight="700" fill="#16636f" text-anchor="middle">欧美主要国家银行信贷中</text>
+            <text x="640" y="146" font-size="12" font-weight="700" fill="#16636f" text-anchor="middle">近六成是按揭或不动产贷款</text>
+            <text x="640" y="172" font-size="12" fill="#2d6a74" text-anchor="middle">（2012 年英国 79%）</text>
+            <text x="640" y="200" font-size="12" fill="#2d6a74" text-anchor="middle">银行「晴天送伞」，顺周期放大波动</text>
+            <text x="640" y="220" font-size="11.5" fill="#4f8189" text-anchor="middle">地价涨→抵押物升→更愿放贷……</text>
+
+            <rect x="772" y="46" width="252" height="182" rx="10" fill="#eef0f7" stroke="#aab3cd"/>
+            <text x="898" y="72" font-size="13" font-weight="700" fill="#3a4a7a" text-anchor="middle">④ 风险传导到其他金融部门</text>
+            <text x="898" y="98" font-size="12" fill="#4b5678" text-anchor="middle">按揭打包成证券卖给其他机构</text>
+            <text x="898" y="124" font-size="12" font-weight="700" fill="#3a4a7a" text-anchor="middle">→ 银行不再关心借款人能力</text>
+            <text x="898" y="150" font-size="12" fill="#4b5678" text-anchor="middle">「击鼓传花」：只要有人接盘就行</text>
+            <text x="898" y="178" font-size="12" fill="#4b5678" text-anchor="middle">金融部门膨胀到占美国 GDP 的 8%</text>
+            <text x="898" y="204" font-size="11.5" fill="#7b83a1" text-anchor="middle">资金与人才「脱实向虚」</text>
+            <text x="898" y="222" font-size="11.5" fill="#7b83a1" text-anchor="middle">1980–2010 年全球 153 次银行危机</text>
+          </g>
+        </svg>
+        <figcaption>图 4-3　欧美教训：银行风险不是道德问题，而是四个结构性特征叠加的结果</figcaption>
+      </figure>
+
+      <p><b>债务之外，还有两个深层原因：</b></p>
+      <ul class="klist">
+        <li><b>国际不平衡</b><span>：东亚国家（吃过 1997 年金融危机的亏）大量增加美元储备、买入美国国债，即伯南克所说的「全球储蓄过剩」，压低了美国利率、助推房地产投机。另一条线是欧洲与美国「你借我、我借你」的双向流动——<em>净流量小掩盖了总流量大的风险</em>。加上美元的储备货币地位与「特里芬悖论」，全球经济失衡是贸易失衡与资本流动失衡共同造成的。</span></li>
+        <li><b>国内不平等</b><span>：若财富集中在少数人手中，富人产生大量闲置储蓄，穷人则需借钱生存。美国最富 1% 的过剩储蓄，与海外涌入的「全球过剩储蓄」体量相当。这些钱通过银行流向房地产，而非生产性投资。</span></li>
+        <li><b>实体投资需求不足</b><span>：发达国家投资占 GDP 从 70 年代 28% 降到 20%。原因包括制造业外迁、投资「无形化」、行业集中度提高（伴随投资下降与生产率降低）。结果是长期实际利率稳步降至近零，短期投机与「金融创新」泛滥，富者愈富。</span></li>
+      </ul>
+
+      <h4>第三节｜中国的债务与风险（2008–2018 的十年）</h4>
+      <figure>
+        <svg viewBox="0 0 1040 240" role="img" aria-label="中国债务累积时间线">
+          <line x1="40" y1="128" x2="1004" y2="128" stroke="#d5cec0" stroke-width="2"/>
+          <g font-size="11.5" text-anchor="middle">
+            <circle cx="110" cy="128" r="7" fill="#b0453c"/>
+            <text x="110" y="112" font-weight="700" fill="#8f362e">2008–09</text>
+            <text x="110" y="152" fill="#7a4a44">「4 万亿」计划</text>
+            <text x="110" y="170" fill="#a8807a">平台 3,000 → 8,000 余家</text>
+            <text x="110" y="188" fill="#a8807a">高铁投资 2,500 → 8,300 亿</text>
+
+            <circle cx="258" cy="128" r="7" fill="#b57f16"/>
+            <text x="258" y="112" font-weight="700" fill="#8a6410">2010–12</text>
+            <text x="258" y="152" fill="#6b5a33">先收紧、再宽松</text>
+            <text x="258" y="170" fill="#a08a55">城投债翻番</text>
+            <text x="258" y="188" fill="#a08a55">「影子银行」扩张</text>
+
+            <circle cx="406" cy="128" r="7" fill="#3a4a7a"/>
+            <text x="406" y="112" font-weight="700" fill="#3a4a7a">2015–16</text>
+            <text x="406" y="152" fill="#4b5678">股灾 · 资本外流</text>
+            <text x="406" y="170" fill="#7b83a1">债务置换 · 棚改货币化</text>
+            <text x="406" y="188" fill="#7b83a1">银行理财规模爆发</text>
+
+            <circle cx="554" cy="128" r="7" fill="#1f7a8c"/>
+            <text x="554" y="112" font-weight="700" fill="#16636f">2016</text>
+            <text x="554" y="152" fill="#2d6a74">「房住不炒」定调</text>
+            <text x="554" y="170" fill="#4f8189">「去产能」见效</text>
+            <text x="554" y="188" fill="#4f8189">工业品价格转正</text>
+
+            <circle cx="702" cy="128" r="7" fill="#a1352b"/>
+            <text x="702" y="112" font-weight="700" fill="#8f362e">2018</text>
+            <text x="702" y="152" fill="#7a4a44">「资管新规」严控影子银行</text>
+            <text x="702" y="170" fill="#a8807a">民企融资困境暴露</text>
+            <text x="702" y="188" fill="#a8807a">中美贸易战开始</text>
+
+            <circle cx="850" cy="128" r="7" fill="#5c5c66"/>
+            <text x="850" y="112" font-weight="700" fill="#5c5c66">2018 年末</text>
+            <text x="850" y="152" fill="#6b6b73">总债务 / GDP = 258%</text>
+            <text x="850" y="170" fill="#8c8c96">居民 54% · 政府 51%</text>
+            <text x="850" y="188" fill="#8c8c96">非金融企业 154%</text>
+          </g>
+        </svg>
+        <figcaption>图 4-4　中国债务累积的十年：每一次外部冲击都换来一轮加杠杆</figcaption>
+      </figure>
+
+      <div class="grid3">
+        <div class="card plain">
+          <h4 style="margin-top:0">企业债务（154%）：三个焦点</h4>
+          <ul class="klist" style="font-size:14px">
+            <li><b>融资平台债务</b>：约占 GDP 40%，投向回报率约 1% 的基础设施。</li>
+            <li><b>「国进民退」争议</b>：1998–2007 年国企资产增 1.6 倍，2008–2017 年激增 4.4 倍；但工企口径下国企资产负债规模相对 GDP 基本稳定。真正的风险是「僵尸企业」挤占信贷。</li>
+            <li><b>房企债务</b>：2018 年占 GDP 75%，资产负债率近 80%，依赖预售款与按揭；2020 年「三道红线」出台。另有海外美元债（截至 2019 年 7 月末约 1,739 亿美元）。</li>
+          </ul>
+        </div>
+        <div class="card plain">
+          <h4 style="margin-top:0">融资结构：为什么债务这么重</h4>
+          <ul class="klist" style="font-size:14px">
+            <li>资本市场发展不充分，企业融资以银行贷款为主，股权融资占比很低。2018 年末企业债务总额约 140 万亿元，境内股票融资余额仅约 7 万亿元。</li>
+            <li>股权约束力更强：股东共赚共赔、股价可约束公司行为；债券的约束力也比银行贷款强，因为可以转让。</li>
+            <li>2018 年金融资产中 <b>72% 的风险由金融机构和政府承担</b>（1995 年为 74%、2007 年为 70%）——因为投资由政府和国企主导，风险自然由它们承担。</li>
+          </ul>
+        </div>
+        <div class="card plain" style="background:var(--mkt-bg);border-color:#bcdde2">
+          <h4 style="margin-top:0;color:var(--mkt)">银行风险：「银根连着地根」</h4>
+          <ul class="klist" style="font-size:14px">
+            <li>信贷总额/GDP 从 2008 年约 1.2 升至 2016 年 2.14。</li>
+            <li>优质抵押物（住房、土地）越来越多、有政府信用担保的企业越来越多 → 银行就有动力扩表。</li>
+            <li><b>影子银行</b>：「银信合作」→ 被管住后变成「银证信合作」，渠道越拉越长。金融业增加值占 GDP 从 21 世纪初约 4% 升到 2015–19 年平均 8%（相当于美国金融危机前水平，但我国资本市场尚未完全开放）。2018 年「资管新规」拧紧总闸，也挤压了没有抵押物、没有政府背书的中小民企。</li>
+          </ul>
+        </div>
+      </div>
+
+      <h4>第四节｜化解债务风险：两个方向</h4>
+      <figure>
+        <svg viewBox="0 0 1040 216" role="img" aria-label="化解债务的两个方向">
+          <rect x="16" y="18" width="492" height="182" rx="12" fill="#eef0f7" stroke="#aab3cd"/>
+          <text x="262" y="44" font-size="13.5" font-weight="700" fill="#3a4a7a" text-anchor="middle">方向一：偿还已有债务</text>
+          <text x="262" y="68" font-size="12" fill="#4b5678" text-anchor="middle">提高收入 / 压缩支出 / 变卖资产 / 违约</text>
+          <line x1="48" y1="80" x2="476" y2="80" stroke="#dfe3ee"/>
+          <text x="48" y="102" font-size="12.5" font-weight="700" fill="#3a4a7a">增发货币的三条路径</text>
+          <text x="48" y="124" font-size="12" fill="#4b5678">① 降利率（危机前主流）——减少利息、刺激投资</text>
+          <text x="48" y="146" font-size="12" fill="#4b5678">② 量化宽松（危机后主流）——央行买入资产，托住价格</text>
+          <text x="48" y="168" font-size="12" fill="#4b5678">③ 赤字货币化（MMT）——财政发债、央行直接买</text>
+          <text x="48" y="190" font-size="11.5" fill="#7b83a1">代价：推高资产价格 → 受益者是资产所有者，拉大贫富差距</text>
+          <rect x="300" y="90" width="184" height="86" rx="8" fill="#fff" stroke="#b0453c" stroke-dasharray="4 4"/>
+          <text x="392" y="112" font-size="11.5" font-weight="700" fill="#8f362e" text-anchor="middle">历史警示</text>
+          <text x="392" y="134" font-size="11" fill="#7a4a44" text-anchor="middle">国民党政府搞赤字货币化：</text>
+          <text x="392" y="152" font-size="11" fill="#7a4a44" text-anchor="middle">1948 年 8 月物价是 1946 年初</text>
+          <text x="392" y="170" font-size="11" fill="#7a4a44" text-anchor="middle">的 558 万倍，货币信用尽失</text>
+
+          <rect x="532" y="18" width="492" height="182" rx="12" fill="#eaf4f5" stroke="#aed3d9"/>
+          <text x="778" y="44" font-size="13.5" font-weight="700" fill="#16636f" text-anchor="middle">方向二：遏制新增债务（治本）</text>
+          <line x1="564" y1="80" x2="992" y2="80" stroke="#bcdde2"/>
+          <text x="564" y="102" font-size="12.5" fill="#2d6a74">限制房价上涨 · 限制「土地财政」「土地金融」</text>
+          <text x="564" y="124" font-size="12.5" fill="#2d6a74">限制政府担保与国企过度借贷 · 严控影子银行</text>
+          <text x="564" y="146" font-size="12.5" fill="#2d6a74">推进资本市场改革，扩大直接融资比重</text>
+          <text x="564" y="176" font-size="12.5" font-weight="700" fill="#16636f">但根本困境是：「因」是过去的「因」，「果」是现在的「果」</text>
+          <text x="564" y="196" font-size="11.5" fill="#4f8189">当年种下的因，当年都有它的道理，或干脆是不得已而为之</text>
+        </svg>
+        <figcaption>图 4-5　化解债务的两个方向：偿还已有债务是「术」，遏制新增债务并改革滋生债务的环境才是「道」</figcaption>
+      </figure>
+      <div class="quote">
+        <b>本章最重要的判断：</b>我国债务风险的本质不是金融投机的风险，而是<b>财政和资源分配机制的风险</b>。这套机制不是新问题，但债务负担在十年间迅速上升，主要是因为这一机制已经无法持续拉动 GDP 增长——无论是实际生产率的增长还是通货膨胀速度，都赶不上信贷或债务增长的速度。
+      </div>
+    </div>
+  </div>
+
+  <!-- 第七章 -->
+  <div class="chapter">
+    <div class="ch-head">
+      <div class="ch-num mkt">7</div>
+      <div>
+        <h3>国内国际失衡</h3>
+        <div class="ch-q">核心问题：为什么消费不足？国内结构失衡如何变成国际贸易冲突？「双循环」要解决什么？</div>
+        <div class="ch-meta">三节：低消费与产能过剩｜中美贸易冲突｜再平衡与国内大循环</div>
+      </div>
+    </div>
+    <div class="ch-body">
+      <h4>第一节｜低消费与产能过剩：一个等式拆开看</h4>
+      <figure>
+        <svg viewBox="0 0 1040 268" role="img" aria-label="消费不足的分解">
+          <rect x="300" y="16" width="440" height="46" rx="9" fill="#3a4a7a"/>
+          <text x="520" y="45" font-size="14" font-weight="700" fill="#fff" text-anchor="middle">居民消费 = 收入 − 储蓄</text>
+          <path d="M520 62 L520 82" stroke="#c3bcae" stroke-width="1.6"/>
+          <path d="M520 82 L230 82 L230 100" stroke="#c3bcae" stroke-width="1.6" fill="none"/>
+          <path d="M520 82 L810 82 L810 100" stroke="#c3bcae" stroke-width="1.6" fill="none"/>
+
+          <rect x="16" y="100" width="428" height="152" rx="10" fill="#fdf5e4" stroke="#e0c98e"/>
+          <text x="230" y="126" font-size="13.5" font-weight="700" fill="#8a6410" text-anchor="middle">收入端：居民可支配收入份额下降</text>
+          <text x="230" y="150" font-size="12.5" fill="#6b5a33" text-anchor="middle">占 GDP 比重从 90 年代 70% 降至 2010 年 60%</text>
+          <text x="230" y="174" font-size="12.5" fill="#6b5a33" text-anchor="middle">工业化初期资本所得份额自然上升；地方政府</text>
+          <text x="230" y="194" font-size="12.5" fill="#6b5a33" text-anchor="middle">「重企业、重生产、重规模、重资产」模式</text>
+          <text x="230" y="214" font-size="12.5" fill="#6b5a33" text-anchor="middle">进一步加速资本份额上升、劳动份额下降</text>
+          <text x="230" y="238" font-size="11.5" fill="#a08a55" text-anchor="middle">补贴、廉价土地、贴息 → 刺激企业多用资本、少用劳动</text>
+
+          <rect x="596" y="100" width="428" height="152" rx="10" fill="#eaf4f5" stroke="#aed3d9"/>
+          <text x="810" y="126" font-size="13.5" font-weight="700" fill="#16636f" text-anchor="middle">储蓄端：居民储蓄率居高</text>
+          <text x="810" y="150" font-size="12.5" fill="#2d6a74" text-anchor="middle">90 年代已达 25%–30%（美国同期 6%–7%）</text>
+          <text x="810" y="174" font-size="12.5" fill="#2d6a74" text-anchor="middle">三个主因：计划生育 · 政府民生支出不足 · 房价上涨</text>
+          <text x="810" y="198" font-size="12.5" fill="#2d6a74" text-anchor="middle">教育医疗市场化供给受限、价格偏高，家庭需多存钱</text>
+          <text x="810" y="222" font-size="12.5" fill="#2d6a74" text-anchor="middle">外来人口难带家人进城 → 耐用品/住房/教育消费偏低</text>
+          <text x="810" y="240" font-size="11.5" fill="#4f8189" text-anchor="middle">→ 结果：居民最终消费占 GDP 仅 44%（美国近 70%）</text>
+        </svg>
+        <figcaption>图 4-6　消费不足不是「不爱花钱」那么简单：分子（收入份额）和分母（储蓄率）同时朝不利方向移动</figcaption>
+      </figure>
+
+      <p><b>内需不足必然外溢。</b>GDP = 消费 + 投资 + 净出口。居民消费占比下降，不仅对应投资占比上升，也对应出口占比上升。而投资占比从已然很高的 40% 进一步升到 47%（2008 年后），一方面强化结构失衡，一方面把过剩产能推向海外。作者总结这套模式发展到一定阶段后的<b>四个问题</b>：</p>
+      <div class="grid4">
+        <div class="card plain" style="padding:14px 16px"><b>① 投资难以持续</b><p style="font-size:13.5px;margin:6px 0 0;color:var(--ink-2)">基础设施与工业体系已较完善，「投资什么都有用」的时代过去了，投资决策体制需要改变。</p></div>
+        <div class="card plain" style="padding:14px 16px"><b>② 债务越积越重</b><p style="font-size:13.5px;margin:6px 0 0;color:var(--ink-2)">收入与消费不足，产能无法消化，很多投资不能变成有效收入，浪费掉的部分变成债务。</p></div>
+        <div class="card plain" style="padding:14px 16px"><b>③ 贫富差距扩大</b><p style="font-size:13.5px;margin:6px 0 0;color:var(--ink-2)">资本收入份额上升、劳动份额下降，而资本掌握在少数人手中。</p></div>
+        <div class="card plain" style="padding:14px 16px"><b>④ 贸易冲突</b><p style="font-size:13.5px;margin:6px 0 0;color:var(--ink-2)">过剩产能必须外输，而中国体量巨大，输出产能会加重全球贸易失衡。</p></div>
+      </div>
+
+      <h4>第二节｜中美贸易冲突：就业之争是小账，技术之争是大账</h4>
+      <div class="grid2">
+        <div class="card plain" style="background:#f4f2ec;border-color:var(--line-2)">
+          <h4 style="margin-top:0">「抢走工作」这个说法站不住</h4>
+          <ul class="klist" style="font-size:14px">
+            <li>美国制造业就业占比从 1970 年代的 26% 一路降到个位数，21 世纪初的下滑只是这条长线中的一段。</li>
+            <li>1970–2013 年制造业创造的增加值占美国 GDP 比重一直稳定在约 13%——人少了，产出没少，是技术进步与生产率提高。</li>
+            <li>从中国进口的廉价产品降低了使用部门的成本，刺激了其规模与就业扩张，美国整体就业并未因此降低。</li>
+            <li><b>但「讲道理没人听」</b>：民调实验显示，一旦把裁员归因于「贸易冲击」，连政治倾向偏中间甚至偏克林顿的人，建议「贸易保护」的比例也大幅上升。</li>
+          </ul>
+        </div>
+        <div class="card plain" style="background:var(--mkt-bg);border-color:#bcdde2">
+          <h4 style="margin-top:0;color:var(--mkt)">真正的冲击在技术与科学</h4>
+          <ul class="klist" style="font-size:14px">
+            <li><b>制造业增加值</b>：1997 年我国仅相当于美国的 0.14，2010 年超过美国，2018 年已是美国的 1.76 倍。</li>
+            <li><b>PCT 国际专利</b>：2019 年美国首次失去世界第一，被中国超越。</li>
+            <li><b>「自然指数」高水平论文</b>：2012 年我国为美国的 0.24，2019 年已达 0.66（是德国的 3 倍、日本的 4.4 倍）。</li>
+            <li><b>路径是反过来的</b>：后发国家先从制造环节入手，边干边学，再逐步向技术与科学上游靠拢。</li>
+            <li><b>iPhone 的例子</b>：中国（含港）企业贡献了 iPhone 硬件价值约两成，远超「二三美元组装费」的旧说。</li>
+          </ul>
+        </div>
+      </div>
+      <div class="quote"><b>「外交是内政的延续」的宏观版本：</b>国内失衡会导致国际失衡，国际失衡反过来也会导致国内失衡。贸易问题从来不是单纯的贸易问题，贸易冲突的根源也往往不在贸易本身。</div>
+
+      <h4>第三节｜再平衡与国内大循环</h4>
+      <ul class="klist">
+        <li><b>战略转型</b><span>：2020 年中央提出「加快构建以国内大循环为主体、国内国际双循环相互促进的新发展格局」。从本章角度看，<b>关键是提高居民收入和消费</b>。</span></li>
+        <li><b>「供给」和「需求」不是两件事</b><span>：从供给角度看是调节产能，从需求角度看就是调整投资支出；从供给角度看是产业升级，从需求角度看就是收入水平和消费结构的升级。</span></li>
+        <li><b>继续推进城市化</b><span>：制造业进一步发展吸纳不了更多就业（自动化程度越来越高），解决就业和提高收入必须依靠服务业，而服务业只能发生在人口密集的城市中。</span></li>
+        <li><b>把资源从政府和国企转移给居民</b><span>：这意味着政府要降低生产性支出、加大民生支出——这会带来四方面影响：改变「重土地轻人」的城市化模式｜限制盲目投资、提升全国统一市场效率｜加大教育与医疗支出即投资「人力资本」，有利于攻克「卡脖子」环节｜降低对「土地财政/金融」的依赖，稳定房价、防止居民债务侵蚀消费。</span></li>
+        <li><b>国有企业资本划转社保基金</b><span>：2017 年提出划转比例统一为 10%，2019 年提速（央企当年完成，地方国企 2020 年底基本完成）。</span></li>
+        <li><b>同时扩大开放</b><span>：进口也能创造服务业就业与收入；随着生产率提高，人民币长期看还会升值，扩大进口可增加实际购买力。</span></li>
+      </ul>
+      <div class="note"><b>本章结语：</b>市场从建立到完善，其规模和效率都需要逐步提升——<b>完善的市场本就是经济发展的结果，而不是前提</b>。我国疆域广阔、人口众多，建立和打通全国统一的商品和要素市场，难度不亚于一次小型全球化。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 5 章节联系 ================= -->
+<section id="s5">
+  <div class="sec-no">PART 05</div>
+  <h2>章节联系：全书其实是一个闭环</h2>
+  <p class="sub">上篇每一章都在回答「钱从哪来」，下篇每一章都在回答「代价是什么」，第八、九章把它们合起来回看。</p>
+
+  <figure>
+    <svg viewBox="0 0 1100 800" role="img" aria-label="章节联系网络图">
+      <defs>
+        <marker id="eg" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">
+          <path d="M0,0 L9,3.5 L0,7 z" fill="#b7aFa2"/>
+        </marker>
+        <marker id="eg2" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">
+          <path d="M0,0 L9,3.5 L0,7 z" fill="#c98b83"/>
+        </marker>
+      </defs>
+
+      <!-- 边框 -->
+      <rect x="14" y="14" width="1072" height="300" rx="14" fill="#fdfbfa" stroke="#e8dbd8" stroke-dasharray="6 5"/>
+      <text x="34" y="40" font-size="12.5" font-weight="700" fill="#a8807a">上篇 · 微观机制（钱的来源）</text>
+
+      <!-- 上篇节点 -->
+      <g>
+        <rect x="34" y="60" width="228" height="86" rx="10" fill="#fbf0ee" stroke="#b0453c" stroke-width="1.5"/>
+        <text x="148" y="86" font-size="13.5" font-weight="700" fill="#8f362e" text-anchor="middle">① 事权</text>
+        <text x="148" y="108" font-size="12" fill="#7a4a44" text-anchor="middle">权力与事务的划分</text>
+        <text x="148" y="128" font-size="11.5" fill="#a8807a" text-anchor="middle">规模经济 / 信息 / 激励相容</text>
+
+        <rect x="302" y="60" width="228" height="86" rx="10" fill="#fbf0ee" stroke="#b0453c" stroke-width="1.5"/>
+        <text x="416" y="86" font-size="13.5" font-weight="700" fill="#8f362e" text-anchor="middle">② 财权 · 财税</text>
+        <text x="416" y="108" font-size="12" fill="#7a4a44" text-anchor="middle">分税制 → 土地财政</text>
+        <text x="416" y="128" font-size="11.5" fill="#a8807a" text-anchor="middle">纵向 + 横向不平衡</text>
+
+        <rect x="570" y="60" width="228" height="86" rx="10" fill="#fbf0ee" stroke="#b0453c" stroke-width="1.5"/>
+        <text x="684" y="86" font-size="13.5" font-weight="700" fill="#8f362e" text-anchor="middle">③ 投融资与债务</text>
+        <text x="684" y="108" font-size="12" fill="#7a4a44" text-anchor="middle">城投 · 土地金融</text>
+        <text x="684" y="128" font-size="11.5" fill="#a8807a" text-anchor="middle">政府债务 · 官员激励</text>
+
+        <rect x="838" y="60" width="228" height="86" rx="10" fill="#fbf0ee" stroke="#b0453c" stroke-width="1.5"/>
+        <text x="952" y="86" font-size="13.5" font-weight="700" fill="#8f362e" text-anchor="middle">④ 工业化中的政府</text>
+        <text x="952" y="108" font-size="12" fill="#7a4a44" text-anchor="middle">面板 · 光伏 · 产业基金</text>
+        <text x="952" y="128" font-size="11.5" fill="#a8807a" text-anchor="middle">同一逻辑，投向工业</text>
+      </g>
+
+      <path d="M262 103 L298 103" stroke="#c98b83" stroke-width="1.6" marker-end="url(#eg2)"/>
+      <path d="M530 103 L566 103" stroke="#c98b83" stroke-width="1.6" marker-end="url(#eg2)"/>
+      <path d="M798 103 L834 103" stroke="#c98b83" stroke-width="1.6" marker-end="url(#eg2)"/>
+      <text x="280" y="94" font-size="10.5" fill="#a8807a" text-anchor="middle">定事</text>
+      <text x="548" y="94" font-size="10.5" fill="#a8807a" text-anchor="middle">找钱</text>
+      <text x="816" y="94" font-size="10.5" fill="#a8807a" text-anchor="middle">投出去</text>
+
+      <rect x="34" y="176" width="1032" height="120" rx="10" fill="#ffffff" stroke="#e8dbd8"/>
+      <text x="550" y="200" font-size="12.5" font-weight="700" fill="#8f362e" text-anchor="middle">贯穿上篇的一句话</text>
+      <text x="550" y="226" font-size="12.5" fill="#6b6b73" text-anchor="middle">「决定了干哪些事，才能决定用哪些资源」——事权相对稳定，财权改革频频；</text>
+      <text x="550" y="250" font-size="12.5" fill="#6b6b73" text-anchor="middle">分税制把钱收走，土地财政补上；土地财政不够用，土地金融登场；</text>
+      <text x="550" y="274" font-size="12.5" fill="#6b6b73" text-anchor="middle">土地金融撬来的钱先投基础设施与园区，再投工业企业。</text>
+
+      <!-- 下篇 -->
+      <rect x="14" y="352" width="1072" height="268" rx="14" fill="#f8fcfc" stroke="#cfe3e6" stroke-dasharray="6 5"/>
+      <text x="34" y="378" font-size="12.5" font-weight="700" fill="#4f8189">下篇 · 宏观现象（付出的代价）</text>
+
+      <g>
+        <rect x="80" y="400" width="290" height="88" rx="10" fill="#eaf4f5" stroke="#1f7a8c" stroke-width="1.5"/>
+        <text x="225" y="426" font-size="13.5" font-weight="700" fill="#16636f" text-anchor="middle">⑤ 城市化与不平衡</text>
+        <text x="225" y="448" font-size="12" fill="#2d6a74" text-anchor="middle">房价 ↑ · 居民债务 ↑ · 要素流动受限</text>
+        <text x="225" y="470" font-size="12" fill="#2d6a74" text-anchor="middle">地区差距与贫富差距</text>
+
+        <rect x="405" y="400" width="290" height="88" rx="10" fill="#eaf4f5" stroke="#1f7a8c" stroke-width="1.5"/>
+        <text x="550" y="426" font-size="13.5" font-weight="700" fill="#16636f" text-anchor="middle">⑥ 债务与风险</text>
+        <text x="550" y="448" font-size="12" fill="#2d6a74" text-anchor="middle">政府债 + 居民债 + 企业债合流</text>
+        <text x="550" y="470" font-size="12" fill="#2d6a74" text-anchor="middle">银行与影子银行风险</text>
+
+        <rect x="730" y="400" width="290" height="88" rx="10" fill="#eaf4f5" stroke="#1f7a8c" stroke-width="1.5"/>
+        <text x="875" y="426" font-size="13.5" font-weight="700" fill="#16636f" text-anchor="middle">⑦ 国内国际失衡</text>
+        <text x="875" y="448" font-size="12" fill="#2d6a74" text-anchor="middle">低消费 · 产能过剩</text>
+        <text x="875" y="470" font-size="12" fill="#2d6a74" text-anchor="middle">贸易冲突 · 双循环</text>
+      </g>
+
+      <!-- 跨篇连线 -->
+      <path d="M416 146 C416 250, 180 300, 210 396" stroke="#c98b83" stroke-width="1.6" fill="none" marker-end="url(#eg2)"/>
+      <text x="248" y="286" font-size="11" fill="#a1352b">土地财政 → 限制商住用地 → 高房价 → 居民债务</text>
+
+      <path d="M684 146 C684 250, 600 300, 566 396" stroke="#c98b83" stroke-width="1.6" fill="none" marker-end="url(#eg2)"/>
+      <text x="700" y="316" font-size="11" fill="#a1352b" text-anchor="end">政府债务进入宏观债务盘子</text>
+
+      <path d="M952 146 C952 260, 900 300, 880 396" stroke="#c98b83" stroke-width="1.6" fill="none" marker-end="url(#eg2)"/>
+      <text x="880" y="340" font-size="11" fill="#a1352b" text-anchor="end">产业升级冲击国际分工</text>
+
+      <path d="M370 444 L401 444" stroke="#7fb0b8" stroke-width="1.6" marker-end="url(#eg)"/>
+      <path d="M695 444 L726 444" stroke="#7fb0b8" stroke-width="1.6" marker-end="url(#eg)"/>
+
+      <rect x="80" y="512" width="940" height="88" rx="10" fill="#ffffff" stroke="#cfe3e6"/>
+      <text x="550" y="538" font-size="12.5" font-weight="700" fill="#16636f" text-anchor="middle">三条下篇线索，其实是同一个原因的三种表现</text>
+      <text x="550" y="564" font-size="12.5" fill="#4f8189" text-anchor="middle">「重土地轻人」→ 公共服务不足 + 高房价 + 居民债务（第 5 章）　｜　「重规模重扩张」→ 三部门债务互推（第 6 章）</text>
+      <text x="550" y="588" font-size="12.5" fill="#4f8189" text-anchor="middle">「重投资重生产轻消费」→ 居民收入份额低 + 消费不足 + 产能外溢（第 7 章）</text>
+
+      <!-- 第八章 -->
+      <path d="M550 620 L550 666" stroke="#b7afa2" stroke-width="1.6" marker-end="url(#eg)"/>
+      <rect x="320" y="672" width="460" height="106" rx="12" fill="#b57f16"/>
+      <text x="550" y="700" font-size="14" font-weight="700" fill="#ffffff" text-anchor="middle">⑧ 总结：政府与经济发展</text>
+      <text x="550" y="724" font-size="12.5" fill="#f7e9c9" text-anchor="middle">地区间竞争（官场 + 市场）· 政府能力建设</text>
+      <text x="550" y="746" font-size="12.5" fill="#f7e9c9" text-anchor="middle">「生产型政府」→「服务型政府」</text>
+      <text x="550" y="768" font-size="12.5" fill="#f7e9c9" text-anchor="middle">区分「发展目标」与「发展过程」</text>
+    </svg>
+    <figcaption>图 5-1　章节联系总图：上篇一条纵链（钱怎么来、怎么花），下篇三条横线（三种代价），第八章把两者合起来给出制度性解释与转型方向</figcaption>
+  </figure>
+
+  <h3>五组最关键的跨章连接</h3>
+  <table>
+    <tr><th>连接</th><th>机制</th><th>书中出处</th></tr>
+    <tr><td><b>第 1 章 → 第 2 章</b></td><td>事权决定财力需求。财权领域改革频频，但事权划分相对稳定，因为其决定因素（地理与语言文化边界、信息与激励问题）长期稳定。</td><td>第 1 章结语</td></tr>
+    <tr><td><b>第 2 章 → 第 3 章</b></td><td>土地财政每年五六万亿，仍不足以撬动飞速的工业化与城市化。土地真正的力量不在「土地财政」，而在以土地为抵押撬动的银行信贷——于是升级为「土地金融」。</td><td>第 2 章结语</td></tr>
+    <tr><td><b>第 3 章 → 第 4 章</b></td><td>同一套逻辑（城投公司、招商引资竞争、土地金融），只是投资对象从基础设施和园区变成具体的工业企业；政府产业引导基金是以市场化方式使用财政资金的新探索。</td><td>第 4 章导语</td></tr>
+    <tr><td><b>第 2、3 章 → 第 5 章</b></td><td>分税制是一系列重大经济现象的分水岭，也是城市化模式的分水岭；土地财政的运行方式（低价工业地 + 高价商住地）直接决定了房价与居民债务。</td><td>第 5 章第 1 节</td></tr>
+    <tr><td><b>第 3、5、6 章 → 第 6 章</b></td><td>政府债务（第 3 章）、居民债务（第 5 章）、企业债务（第 6 章）互相作用，共同推高宏观债务负担与金融风险。三者的债主都是银行系统。</td><td>第 6 章第 3 节</td></tr>
+    <tr><td><b>第 1–4 章 → 第 7 章</b></td><td>地方政府「重企业、重生产、重规模、重资产」的招商引资与投融资模式，加速了资本份额上升与劳动份额下降 → 收入分配偏向资本 → 消费不足 → 产能外溢。</td><td>第 7 章第 1 节</td></tr>
+    <tr><td><b>第 5、6、7 章 → 第 8 章</b></td><td>三大特点（重土地轻人 / 重规模重扩张 / 重投资重生产轻消费）的得失汇总为制度层面的解释：地方竞争体制的三大差别，以及政府从「生产型」转向「服务型」的必要性。</td><td>第 7 章结语、第 8 章</td></tr>
+  </table>
+
+  <div class="note">
+    <b>读法建议：</b>把图 5-1 当作骨架，把每个节点当成一个抽屉。任何时候只要问三句话，就能定位到具体章节——
+    ① 「这件事要花钱吗？钱从哪来？」→ 上篇；
+    ② 「花了钱之后，谁受益、谁受损、有什么副作用？」→ 下篇；
+    ③ 「为什么这套做法当初是合理的，现在却必须改？」→ 第 8 章。
+  </div>
+</section>
+
+<!-- ================= 6 总结与转型 ================= -->
+<section id="s6">
+  <div class="sec-no">PART 06</div>
+  <h2>第八章 · 总结：制度解释与转型方向</h2>
+  <p class="sub">把全书收束成三件事：地方竞争怎么运作、政府能力如何建设、目标与过程为何要分开。</p>
+
+  <h3>6.1 地区间竞争：「官场 + 市场」</h3>
+  <figure>
+    <svg viewBox="0 0 1040 262" role="img" aria-label="官场加市场机制">
+      <text x="520" y="28" font-size="14" font-weight="700" fill="#3a4a7a" text-anchor="middle">两种资源动员模式</text>
+      <rect x="86" y="44" width="380" height="76" rx="10" fill="#eef0f7" stroke="#aab3cd"/>
+      <text x="276" y="70" font-size="13" font-weight="700" fill="#3a4a7a" text-anchor="middle">「条条」式 · U 型（源自苏联）</text>
+      <text x="276" y="92" font-size="12" fill="#4b5678" text-anchor="middle">以中央政府为主，按功能划分部委</text>
+      <text x="276" y="110" font-size="12" fill="#4b5678" text-anchor="middle">竞争体现在部委之间的博弈</text>
+
+      <rect x="574" y="44" width="380" height="76" rx="10" fill="#fbf0ee" stroke="#d9a9a3"/>
+      <text x="764" y="70" font-size="13" font-weight="700" fill="#8f362e" text-anchor="middle">「块块」式 · M 型（中国的选择）</text>
+      <text x="764" y="92" font-size="12" fill="#7a4a44" text-anchor="middle">设定目标后放权给地方，因地制宜竞争</text>
+      <text x="764" y="110" font-size="12" fill="#7a4a44" text-anchor="middle">属地管理 + 地方竞争</text>
+
+      <rect x="86" y="140" width="868" height="106" rx="10" fill="#fdf5e4" stroke="#e0c98e"/>
+      <text x="520" y="166" font-size="13" font-weight="700" fill="#8a6410" text-anchor="middle">「官场 + 市场」的三个特点</text>
+      <text x="120" y="192" font-size="12.5" fill="#6b5a33">① 官员晋升的政治激励与地区经济表现挂钩</text>
+      <text x="600" y="192" font-size="12.5" fill="#6b5a33">② 以市场竞争约束官员行为（要素可流动）</text>
+      <text x="120" y="218" font-size="12.5" fill="#6b5a33">③ 本地经济表现提供及时反馈（属地信息优势 + 经验随升迁扩散）</text>
+      <text x="120" y="240" font-size="12" fill="#a08a55">但三大差别增加了代价：缺乏真正的淘汰机制｜晋升是「零和博弈」（易生地方保护与「以邻为壑」）｜任期有限（刺激大干快上、忽视长期风险）</text>
+    </svg>
+    <figcaption>图 6-1　「官场 + 市场」：中国地方竞争体制的机制与代价</figcaption>
+  </figure>
+
+  <div class="grid2">
+    <div class="card plain" style="background:var(--indigo-bg);border-color:#dfe3ee">
+      <h4 style="margin-top:0;color:var(--indigo)">为什么工业竞争在中国能成立</h4>
+      <p style="font-size:14px">前提是<b>大多数地区的工业基础不能相差太远</b>，否则资源会迅速向占绝对优势的地区集聚。而这一条件来自 1964 年开始的<b>「三线建设」</b>：为备战，中央把四成工业投资投向云贵川渝、宁夏、甘肃、陕南、赣西北、鄂西和湖南等地。到 70 年代末，三线地区工业固定资产增 4.3 倍、职工增 2.5 倍、工业总产值增 3.9 倍。</p>
+      <p style="font-size:14px">这套分散的工业体系，一方面为改革后的乡镇企业与民营企业提供了技术基础，另一方面让工厂承担了「学校」功能——把农民变成工人。</p>
+    </div>
+    <div class="card plain" style="background:var(--amber-bg);border-color:#ecdcb4">
+      <h4 style="margin-top:0;color:var(--amber)">为什么要为「缓冲机制」辩护</h4>
+      <p style="font-size:14px">以全国统一大市场的标准评价三线建设、乡镇企业，都可以说是低效率。但从发展的角度看，这个评价标准并不合适。改革开放之初基础设施不发达、经济落后而分散，只能走「各地区独自发展再逐步整合」的路。</p>
+      <div class="quote" style="background:#fff8e6;border-left-color:#b57f16">「变化速度的快慢，对身处其中的人而言，感受天差地别。」缓冲机制往往拖低效率，因而常被解读为「扭曲」或「资源错配」——但任何成功的转型过程都离不开缓冲机制。</div>
+    </div>
+  </div>
+
+  <h3>6.2 政府的发展与转型：从「生产型」到「服务型」</h3>
+  <table>
+    <tr><th>能力维度</th><th>为什么无法「先有后发展」</th></tr>
+    <tr><td>法治与产权保护</td><td>对发达国家而言，保护好产权是经济进一步发展的前提；但对发展中国家而言，有效的产权保护更可能是<b>发展的结果</b>。把产权保护写成法条很容易，但若无抓捕、审判、追查与冻结财产的能力，法条不过一纸空文。</td></tr>
+    <tr><td>政府管制</td><td>正式法律体系之外存在大量政府管制。19 世纪末美国工业化与铁路建设伴随大量工伤事故，但败诉公司不断上诉、约四成案件干脆没有赔偿——这种不公正刺激了政府管制的兴起。管制与法制的相对重要性随发展而变。</td></tr>
+    <tr><td>征税能力</td><td>我国第一大税种是增值税（2019 年占全国税收约 40%），第二大是企业所得税（24%），个人所得税只占不到 7%。增值税征收难度小（有发票凭证、买卖双方互相监督），但 2001 年涉嫌违规的进项发票比例曾高达 8.5%，直到「金税工程二期」完成才根治假发票问题。</td></tr>
+  </table>
+  <div class="quote"><b>核心判断：</b>「有为政府」和「有效市场」一样，都不是天然存在的，需要不断建设和完善。所谓强力政府，不仅在于它有能力和资源支持企业发展，<b>也在于它有能力拒绝对企业提供帮助</b>。</div>
+
+  <figure>
+    <svg viewBox="0 0 1040 200" role="img" aria-label="生产型政府到服务型政府">
+      <rect x="16" y="22" width="440" height="160" rx="12" fill="#fbf0ee" stroke="#d9a9a3"/>
+      <text x="236" y="50" font-size="14" font-weight="700" fill="#8f362e" text-anchor="middle">生产型政府</text>
+      <line x1="48" y1="64" x2="424" y2="64" stroke="#e6c7c3"/>
+      <text x="48" y="88" font-size="12.5" fill="#7a4a44">· 主导投资、直接配置资源</text>
+      <text x="48" y="112" font-size="12.5" fill="#7a4a44">· 重规模、标准化、可「集中力量办大事」</text>
+      <text x="48" y="136" font-size="12.5" fill="#7a4a44">· 依托重资产工业与基础设施建设</text>
+      <text x="48" y="162" font-size="12.5" fill="#7a4a44">· 前提：市场不完善、民间资源有限、信用机制不健全</text>
+
+      <path d="M468 102 L560 102" stroke="#8d8578" stroke-width="2" marker-end="url(#eg)"/>
+      <text x="514" y="92" font-size="11.5" fill="#6b6b73" text-anchor="middle">转型</text>
+
+      <rect x="584" y="22" width="440" height="160" rx="12" fill="#eaf4f5" stroke="#aed3d9"/>
+      <text x="804" y="50" font-size="14" font-weight="700" fill="#16636f" text-anchor="middle">服务型政府</text>
+      <line x1="616" y1="64" x2="992" y2="64" stroke="#bcdde2"/>
+      <text x="616" y="88" font-size="12.5" fill="#2d6a74">· 加大教育、医疗、社会保障等民生支出</text>
+      <text x="616" y="112" font-size="12.5" fill="#2d6a74">· 投资「人」与「人力资本」（间接、辅助性投入）</text>
+      <text x="616" y="136" font-size="12.5" fill="#2d6a74">· 前提：市场机制成熟、法治基础设施建立、民间资源积累</text>
+      <text x="616" y="162" font-size="12.5" font-weight="700" fill="#16636f">关键约束：地方的主体税种缺失（房产税是讨论中的方向）</text>
+    </svg>
+    <figcaption>图 6-2　转型的判断依据是发展阶段，不是意识形态。OECD 国家教育、医疗、社保、养老方面政府支出平均占 GDP 的 24%，我国只有 13%</figcaption>
+  </figure>
+
+  <h3>6.3 发展目标 vs 发展过程：全书最底层的视角</h3>
+  <div class="grid3">
+    <div class="card">
+      <h4 style="margin-top:0">两种增长模式</h4>
+      <p style="font-size:14px"><b>组织学习模式</b>：对发展中国家而言，提高生产率的关键不是探索未知，而是学习已知的技术与管理模式，把资源尽快组织投入到学习过程中。<br/><b>探索创新模式</b>：对处于技术前沿的发达国家而言，关键是不断探索与创新，依靠分散化决策与价格机制「试错」。</p>
+      <div class="quote" style="margin-top:8px;font-size:13.5px">风险：旧模式不能成功转型，<b>「后发优势」就可能变成「后发劣势」</b>。</div>
+    </div>
+    <div class="card">
+      <h4 style="margin-top:0">三大「制度禀赋」</h4>
+      <ul class="klist" style="font-size:14px">
+        <li>掌握大量资源并可以自主行动的地方政府</li>
+        <li>协调和控制能力强的中央政府</li>
+        <li>人力资本雄厚和组织完善的官僚体系</li>
+      </ul>
+      <p style="font-size:13.5px;color:var(--ink-2)">这三大禀赋源自中国特殊的历史，不是每个国家都有的。</p>
+      <h4>三大「制度约束」</h4>
+      <p style="font-size:14px">农村集体所有制 · 城市土地公有制 · 户籍制度——所以中国的工业化离不开乡镇企业，城市化离不开「土地财政」与「土地金融」。</p>
+    </div>
+    <div class="card">
+      <h4 style="margin-top:0">发展顺序与发展节奏</h4>
+      <p style="font-size:14px"><b>顺序</b>的重点是「结构」（什么事先办、什么事后办）；<b>节奏</b>的重点是「稳定」或「渐进性」。</p>
+      <p style="font-size:14px">改革方向和改革过程是两回事。就算能看清对岸的风景，也不见得就能摸着石头成功过河。每一步都有人受益、有人受损。</p>
+      <p style="font-size:14px">可行的经济政策是各种利益妥协的结果；可行的政策不仅受既有制度约束，也受既有利益约束。</p>
+    </div>
+  </div>
+  <div class="quote" style="border-left-color:var(--indigo);background:var(--indigo-bg);color:#3a4a7a">
+    <b>结束语里的那句话：</b>「我是个经济学家，基于专业训练的朴素信念也有一个：生活过得好一点，比大多数宏伟更宏伟。」
+  </div>
+</section>
+
+<!-- ================= 7 速查 ================= -->
+<section id="s7">
+  <div class="sec-no">PART 07</div>
+  <h2>核心概念速查表</h2>
+  <p class="sub">把全书最容易混淆的一批概念并排放在一起对照。</p>
+  <table>
+    <tr><th>概念</th><th>一句话定义</th><th>出处</th></tr>
+    <tr><td>事权划分三原则</td><td>公共服务的规模经济与边界（外部性）· 信息复杂性 · 激励相容。共同主题是处理不同群体的利益差别与冲突。</td><td>第 1 章</td></tr>
+    <tr><td>形式权威 / 实际权威</td><td>上级有名义上的最终决定权（形式权威），下级因掌握信息而拥有实际的自主权（实际权威）。维护两类权威的平衡是政府有效运作的关键。</td><td>第 1 章第 3 节</td></tr>
+    <tr><td>剩余控制权</td><td>合同不可能事先写清所有情况，权力的实质就是「说不清楚时由谁来拍板」。规则越模糊，权力越向个人集中 → 一把手负责制。</td><td>第 1 章第 3 节</td></tr>
+    <tr><td>属地管理</td><td>一个地区谁主管谁负责，以行政区划为权责边界。兼顾公共服务边界与信息优势，同时给地方很大权力。</td><td>第 1 章第 4 节</td></tr>
+    <tr><td>两个比重</td><td>中央财政预算收入占全国财政预算总收入的比重、全国财政预算总收入占 GDP 的比重。财政包干期间两者双降，是分税制改革的直接动因。</td><td>第 2 章第 1 节</td></tr>
+    <tr><td>土地财政</td><td>土地使用权转让收入 + 与土地使用开发相关的税收。2018 年相当于地方公共预算收入的 89%，实质是「房地产财政」。</td><td>第 2 章第 2 节</td></tr>
+    <tr><td>土地金融</td><td>以土地未来收益资本化为抵押，从银行和其他渠道借入资金。是「土地财政」加杠杆后的形态，规模成倍放大。</td><td>第 2 章结语、第 3 章</td></tr>
+    <tr><td>地方政府融资平台 / 城投公司</td><td>因政府不能直接贷款或发债而设立的国有独资公司，正式名称多带「建设投资」「投资开发」，突出投资功能。</td><td>第 3 章第 1 节</td></tr>
+    <tr><td>土地一级 / 二级开发</td><td>把「生地」平整清理为「熟地」是一级开发（投入大、利润低、涉及拆迁，多由平台公司做）；之后的建设与运营是二级开发（多由房企做）。</td><td>第 3 章第 1 节</td></tr>
+    <tr><td>PPP（政府和社会资本合作）</td><td>政府付费使用私营企业开发建设的基础设施。中国的两个特色：项目多、规模大；「社会资本」多为国企而非民企。</td><td>第 3 章第 1 节</td></tr>
+    <tr><td>「政治—投资周期」</td><td>地方主官平均任期仅 3–4 年，而项目最快两三年才完成 → 上任头两年投资快速上涨、土地出让增加，「新官上任三把火」烧得快而猛。</td><td>第 3 章第 3 节</td></tr>
+    <tr><td>掠夺式腐败 vs 官商勾连式腐败</td><td>前者对增长与产权极其有害（已大幅减少）；后者发生在招商引资过程中，短期可与增长并存，但带来结构扭曲、债务、贫富差距与利益集团四大恶果。</td><td>第 3 章第 3 节</td></tr>
+    <tr><td>LP / GP · 有限合伙制</td><td>LP 出钱，GP 管钱并做投资决策。GP 收管理费（约 2%）+ 收益提成（约 20%，行话 carry）；基金有固定存续期（7–10 年）。</td><td>第 4 章第 3 节</td></tr>
+    <tr><td>政府产业引导基金 / 母基金</td><td>政府资金以 LP 身份进入市场化私募基金，再由 GP 投资战略新兴产业。既提高杠杆，也把决策交给市场，但受财政资金「地域属性」约束。</td><td>第 4 章第 3 节</td></tr>
+    <tr><td>名股实债</td><td>名为股权投资、实为债权工具（约定回购 + 基本利率，或对社会资本兜底）。违背股权投资原则，是中央明确禁止的变相增加政府债务行为。</td><td>第 4 章第 3 节</td></tr>
+    <tr><td>隧道效应</td><td>经济增长时，即使富人跑得更快，穷人也更有耐心；一旦穷人这条车道完全静止，哪怕富人减速，穷人也会很快骚动。用于解释对不平等的容忍度。</td><td>第 5 章第 3 节</td></tr>
+    <tr><td>消费下渗</td><td>房价上涨拉大贫富差距，刺激低收入人群借贷消费，导致其债务负担加重而收入并未提高。</td><td>第 5 章第 1 节</td></tr>
+    <tr><td>债务—通缩循环</td><td>收入下降比债务还快时，债务负担不降反升；物价下跌使钱更值钱，实际债务负担更重，恶性循环导致经济收缩。</td><td>第 6 章第 1 节</td></tr>
+    <tr><td>影子银行 / 银行的影子</td><td>类似银行的信贷业务，但不在银行资产负债表内、不受银行监管规则约束。中国的影子银行多由银行主导（银信合作 → 银证信合作），是银行链条的延伸。</td><td>第 6 章第 3 节</td></tr>
+    <tr><td>银根连着地根</td><td>优质抵押物（土地、住房）增多、有政府信用担保的企业增多，都会从需求端刺激商业银行信贷扩张。信贷扩张离不开土地金融与房地产繁荣。</td><td>第 6 章第 3 节</td></tr>
+    <tr><td>量化宽松 / 赤字货币化（MMT）</td><td>前者是央行增发货币买入各类资产（增发的货币算央行负债，把部门负债转移到央行身上）；后者是财政部发债、央行直接买下，用无利率的货币替代有利率的债务。</td><td>第 6 章第 4 节</td></tr>
+    <tr><td>官场 + 市场</td><td>将官员晋升的政治激励与地区经济表现挂钩，同时以市场竞争约束官员行为，本地经济表现为政府工作提供及时反馈。</td><td>第 8 章第 1 节</td></tr>
+    <tr><td>瓦格纳法则</td><td>国家越富裕，政府在国民经济中所占比重往往越大（而非越小），因为民众对政府服务的需求越来越多。</td><td>第 8 章第 2 节</td></tr>
+    <tr><td>组织学习模式 / 探索创新模式</td><td>前者是后发国家学习已知技术与模式；后者是前沿国家分散化决策、试错创新。两者需要的资源配置方式不同。</td><td>第 8 章第 3 节</td></tr>
+  </table>
+</section>
+
+<!-- ================= 8 阅读地图 ================= -->
+<section id="s8">
+  <div class="sec-no">PART 08</div>
+  <h2>阅读地图与读法建议</h2>
+  <p class="sub">按目的选路径，不必从头读到尾。</p>
+
+  <figure>
+    <svg viewBox="0 0 1040 300" role="img" aria-label="阅读路径建议">
+      <rect x="16" y="20" width="320" height="260" rx="12" fill="#fbf0ee" stroke="#d9a9a3"/>
+      <text x="176" y="48" font-size="14" font-weight="700" fill="#8f362e" text-anchor="middle">路径 A · 想懂「为什么」</text>
+      <line x1="48" y1="62" x2="304" y2="62" stroke="#e6c7c3"/>
+      <text x="48" y="88" font-size="12.5" fill="#7a4a44">前言 → 第 2 章（分税制）</text>
+      <text x="48" y="112" font-size="12.5" fill="#7a4a44">→ 第 3 章（土地金融）</text>
+      <text x="48" y="136" font-size="12.5" fill="#7a4a44">→ 第 5 章（房价与债务）</text>
+      <text x="48" y="160" font-size="12.5" fill="#7a4a44">→ 第 7 章（失衡与双循环）</text>
+      <text x="48" y="192" font-size="12.5" font-weight="700" fill="#8f362e">收益：一条完整因果链</text>
+      <text x="48" y="216" font-size="12" fill="#a8807a">这条线跳过第 1、6 章的细节，</text>
+      <text x="48" y="236" font-size="12" fill="#a8807a">最快建立整体框架。</text>
+      <text x="48" y="262" font-size="12" fill="#a8807a">适合：关心房价、债务、贸易的读者</text>
+
+      <rect x="360" y="20" width="320" height="260" rx="12" fill="#eef0f7" stroke="#aab3cd"/>
+      <text x="520" y="48" font-size="14" font-weight="700" fill="#3a4a7a" text-anchor="middle">路径 B · 想懂「怎么运作」</text>
+      <line x1="392" y1="62" x2="648" y2="62" stroke="#dfe3ee"/>
+      <text x="392" y="88" font-size="12.5" fill="#4b5678">第 1 章（事权三原则）</text>
+      <text x="392" y="112" font-size="12.5" fill="#4b5678">→ 第 3 章（城投与债务）</text>
+      <text x="392" y="136" font-size="12.5" fill="#4b5678">→ 第 4 章（京东方 / 光伏 / 基金）</text>
+      <text x="392" y="160" font-size="12.5" fill="#4b5678">→ 第 8 章（官场 + 市场）</text>
+      <text x="392" y="192" font-size="12.5" font-weight="700" fill="#3a4a7a">收益：一套可迁移的分析工具</text>
+      <text x="392" y="216" font-size="12" fill="#7b83a1">第 4 章的三个案例是全书写得</text>
+      <text x="392" y="236" font-size="12" fill="#7b83a1">最细、信息量最大的部分。</text>
+      <text x="392" y="262" font-size="12" fill="#7b83a1">适合：做投资、咨询、产业研究的读者</text>
+
+      <rect x="704" y="20" width="320" height="260" rx="12" fill="#fdf5e4" stroke="#e0c98e"/>
+      <text x="864" y="48" font-size="14" font-weight="700" fill="#8a6410" text-anchor="middle">路径 C · 只想要全局</text>
+      <line x1="736" y1="62" x2="992" y2="62" stroke="#ecdcb4"/>
+      <text x="736" y="88" font-size="12.5" fill="#6b5a33">前言 → 每章「结语」</text>
+      <text x="736" y="112" font-size="12.5" fill="#6b5a33">→ 第 7 章结语（三大特点）</text>
+      <text x="736" y="136" font-size="12.5" fill="#6b5a33">→ 第 8 章全章</text>
+      <text x="736" y="160" font-size="12.5" fill="#6b5a33">→ 结束语</text>
+      <text x="736" y="192" font-size="12.5" font-weight="700" fill="#8a6410">收益：2 小时内拿到全书骨架</text>
+      <text x="736" y="216" font-size="12" fill="#a08a55">每章的「结语」正是作者自己</text>
+      <text x="736" y="236" font-size="12" fill="#a08a55">提炼的要点与章间过渡。</text>
+      <text x="736" y="262" font-size="12" fill="#a08a55">适合：时间有限的通识读者</text>
+    </svg>
+    <figcaption>图 8-1　三条阅读路径：按目的选择，而不是按页码</figcaption>
+  </figure>
+
+  <div class="note">
+    <b>三条提醒：</b>
+    ① 本书最容易被忽略却最有用的是每章末尾的<b>「结语」</b>——它们才是章与章之间的焊接点；
+    ② 全书的数据几乎都停留在 2018–2020 年，读的时候要意识到这是一份<b>「特定时点的诊断书」</b>，而不是当下的现状描述；
+    ③ 作者反复强调<b>「发展目标」与「发展过程」的区分</b>——这是理解他为什么既批评旧模式、又反对简单照搬他国经验的关键。
+  </div>
+</section>
+
+</main>
+
+<footer>
+  《置身事内：中国政府与经济发展》图解导读 · 依据电子书全文（前言 + 上篇 4 章 + 下篇 3 章 + 总结章 + 结束语）整理<br/>
+  引文与数据均出自原书，图表为便于理解而重绘，非原书插图
+</footer>
+
+</body>
+</html>
