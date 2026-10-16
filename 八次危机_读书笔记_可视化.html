@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>《八次危机》解读书 · 问题意识 / 变量模型 / 解释框架 / 大事年表</title>
+<style>
+:root{
+  --ink:#1b1b1e;
+  --ink2:#3d3d44;
+  --muted:#6d6d78;
+  --paper:#f7f5f0;
+  --card:#ffffff;
+  --line:#e6e0d4;
+  --line2:#d8d0c0;
+  --red:#b5342a;
+  --red-soft:#f3e2df;
+  --gold:#a8812a;
+  --gold-soft:#f6efe0;
+  --blue:#2c5773;
+  --blue-soft:#e4edf3;
+  --green:#3f6b4a;
+  --green-soft:#e6efe6;
+  --purple:#5c4a7d;
+  --purple-soft:#ece7f3;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Microsoft YaHei","PingFang SC","Hiragino Sans GB","Source Han Sans SC",sans-serif;
+  font-size:16px;line-height:1.85;-webkit-font-smoothing:antialiased;
+}
+.serif{font-family:"Songti SC","SimSun","Source Han Serif SC",Georgia,serif}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+
+/* ---------- HERO ---------- */
+header.hero{
+  position:relative;overflow:hidden;
+  background:linear-gradient(160deg,#1d2b36 0%,#2b2118 55%,#3a2620 100%);
+  color:#f2ece1;padding:64px 0 54px;
+}
+header.hero::after{
+  content:"";position:absolute;inset:0;
+  background:
+    radial-gradient(circle at 88% 12%, rgba(181,52,42,.30), transparent 46%),
+    radial-gradient(circle at 8% 88%, rgba(168,129,42,.22), transparent 44%);
+  pointer-events:none;
+}
+.hero-grid{position:relative;z-index:2;display:flex;gap:40px;align-items:center;flex-wrap:wrap}
+.hero-cover{
+  width:186px;border-radius:4px;flex:0 0 auto;
+  box-shadow:0 18px 42px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.10);
+  transform:rotate(-1.6deg);
+}
+.hero-txt{flex:1 1 380px;min-width:300px}
+.eyebrow{
+  display:inline-block;font-size:12.5px;letter-spacing:.22em;
+  color:#e8c98a;border:1px solid rgba(232,201,138,.45);
+  padding:4px 12px;border-radius:2px;margin-bottom:18px;
+}
+h1.title{
+  font-size:clamp(30px,4.6vw,46px);line-height:1.24;margin:0 0 6px;
+  font-weight:700;letter-spacing:.02em;
+}
+h1.title .sub{display:block;font-size:.44em;font-weight:400;color:#cbbfa9;letter-spacing:.16em;margin-top:14px}
+.hero-lead{margin:20px 0 0;color:#cfc5b4;font-size:15px;line-height:1.9;max-width:620px}
+.hero-meta{margin-top:22px;display:flex;gap:26px;flex-wrap:wrap;font-size:13px;color:#a99e8b}
+.hero-meta b{display:block;color:#f0e6d4;font-size:20px;font-weight:700;line-height:1.4}
+
+/* ---------- NAV ---------- */
+nav.toc{
+  position:sticky;top:0;z-index:50;background:rgba(247,245,240,.94);
+  backdrop-filter:blur(10px);border-bottom:1px solid var(--line);
+}
+nav.toc .wrap{display:flex;gap:4px;overflow-x:auto;padding:0 22px}
+nav.toc a{
+  flex:0 0 auto;color:var(--muted);text-decoration:none;font-size:13.5px;
+  padding:14px 12px;border-bottom:2px solid transparent;white-space:nowrap;transition:.18s;
+}
+nav.toc a:hover{color:var(--red);border-bottom-color:var(--red)}
+
+/* ---------- SECTIONS ---------- */
+section{padding:58px 0 10px}
+.sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:8px;flex-wrap:wrap}
+.sec-num{
+  font-family:Georgia,serif;font-size:13px;letter-spacing:.2em;color:var(--red);
+  border:1px solid var(--red);border-radius:2px;padding:2px 9px;
+}
+h2{font-size:clamp(22px,3vw,29px);margin:0;letter-spacing:.01em}
+.sec-sub{color:var(--muted);font-size:14px;margin:2px 0 30px;padding-left:2px}
+h3{font-size:19px;margin:38px 0 12px;padding-left:12px;border-left:4px solid var(--gold)}
+h4{font-size:15.5px;margin:24px 0 8px;color:var(--ink2)}
+p{margin:10px 0}
+.lead{font-size:16.5px;color:var(--ink2)}
+ul,ol{margin:10px 0;padding-left:22px}
+li{margin:6px 0}
+strong{color:var(--ink);font-weight:700}
+em.k{font-style:normal;background:linear-gradient(transparent 62%, #f2dfa8 62%);padding:0 2px;font-weight:600}
+code{background:#efece4;padding:1px 6px;border-radius:3px;font-size:13.5px;font-family:Consolas,monospace}
+
+/* ---------- CARDS ---------- */
+.card{
+  background:var(--card);border:1px solid var(--line);border-radius:10px;
+  padding:22px 24px;box-shadow:0 1px 2px rgba(30,25,15,.04);
+}
+.card+.card{margin-top:16px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(238px,1fr));gap:14px}
+.grid4{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px}
+
+.pill{display:inline-block;font-size:12px;padding:2px 10px;border-radius:20px;font-weight:600;letter-spacing:.02em}
+.p-red{background:var(--red-soft);color:var(--red)}
+.p-blue{background:var(--blue-soft);color:var(--blue)}
+.p-gold{background:var(--gold-soft);color:var(--gold)}
+.p-green{background:var(--green-soft);color:var(--green)}
+.p-purple{background:var(--purple-soft);color:var(--purple)}
+
+.callout{
+  border-left:4px solid var(--red);background:#fdf6f4;border-radius:0 8px 8px 0;
+  padding:16px 20px;margin:18px 0;font-size:15px;color:var(--ink2);
+}
+.callout.gold{border-left-color:var(--gold);background:#fdfaf2}
+.callout.blue{border-left-color:var(--blue);background:#f4f8fb}
+.callout .tag{font-size:12px;color:var(--muted);letter-spacing:.14em;display:block;margin-bottom:4px}
+
+/* ---------- FIGURE ---------- */
+figure{margin:26px 0;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:20px 18px 12px;overflow:hidden}
+figure svg{display:block;width:100%;height:auto}
+figcaption{font-size:13px;color:var(--muted);margin-top:12px;text-align:center;line-height:1.7}
+.fig-t{font-size:14.5px;font-weight:700;color:var(--ink2);margin-bottom:14px;padding-left:10px;border-left:3px solid var(--blue)}
+
+/* ---------- TABLE ---------- */
+.tbl-wrap{overflow-x:auto;margin:22px 0;border:1px solid var(--line);border-radius:10px;background:var(--card)}
+table{border-collapse:collapse;width:100%;font-size:13.6px;min-width:720px}
+th,td{padding:11px 13px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+th{background:#f1ede4;font-weight:700;color:var(--ink2);white-space:nowrap;font-size:13px}
+tbody tr:hover{background:#fbfaf6}
+tbody tr:last-child td{border-bottom:none}
+td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+
+/* ---------- CRISIS CARDS ---------- */
+.crisis{border:1px solid var(--line);border-radius:10px;background:var(--card);overflow:hidden;margin-bottom:14px}
+.crisis-hd{display:flex;align-items:center;gap:14px;padding:15px 20px;flex-wrap:wrap}
+.crisis-hd .no{
+  font-family:Georgia,serif;font-size:13px;font-weight:700;color:#fff;
+  background:var(--blue);border-radius:4px;padding:3px 10px;letter-spacing:.06em;
+}
+.crisis.inp .crisis-hd .no{background:var(--red)}
+.crisis-hd .yr{font-family:Georgia,serif;font-size:19px;font-weight:700;color:var(--ink);letter-spacing:.01em}
+.crisis-hd .nm{font-size:15px;font-weight:700;color:var(--ink2);flex:1 1 240px}
+.crisis-bd{padding:0 20px 18px;display:grid;grid-template-columns:repeat(auto-fit,minmax(212px,1fr));gap:12px}
+.cb{background:#fbfaf6;border:1px solid var(--line);border-radius:8px;padding:11px 13px}
+.cb .lbl{font-size:11.5px;letter-spacing:.13em;color:var(--muted);display:block;margin-bottom:3px}
+.cb .val{font-size:13.8px;color:var(--ink2);line-height:1.72}
+
+/* ---------- TIMELINE ---------- */
+.tl-phase{margin:34px 0 6px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.tl-phase .bar{flex:1 1 60px;height:2px;background:var(--line2)}
+.tl-phase .ttl{font-size:15px;font-weight:700;letter-spacing:.02em}
+.tl-phase .yr{font-family:Georgia,serif;font-size:13px;color:var(--muted)}
+.tl{position:relative;padding-left:30px;margin:14px 0 0}
+.tl::before{content:"";position:absolute;left:8px;top:6px;bottom:6px;width:2px;background:var(--line2)}
+.tl-item{position:relative;margin:0 0 3px;padding:7px 0 7px 4px}
+.tl-item::before{
+  content:"";position:absolute;left:-27px;top:16px;width:9px;height:9px;border-radius:50%;
+  background:#fff;border:2px solid var(--line2);
+}
+.tl-item.crisis-hl::before{background:var(--red);border-color:var(--red);width:11px;height:11px;left:-28px;box-shadow:0 0 0 3px var(--red-soft)}
+.tl-item .y{font-family:Georgia,serif;font-weight:700;font-size:13.5px;color:var(--red);display:inline-block;min-width:46px;vertical-align:top}
+.tl-item .t{display:inline;font-size:14.2px;color:var(--ink2);width:calc(100% - 52px)}
+.tl-item.crisis-hl{background:linear-gradient(90deg,#fdf3f1,transparent 82%);border-radius:6px}
+.tl-item.crisis-hl .t{font-weight:600;color:var(--ink)}
+
+/* ---------- TWO-COL COMPARE ---------- */
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:22px 0}
+@media(max-width:720px){.cmp{grid-template-columns:1fr}}
+.cmp .side{border-radius:10px;padding:18px 20px;border:1px solid var(--line)}
+.cmp .side.west{background:var(--blue-soft);border-color:#c9dbe6}
+.cmp .side.china{background:var(--red-soft);border-color:#eccfc9}
+.cmp h4{margin-top:0;font-size:16px}
+.cmp ul{padding-left:18px;margin-bottom:0}
+
+/* ---------- CHART LEGEND ---------- */
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:12.5px;color:var(--muted);margin-top:10px;justify-content:center}
+.legend i{display:inline-block;width:11px;height:11px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+
+footer{margin-top:70px;padding:34px 0 56px;border-top:1px solid var(--line);color:var(--muted);font-size:13px;line-height:1.9}
+.note-src{font-size:12.4px;color:var(--muted);margin-top:8px}
+.kpi{text-align:center;padding:16px 12px}
+.kpi b{display:block;font-family:Georgia,serif;font-size:26px;color:var(--red);line-height:1.25}
+.kpi span{font-size:12.6px;color:var(--muted)}
+.anchor{scroll-margin-top:64px}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <img class="hero-cover" src="data:image/jpeg;base64,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aDaGwJxPtFQdaA/Q1FSyFYtEuqznyqHNQ9ESliFuh3F0qCYNbELdb0zx26sg+as4GMSy1DWKh9UxnELN02qMzgBBZdoYHO8IFcCXs+l20EnFzD5VwYoTRUEbBFPwGbRx737U4klAQLg+/tUQo8yvz9KmE6m7/lNGA2rRMU4Ly9kox9OfkvqQnOltMeV3uYWGVoetSAok4TABN4oCLmLyGAngVS/uKuStWjWL6QZMGyrSsRzTBAF+x9OIJlbGtHkpIWSPx5Xi3WVAr1LmLssOrsW13omjHWw3DpemNBBPBR7zDRkzb19XgjySa5uy+i9BZED1qRNKwuExEa80BgM022h1Ne/lVg1kNN5ztQKTOiDnc0iyi1cy+nSo2YYitSDl7yO7CjFAxcynwA4njQ3x6WqEYpKyN7E1cji0q9qNJ7SH8HHrTfkYt++9mc5UibHmlfsGM0X+4HAeVMBOpYOMYtRXfgcBQJEECTYR+WkoKJ1Eq/QlzuB8vFp696jmEzWHjFmcWw5asvSIOHakGFDYbNFQjYPLl8gbzKvCkddyiLCJ/wDr69CWdVx/+IQAAAAEwLlwbe74UtdAJN+4pJ3VNsMhb0/5WjLOqUFrm7UwIwbdEtgaXp5PFBdBgnGL09JBbCBs8mMUGxJmUVZI7RUXFfdBGOF9KUBLz5cAh/evU9ZkjTasUgRdpZznmkwlnGyplvOuu9X7ZeYzDf8A7RIUCedqumeKtigkCloGXegKwGTE5M1dumTpEfjNSyDUpLLM83+NiseXAAQ/JP3Yq1DiQZHr/dakCAZJbWjEVK3Eewl1qOaDKBs0z7hkxqsTWVMkLbb9ZqUsRwvZefWgM3UIjohx2oipc4Rb7EmIw/FEQAEkIfTy4ANxyoz1UsW5xDBQAQFqPOeAwH/2gAAAD//aAAwDAQACAAMAAAAQ888888888888888888pT/X188888888888888888888888vgHGX888888888888888888888885ANV3888888888888888888888888RFzX88888888888888888808888s3Fv1888888888888888888888889WJ3e888888888888888888408884lFt9888888888888888888sA888hYtu/8888888888888888gU4Ic88xNmqW888888888888888k08888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" alt="《八次危机：中国的真实经验 1949-2009》封面">
+    <div class="hero-txt">
+      <span class="eyebrow">温铁军 等 著 · 东方出版社 2013</span>
+      <h1 class="title serif">八次危机<span class="sub">中国的真实经验 1949—2009</span></h1>
+      <p class="hero-lead">
+        一部用「去意识形态化」的方式重写当代中国六十年经济史的书。它把 1949 年以来的中国当作一个后发国家的工业化样本，
+        用<strong>成本转嫁</strong>这一把钥匙，解释了为什么中国在反复爆发危机的同时，竟一次次避免了坠入「发展陷阱」。
+      </p>
+      <div class="hero-meta">
+        <div><b>4</b>次大规模引进外资</div>
+        <div><b>8</b>次周期性经济危机</div>
+        <div><b>6</b>次内生型 + 2 次输入型</div>
+        <div><b>60</b>年（1949—2009）</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<nav class="toc">
+  <div class="wrap">
+    <a href="#s0">书籍定位</a>
+    <a href="#s1">一 · 问题意识</a>
+    <a href="#s2">二 · 变量模型</a>
+    <a href="#s3">三 · 解释框架</a>
+    <a href="#s4">四 · 八次危机</a>
+    <a href="#s5">五 · 大事年表</a>
+    <a href="#s6">六 · 数据佐证</a>
+    <a href="#s7">七 · 一句话总结</a>
+  </div>
+</nav>
+
+<!-- ============ 0 书籍定位 ============ -->
+<section id="s0" class="anchor">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">00</span><h2 class="serif">这本书在做什么</h2></div>
+    <p class="sec-sub">先把全书的「一句话主张」立起来，后面所有章节都是它的展开与证明。</p>
+
+    <div class="callout">
+      <span class="tag">全书核心命题</span>
+      任何后发国家只要在<strong>资本极度稀缺</strong>的条件下追求工业化，就必然要依赖外资、背上外债、累积赤字，从而<strong>周期性爆发危机</strong>。
+      西方靠<em class="k">向外转嫁</em>（殖民地、发展中国家）消化代价；中国无法向外转嫁，只能<em class="k">向内转嫁</em>——
+      而中国之所以能在危机中反复「软着陆」，靠的正是<strong>城乡二元结构下，三农（农村、农业、农民）作为危机代价的承接载体</strong>。
+    </div>
+
+    <div class="grid3" style="margin-top:22px">
+      <div class="card">
+        <span class="pill p-blue">研究对象</span>
+        <h4>当代中国 60 年的周期性经济危机</h4>
+        <p style="font-size:14px">不写政策史、不写人物史，只从<strong>实体经济运行与代价传导</strong>看危机的发生、爆发与化解。</p>
+      </div>
+      <div class="card">
+        <span class="pill p-gold">方法工具</span>
+        <h4>政治经济学 + 新制度经济学</h4>
+        <p style="font-size:14px">借用<strong>沃勒斯坦「世界系统论」</strong>与<strong>阿明「依附理论」</strong>，用<strong>交易费用</strong>作辅助分析工具，提出本土的「成本转嫁论」。</p>
+      </div>
+      <div class="card">
+        <span class="pill p-red">立场方法</span>
+        <h4>「批判政策学」：去价值判断</h4>
+        <p style="font-size:14px">作者自述：只有超脱研究者自身所处的利益结构，才能在历史经验过程的起点上构建一致的逻辑解释。不站队，只做经验归纳与证伪。</p>
+      </div>
+    </div>
+
+    <h3>全书结构</h3>
+    <figure>
+      <svg viewBox="0 0 900 300" role="img" aria-label="全书结构图">
+        <!-- part1 -->
+        <rect x="24" y="30" width="404" height="240" rx="10" fill="#eef4f8" stroke="#c9dbe6"/>
+        <text x="46" y="60" font-size="15" font-weight="700" fill="#2c5773">第一部分 · 中国的 8 次危机及其"软着陆"</text>
+        <text x="46" y="84" font-size="12.5" fill="#6d6d78">（全书主体，按危机次数与阶段展开）</text>
+        <rect x="46" y="100" width="360" height="36" rx="6" fill="#ffffff" stroke="#d8d0c0"/>
+        <text x="58" y="123" font-size="12.5" fill="#3d3d44">第一章　发展陷阱和中国经验（提出理论）</text>
+        <rect x="46" y="144" width="360" height="36" rx="6" fill="#ffffff" stroke="#d8d0c0"/>
+        <text x="58" y="167" font-size="12.5" fill="#3d3d44">第二章　1958—1976：工业化初期 3 次危机</text>
+        <rect x="46" y="188" width="360" height="36" rx="6" fill="#ffffff" stroke="#d8d0c0"/>
+        <text x="58" y="211" font-size="12.5" fill="#3d3d44">第三章　1978—1997：改革以来 3 次危机</text>
+        <rect x="46" y="232" width="360" height="36" rx="6" fill="#ffffff" stroke="#d8d0c0"/>
+        <text x="58" y="255" font-size="12.5" fill="#3d3d44">第四章　1997 与 2008：2 次"输入型"危机</text>
+
+        <!-- part2 -->
+        <rect x="456" y="30" width="420" height="240" rx="10" fill="#faf6ec" stroke="#e6dcc2"/>
+        <text x="478" y="60" font-size="15" font-weight="700" fill="#a8812a">第二部分 · 简报与会议记录选辑</text>
+        <text x="478" y="84" font-size="12.5" fill="#6d6d78">（2009—2011 年闭门研讨的政策延伸）</text>
+        <rect x="478" y="100" width="376" height="30" rx="6" fill="#ffffff" stroke="#d8d0c0"/>
+        <text x="490" y="121" font-size="12.5" fill="#3d3d44">Ⅰ 一个趋势，两种保守，三大战略</text>
+        <rect x="478" y="138" width="376" height="30" rx="6" fill="#ffffff" stroke="#d8d0c0"/>
+        <text x="490" y="159" font-size="12.5" fill="#3d3d44">Ⅱ 中国构筑战略回旋空间要靠两条腿"走出去"</text>
+        <rect x="478" y="176" width="376" height="30" rx="6" fill="#ffffff" stroke="#d8d0c0"/>
+        <text x="490" y="197" font-size="12.5" fill="#3d3d44">Ⅲ 灰色经济、压力维稳与政治体制改革</text>
+        <rect x="478" y="214" width="376" height="30" rx="6" fill="#ffffff" stroke="#d8d0c0"/>
+        <text x="490" y="235" font-size="12.5" fill="#3d3d44">Ⅳ 中产阶级的崛起与中国社会结构的变化</text>
+        <rect x="478" y="252" width="376" height="14" rx="4" fill="#f0e6cf"/>
+        <text x="483" y="263" font-size="11" fill="#a8812a">附：大事年表（1949—2011） · 22 个专栏 · 后记</text>
+      </svg>
+      <figcaption>全书由「理论—史证」的第一部分与「政策延伸」的第二部分构成。本解读书聚焦第一部分的理论与史实。</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ 1 问题意识 ============ -->
+<section id="s1" class="anchor">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">01</span><h2 class="serif">问题意识</h2></div>
+    <p class="sec-sub">作者说自己「本来没想那么多」，是在整理史料时自然形成了对三大现实问题领域的重新发问。</p>
+
+    <figure>
+      <div class="fig-t">图 1-1　问题意识的三层结构：从一个追问，辐射三个领域</div>
+      <svg viewBox="0 0 900 430" role="img" aria-label="问题意识三层结构图">
+        <!-- center -->
+        <circle cx="450" cy="215" r="88" fill="#fdf3f1" stroke="#b5342a" stroke-width="2"/>
+        <text x="450" y="196" text-anchor="middle" font-size="15" font-weight="700" fill="#b5342a">核心追问</text>
+        <text x="450" y="219" text-anchor="middle" font-size="12.2" fill="#3d3d44">中国同样反复</text>
+        <text x="450" y="237" text-anchor="middle" font-size="12.2" fill="#3d3d44">爆发严重危机，</text>
+        <text x="450" y="255" text-anchor="middle" font-size="12.2" fill="#3d3d44">为何能免于</text>
+        <text x="450" y="273" text-anchor="middle" font-size="12.2" fill="#3d3d44">「发展陷阱」？</text>
+
+        <!-- three boxes -->
+        <rect x="30" y="34" width="268" height="130" rx="10" fill="#eef4f8" stroke="#c9dbe6"/>
+        <text x="52" y="62" font-size="13.5" font-weight="700" fill="#2c5773">① 意识形态问题</text>
+        <text x="52" y="86" font-size="12.2" fill="#3d3d44">「还公平于社会主义，还正义</text>
+        <text x="52" y="104" font-size="12.2" fill="#3d3d44">于自由主义，把罪恶还给资本</text>
+        <text x="52" y="122" font-size="12.2" fill="#3d3d44">主义」——不被派性话语绑架，</text>
+        <text x="52" y="140" font-size="12.2" fill="#3d3d44">追问原始积累代价由谁承担。</text>
+
+        <rect x="602" y="34" width="268" height="130" rx="10" fill="#faf6ec" stroke="#e6dcc2"/>
+        <text x="624" y="62" font-size="13.5" font-weight="700" fill="#a8812a">② 政治体制问题</text>
+        <text x="624" y="86" font-size="12.2" fill="#3d3d44">中国并不具备「中央集权」</text>
+        <text x="624" y="104" font-size="12.2" fill="#3d3d44">的经济条件。1957 年后中央</text>
+        <text x="624" y="122" font-size="12.2" fill="#3d3d44">财税占比长期低于 30%，实</text>
+        <text x="624" y="140" font-size="12.2" fill="#3d3d44">为「地方化」的资源资本化。</text>
+
+        <rect x="30" y="266" width="268" height="130" rx="10" fill="#e6efe6" stroke="#c3dac3"/>
+        <text x="52" y="294" font-size="13.5" font-weight="700" fill="#3f6b4a">③ 城乡二元结构</text>
+        <text x="52" y="318" font-size="12.2" fill="#3d3d44">中国真正的「比较优势」不是</text>
+        <text x="52" y="336" font-size="12.2" fill="#3d3d44">劳动力无限供给，而是二元体</text>
+        <text x="52" y="354" font-size="12.2" fill="#3d3d44">制＋土地均分制下的「农户理</text>
+        <text x="52" y="372" font-size="12.2" fill="#3d3d44">性／村社理性」能内部化风险。</text>
+
+        <!-- connectors -->
+        <line x1="298" y1="99" x2="372" y2="182" stroke="#b5342a" stroke-width="1.4" stroke-dasharray="4 3"/>
+        <line x1="602" y1="99" x2="528" y2="182" stroke="#b5342a" stroke-width="1.4" stroke-dasharray="4 3"/>
+        <line x1="298" y1="331" x2="372" y2="248" stroke="#b5342a" stroke-width="1.4" stroke-dasharray="4 3"/>
+        <line x1="602" y1="331" x2="528" y2="248" stroke="#b5342a" stroke-width="1.4" stroke-dasharray="4 3"/>
+      </svg>
+      <figcaption>三个问题领域并非预设，而是在整理数据时"不期然"浮现的。三者共同支撑起对「中国经验」的重新解释。</figcaption>
+    </figure>
+
+    <h3>追问一：外资是工具，还是负债的起点？</h3>
+    <p>作者把半个多世纪里中国的<strong>四次「对外开放」</strong>放在一起看，得到一个反直觉的结论：对外开放从来是<strong>双刃剑</strong>。</p>
+    <div class="cmp">
+      <div class="side west">
+        <h4 style="color:#2c5773">作为工具的一面</h4>
+        <ul>
+          <li>在<strong>资本短缺时期</strong>，被政府用来推动经济发展与政策调整；</li>
+          <li>第一次（苏联设备）让中国从农业国跨入初步工业化；</li>
+          <li>第二次（西方设备）完成了对「军重偏斜」产业结构的调整。</li>
+        </ul>
+      </div>
+      <div class="side china">
+        <h4 style="color:#b5342a">作为负债的一端</h4>
+        <ul>
+          <li>外资必然转化为<strong>国家主权负债</strong>，进而变成<strong>政府赤字</strong>；</li>
+          <li>一旦外部投资中辍，国内往往爆发经济危机，甚至演成社会动乱；</li>
+          <li>这正是大多数发展中国家坠入「发展陷阱」的通道。</li>
+        </ul>
+      </div>
+    </div>
+    <p>于是就有了全书最重要的一个比较：<strong>为什么中国的外资中辍，没有导致工业化中断？</strong>答案是 20 世纪 60 年代的「去依附」——靠内向型积累边推进原始积累边还债。</p>
+
+    <h3>追问二：既然中国也有危机，为什么没有社会制度的崩解？</h3>
+    <div class="callout blue">
+      <span class="tag">作者的自我设问</span>
+      既然中国也同样发生过多次严重经济危机，何以能在危机发生时<strong>避免各种政治或社会问题的集中或连锁爆发</strong>，而免于堕入「发展陷阱」？
+    </div>
+    <p>作者的答案指向一个长期被西方主流学者忽略的要点：<em class="k">中国如何依托国内的城乡二元结构，向农村转移危机成本</em>，从而弱化经济周期波动的冲击。</p>
+
+    <h3>追问三：意识形态化的「左」「右」之争，遮蔽了什么？</h3>
+    <p>关于新民主主义战略为何改变，很多年轻人想当然地归因于「左倾错误」。作者的判断是：这一改变主要是<strong>客观条件所迫</strong>——在「区域热战」与西方全面封锁下，中国处于「内向型资本原始积累」阶段，只要资本极度稀缺就势必仰赖外资，就势必在制度上「亲资本」。这不是主观意志所能选择的。</p>
+    <div class="callout gold">
+      <span class="tag">概念提醒：政府与资本</span>
+      在资本主义文明阶段，人类制造了两个「异己的产品」：经济基础方面是<strong>资本</strong>，上层建筑方面是<strong>政府</strong>。政府服务于资本，是这一阶段的一般内涵；特殊之处在于，当政府权力直接占有或垄断资本时，它就被称为<strong>国家资本</strong>，并客观上形成<strong>政府公司化</strong>，进而导致<strong>权力资本化</strong>。
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2 变量模型 ============ -->
+<section id="s2" class="anchor">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">02</span><h2 class="serif">主要变量模型</h2></div>
+    <p class="sec-sub">把书中的论证拆成一组可复用的变量与因果链。这是理解全部八次危机的「公式」。</p>
+
+    <figure>
+      <div class="fig-t">图 2-1　核心因果链：从「资本稀缺」到「危机周期」</div>
+      <svg viewBox="0 0 900 400" role="img" aria-label="核心因果链图">
+        <defs>
+          <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="#8b8375"/>
+          </marker>
+          <marker id="arR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="#b5342a"/>
+          </marker>
+        </defs>
+
+        <!-- row 1 -->
+        <rect x="20" y="30" width="196" height="74" rx="9" fill="#fdf3f1" stroke="#e7c6c1"/>
+        <text x="118" y="56" text-anchor="middle" font-size="13.5" font-weight="700" fill="#b5342a">初始约束</text>
+        <text x="118" y="76" text-anchor="middle" font-size="12.3" fill="#3d3d44">资本极度稀缺</text>
+        <text x="118" y="94" text-anchor="middle" font-size="12.3" fill="#3d3d44">＋分散小农（交易费用高）</text>
+
+        <line x1="216" y1="67" x2="252" y2="67" stroke="#8b8375" stroke-width="1.6" marker-end="url(#ar)"/>
+
+        <rect x="256" y="30" width="196" height="74" rx="9" fill="#eef4f8" stroke="#c9dbe6"/>
+        <text x="354" y="56" text-anchor="middle" font-size="13.5" font-weight="700" fill="#2c5773">唯一的路径</text>
+        <text x="354" y="76" text-anchor="middle" font-size="12.3" fill="#3d3d44">国家工业化</text>
+        <text x="354" y="94" text-anchor="middle" font-size="12.3" fill="#3d3d44">＝内向型资本原始积累</text>
+
+        <line x1="452" y1="67" x2="488" y2="67" stroke="#8b8375" stroke-width="1.6" marker-end="url(#ar)"/>
+
+        <rect x="492" y="30" width="196" height="74" rx="9" fill="#faf6ec" stroke="#e6dcc2"/>
+        <text x="590" y="56" text-anchor="middle" font-size="13.5" font-weight="700" fill="#a8812a">必然的手段</text>
+        <text x="590" y="76" text-anchor="middle" font-size="12.3" fill="#3d3d44">引进外资 / 举债</text>
+        <text x="590" y="94" text-anchor="middle" font-size="12.3" fill="#3d3d44">＋制度「亲资本」</text>
+
+        <line x1="688" y1="67" x2="724" y2="67" stroke="#8b8375" stroke-width="1.6" marker-end="url(#ar)"/>
+
+        <rect x="728" y="30" width="152" height="74" rx="9" fill="#efece4" stroke="#d8d0c0"/>
+        <text x="804" y="60" text-anchor="middle" font-size="13.5" font-weight="700" fill="#3d3d44">外资中辍</text>
+        <text x="804" y="80" text-anchor="middle" font-size="12.3" fill="#3d3d44">→ 资本「趋零」</text>
+
+        <!-- row 2 -->
+        <path d="M804,104 C804,150 118,150 118,196" fill="none" stroke="#8b8375" stroke-width="1.6" marker-end="url(#ar)"/>
+        <rect x="20" y="198" width="196" height="88" rx="9" fill="#efece4" stroke="#d8d0c0"/>
+        <text x="118" y="224" text-anchor="middle" font-size="13.5" font-weight="700" fill="#3d3d44">财政赤字爆发</text>
+        <text x="118" y="244" text-anchor="middle" font-size="12.3" fill="#3d3d44">外债 → 赤字 → 投资下降</text>
+        <text x="118" y="262" text-anchor="middle" font-size="12.3" fill="#3d3d44">→ 城市就业危机</text>
+        <text x="118" y="279" text-anchor="middle" font-size="12.3" fill="#b5342a" font-weight="700">＝ 危机的爆发</text>
+
+        <line x1="216" y1="242" x2="292" y2="242" stroke="#b5342a" stroke-width="1.8" marker-end="url(#arR)"/>
+
+        <!-- decision -->
+        <rect x="296" y="176" width="212" height="132" rx="9" fill="#ffffff" stroke="#b5342a" stroke-width="1.8"/>
+        <text x="402" y="202" text-anchor="middle" font-size="13.5" font-weight="700" fill="#b5342a">关键分叉</text>
+        <text x="402" y="226" text-anchor="middle" font-size="12.6" fill="#3d3d44">能否把危机代价</text>
+        <text x="402" y="245" text-anchor="middle" font-size="12.6" fill="#3d3d44">向农村 / 三农转嫁？</text>
+        <text x="402" y="272" text-anchor="middle" font-size="12" fill="#6d6d78">（取决于二元结构是否</text>
+        <text x="402" y="290" text-anchor="middle" font-size="12" fill="#6d6d78">仍有承接能力）</text>
+
+        <line x1="508" y1="212" x2="560" y2="182" stroke="#3f6b4a" stroke-width="1.8" marker-end="url(#ar)"/>
+        <line x1="508" y1="272" x2="560" y2="302" stroke="#b5342a" stroke-width="1.8" marker-end="url(#arR)"/>
+
+        <rect x="564" y="140" width="316" height="86" rx="9" fill="#e6efe6" stroke="#c3dac3"/>
+        <text x="584" y="166" font-size="13.5" font-weight="700" fill="#3f6b4a">能转嫁 → 城市「软着陆」</text>
+        <text x="584" y="188" font-size="12.3" fill="#3d3d44">农村集体化／土地均分承接过剩劳动力与</text>
+        <text x="584" y="206" font-size="12.3" fill="#3d3d44">代价；原有体制得以维持（1—3 次危机）</text>
+
+        <rect x="564" y="258" width="316" height="86" rx="9" fill="#fdf3f1" stroke="#e7c6c1"/>
+        <text x="584" y="284" font-size="13.5" font-weight="700" fill="#b5342a">不能转嫁 → 城市「硬着陆」</text>
+        <text x="584" y="306" font-size="12.3" fill="#3d3d44">导致政府财税、金融乃至整个经济体制的</text>
+        <text x="584" y="324" font-size="12.3" fill="#3d3d44">重大变革——这就是「改革」的由来</text>
+
+        <text x="450" y="380" text-anchor="middle" font-size="12" fill="#6d6d78">注：第 7、8 次为外生输入型危机，政府应对由「紧缩」转为「扩张性财政＋三农投入」</text>
+      </svg>
+      <figcaption>这条链条是全书的总纲：<strong>资本稀缺 → 引外资 → 负债与赤字 → 危机 → 转嫁方向决定软着陆或硬着陆</strong>。</figcaption>
+    </figure>
+
+    <h3>五个关键变量</h3>
+    <div class="grid2">
+      <div class="card">
+        <span class="pill p-red">变量 ①</span>
+        <h4>外资 / 外债（危机的触发器）</h4>
+        <p style="font-size:14.2px">60 年 4 次引资，<strong>每次引资都伴生 2 次危机</strong>。引资规模越大，随后的赤字与就业压力越重。这是危机周期的「外部节拍器」。</p>
+      </div>
+      <div class="card">
+        <span class="pill p-red">变量 ②</span>
+        <h4>财政赤字 / 三大赤字（危机的体温表）</h4>
+        <p style="font-size:14.2px">从「赤字连年突破百亿」（1974—1975），到「年度赤字近 200 亿」（1979），再到<strong>财政、金融、外汇三大赤字同步爆发</strong>（1993）与综合负债率超 GDP 的 140%（1993）。</p>
+      </div>
+      <div class="card">
+        <span class="pill p-blue">变量 ③</span>
+        <h4>城乡二元结构（危机的减震器）</h4>
+        <p style="font-size:14.2px">由「土地集体所有、按人口承包到户」的特殊体制，塑造出<strong>无风险财产基础</strong>上的流动打工者群体。这是中国低价劳动力「比较优势」的真实内因，也是危机代价的承接池。</p>
+      </div>
+      <div class="card">
+        <span class="pill p-blue">变量 ④</span>
+        <h4>三农：劳动力池 + 资本池（承载载体）</h4>
+        <p style="font-size:14.2px">农村既是容纳过剩劳动力的「<strong>劳动力池</strong>」，也是吸纳过剩资本的「<strong>第二资本池</strong>」（县域经济）。池子功能是否完好，直接决定危机是软着陆还是硬着陆。</p>
+      </div>
+      <div class="card">
+        <span class="pill p-gold">变量 ⑤</span>
+        <h4>中央—地方财税关系（代价分配机制）</h4>
+        <p style="font-size:14.2px">1957 年后中央财税占比长期 &lt;30%，越是大跃进、文革时期越低（不足 20%），形成<strong>「政府公司化」</strong>与「条块分割、尾大不掉」。1994 年分税制才把地方占比从 70%+ 调到 50% 左右。</p>
+      </div>
+      <div class="card">
+        <span class="pill p-gold">补充机制</span>
+        <h4>「以 L 替代 K」</h4>
+        <p style="font-size:14.2px">在资本趋零、又无外援的个别阶段，中国用<strong>劳动力集中投入替代稀缺资本</strong>（如三线建设、农业学大寨、农田水利），使产业资本原始积累进程不中断——这是马恩在《资本论》里未能预见的东方经验。</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      <span class="tag">一句话读法</span>
+      危机的<strong>触发</strong>看外资，危机的<strong>程度</strong>看赤字，危机的<strong>结局</strong>看三农，危机的<strong>代价落到谁头上</strong>看中央与地方的财税关系。
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3 解释框架 ============ -->
+<section id="s3" class="anchor">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">03</span><h2 class="serif">核心解释框架：成本转嫁论</h2></div>
+    <p class="sec-sub">这是全书唯一被作者称为「理论创新」的东西，也是解释中国经验与西方经验的同一把尺子。</p>
+
+    <figure>
+      <div class="fig-t">图 3-1　两种成本转嫁路径：西方向外，中国向内</div>
+      <svg viewBox="0 0 900 420" role="img" aria-label="成本转嫁论对比图">
+        <!-- west -->
+        <rect x="16" y="20" width="420" height="176" rx="10" fill="#eef4f8" stroke="#c9dbe6"/>
+        <text x="226" y="48" text-anchor="middle" font-size="14.5" font-weight="700" fill="#2c5773">西方特色资本主义：向外转嫁</text>
+        <rect x="46" y="66" width="130" height="56" rx="8" fill="#ffffff" stroke="#c9dbe6"/>
+        <text x="111" y="90" text-anchor="middle" font-size="12.5" fill="#3d3d44">核心国家</text>
+        <text x="111" y="108" text-anchor="middle" font-size="12.5" fill="#3d3d44">（金融资本）</text>
+        <line x1="176" y1="94" x2="238" y2="94" stroke="#2c5773" stroke-width="1.9" stroke-dasharray="5 3"/>
+        <polygon points="238,89 248,94 238,99" fill="#2c5773"/>
+        <text x="207" y="84" text-anchor="middle" font-size="11.5" fill="#2c5773">殖民地 / 发展中国家</text>
+        <rect x="252" y="66" width="152" height="56" rx="8" fill="#fdf3f1" stroke="#e7c6c1"/>
+        <text x="328" y="90" text-anchor="middle" font-size="12.5" fill="#b5342a">边缘 / 半边缘</text>
+        <text x="328" y="108" text-anchor="middle" font-size="12.5" fill="#b5342a">（承接代价）</text>
+        <text x="226" y="152" text-anchor="middle" font-size="12.4" fill="#3d3d44">危机代价外移，核心国家的制度得以维系，</text>
+        <text x="226" y="172" text-anchor="middle" font-size="12.4" fill="#3d3d44">代价承受国则普遍坠入「发展陷阱」。</text>
+
+        <!-- china -->
+        <rect x="464" y="20" width="420" height="176" rx="10" fill="#fdf3f1" stroke="#e7c6c1"/>
+        <text x="674" y="48" text-anchor="middle" font-size="14.5" font-weight="700" fill="#b5342a">中国特色：向内转嫁</text>
+        <rect x="494" y="66" width="130" height="56" rx="8" fill="#ffffff" stroke="#e7c6c1"/>
+        <text x="559" y="90" text-anchor="middle" font-size="12.5" fill="#3d3d44">城市产业资本</text>
+        <text x="559" y="108" text-anchor="middle" font-size="12.5" fill="#3d3d44">（资本集中）</text>
+        <line x1="624" y1="94" x2="684" y2="94" stroke="#b5342a" stroke-width="1.9" stroke-dasharray="5 3"/>
+        <polygon points="684,89 694,94 684,99" fill="#b5342a"/>
+        <text x="654" y="84" text-anchor="middle" font-size="11.5" fill="#b5342a">城乡二元结构</text>
+        <rect x="698" y="66" width="152" height="56" rx="8" fill="#e6efe6" stroke="#c3dac3"/>
+        <text x="774" y="90" text-anchor="middle" font-size="12.5" fill="#3f6b4a">三农</text>
+        <text x="774" y="108" text-anchor="middle" font-size="12.5" fill="#3f6b4a">（集体化 / 均分地）</text>
+        <text x="674" y="152" text-anchor="middle" font-size="12.4" fill="#3d3d44">无法向外转嫁制度成本，</text>
+        <text x="674" y="172" text-anchor="middle" font-size="12.4" fill="#3d3d44">只能由「三农」承接，换取城市软着陆。</text>
+
+        <!-- bottom: two layers of transfer -->
+        <rect x="16" y="222" width="868" height="176" rx="10" fill="#ffffff" stroke="#d8d0c0"/>
+        <text x="450" y="250" text-anchor="middle" font-size="14" font-weight="700" fill="#3d3d44">成本转嫁的两个层次：先「提取」，后「转嫁」</text>
+
+        <rect x="46" y="272" width="392" height="106" rx="8" fill="#faf6ec" stroke="#e6dcc2"/>
+        <text x="66" y="298" font-size="13" font-weight="700" fill="#a8812a">层次一 · 提取农业剩余（积累阶段）</text>
+        <text x="66" y="320" font-size="12.2" fill="#3d3d44">工农产品价格「剪刀差」（1952—1997 约 12641 亿元）</text>
+        <text x="66" y="339" font-size="12.2" fill="#3d3d44">廉价劳动力（2007 年工资差额一项即约 8052 亿元）</text>
+        <text x="66" y="358" font-size="12.2" fill="#3d3d44">土地与自然资源（地价「剪刀差」）</text>
+        <text x="66" y="374" font-size="12" font-weight="700" fill="#a8812a">合计约 17.3 万亿元</text>
+
+        <rect x="462" y="272" width="392" height="106" rx="8" fill="#fdf3f1" stroke="#e7c6c1"/>
+        <text x="482" y="298" font-size="13" font-weight="700" fill="#b5342a">层次二 · 转嫁危机代价（危机阶段）</text>
+        <text x="482" y="320" font-size="12.2" fill="#3d3d44">向农村集体 → 上山下乡（约 2000 万知青＋回乡青年）</text>
+        <text x="482" y="339" font-size="12.2" fill="#3d3d44">向乡镇企业 → 1988 年危机中乡镇首当其冲关门歇业</text>
+        <text x="482" y="358" font-size="12.2" fill="#3d3d44">向农民工 → 「劳动力池」吸纳失业返乡（2009 约 2500 万）</text>
+        <text x="482" y="374" font-size="12" font-weight="700" fill="#b5342a">代价由乡村承担，制度收益多留城市</text>
+      </svg>
+      <figcaption>「成本转嫁论」的完整表述：<strong>城市工业化的危机代价向乡村转移，是在城市实现「软着陆」的条件</strong>。</figcaption>
+    </figure>
+
+    <h3>四次引进外资 × 八次危机：全书最硬的一张对照表</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead>
+          <tr><th>次序</th><th>时间</th><th>引资方式</th><th>伴生的两次危机</th><th>危机的性质</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>第一次</strong></td><td class="num">1950s</td><td>苏联国家负债援华，合计约 54 亿美元（156 项工程）</td><td class="num">1960 · 1968</td><td><span class="pill p-blue">内生型（赤字/就业）</span></td></tr>
+          <tr><td><strong>第二次</strong></td><td class="num">1970s</td><td>向西方举债引进设备：「四三方案」43 亿 + 「八二方案」82 亿美元</td><td class="num">1974—1976 · 1979—1981</td><td><span class="pill p-blue">内生型（赤字/就业）</span></td></tr>
+          <tr><td><strong>第三次</strong></td><td class="num">1980s</td><td>放权让利，地方扩大对外开放、招商引资</td><td class="num">1988—1989 · 1993—1994</td><td><span class="pill p-blue">内生型（滞胀/三大赤字）</span></td></tr>
+          <tr><td><strong>第四次</strong></td><td class="num">1990s 中后期</td><td>纳入全球化，FDI 大规模进入（世界 500 强全面进入）</td><td class="num">1997—1998 · 2008—2009</td><td><span class="pill p-red">输入型（外部诱发）</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note-src">依据：第四章「现象归纳：60 年 4 次引进外资各伴生 2 次危机」。前 6 次起作用的因素主要是国内财政、外汇和金融领域的赤字，属内生性；后 2 次则主要受外部危机环境影响。</p>
+
+    <h3>两个「没想到」的规律性发现</h3>
+    <div class="grid2">
+      <div class="card">
+        <span class="pill p-purple">发现 A</span>
+        <h4>危机间隔：从 7—8 年缩短到 5 年</h4>
+        <p style="font-size:14.2px">工业化初期与中期（前 4 次），危机约 <strong>7—8 年</strong>爆发一次（1960→1968→1975，1980→1988）。但 1992 年南方谈话放权后，地方「政府公司化」失控、把债务推给中央，「1988 年危机与 1993—1994 年危机的间隔缩短到仅 5 年」。</p>
+      </div>
+      <div class="card">
+        <span class="pill p-purple">发现 B</span>
+        <h4>从「去依附」到「再依附」</h4>
+        <p style="font-size:14.2px">60 年代中国靠自力更生实现了对宗主国的「去依附」（阿明的评价）。但 90 年代为应对内外债务危机，以「<strong>高利率＋低币值</strong>」对接西方金融资本的全球「币缘战略」，客观上演变为「再依附」，并成为 FDI 第一大国。</p>
+      </div>
+    </div>
+
+    <h3>三农功能的三次历史性变化</h3>
+    <figure>
+      <div class="fig-t">图 3-2　「三农」作为危机载体的能力变迁</div>
+      <svg viewBox="0 0 900 250" role="img" aria-label="三农承接能力变化">
+        <line x1="60" y1="196" x2="856" y2="196" stroke="#d8d0c0" stroke-width="1.5"/>
+        <!-- phase boxes -->
+        <rect x="60" y="36" width="240" height="140" rx="9" fill="#e6efe6" stroke="#c3dac3"/>
+        <text x="180" y="62" text-anchor="middle" font-size="13" font-weight="700" fill="#3f6b4a">强承接（1949—1978）</text>
+        <text x="180" y="86" text-anchor="middle" font-size="12.2" fill="#3d3d44">农村高度集体化（人民公社）</text>
+        <text x="180" y="105" text-anchor="middle" font-size="12.2" fill="#3d3d44">可成规模容纳城市过剩劳动力</text>
+        <text x="180" y="124" text-anchor="middle" font-size="12.2" fill="#3d3d44">3 次上山下乡约 2000 万知青</text>
+        <text x="180" y="150" text-anchor="middle" font-size="12" font-weight="700" fill="#3f6b4a">→ 城市反复「软着陆」</text>
+
+        <rect x="320" y="36" width="240" height="140" rx="9" fill="#faf6ec" stroke="#e6dcc2"/>
+        <text x="440" y="62" text-anchor="middle" font-size="13" font-weight="700" fill="#a8812a">弱承接（1978—2003）</text>
+        <text x="440" y="86" text-anchor="middle" font-size="12.2" fill="#3d3d44">集体化解体、大包干到户</text>
+        <text x="440" y="105" text-anchor="middle" font-size="12.2" fill="#3d3d44">无法再组织化地接纳「插队」</text>
+        <text x="440" y="124" text-anchor="middle" font-size="12.2" fill="#3d3d44">只能被动承受转嫁（负担加重）</text>
+        <text x="440" y="150" text-anchor="middle" font-size="12" font-weight="700" fill="#b5342a">→ 危机在城市「硬着陆」</text>
+
+        <rect x="580" y="36" width="276" height="140" rx="9" fill="#eef4f8" stroke="#c9dbe6"/>
+        <text x="718" y="62" text-anchor="middle" font-size="13" font-weight="700" fill="#2c5773">主动修复（2003 以来）</text>
+        <text x="718" y="86" text-anchor="middle" font-size="12.2" fill="#3d3d44">三农新政、新农村建设、取消农业税</text>
+        <text x="718" y="105" text-anchor="middle" font-size="12.2" fill="#3d3d44">「劳动力池」与县域「第二资本池」修复</text>
+        <text x="718" y="124" text-anchor="middle" font-size="12.2" fill="#3d3d44">2003—2009 年三农投入累计约 3.1 万亿元</text>
+        <text x="718" y="150" text-anchor="middle" font-size="12" font-weight="700" fill="#2c5773">→ 2008 年危机城乡双赢「软着陆」</text>
+
+        <!-- arrows -->
+        <line x1="300" y1="106" x2="316" y2="106" stroke="#8b8375" stroke-width="1.6"/>
+        <polygon points="316,101 326,106 316,111" fill="#8b8375"/>
+        <line x1="560" y1="106" x2="576" y2="106" stroke="#8b8375" stroke-width="1.6"/>
+        <polygon points="576,101 586,106 576,111" fill="#8b8375"/>
+        <text x="450" y="222" text-anchor="middle" font-size="12.4" fill="#6d6d78">城市化率突破 50% 后，城乡二元结构的「减震」条件趋于消失——这是作者对未来的警示</text>
+      </svg>
+      <figcaption>三农的承接能力并非恒定：它被制度变迁反复削弱，又在 2003 年后被政策性修复。</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ 4 八次危机 ============ -->
+<section id="s4" class="anchor">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">04</span><h2 class="serif">八次危机逐次解说</h2></div>
+    <p class="sec-sub">每一次都按同一套字段拆解：外资背景 → 触发机制 → 危机表现 → 应对与转嫁 → 结果。</p>
+
+    <style>
+    .cx{border:1px solid var(--line);border-radius:10px;background:#fff;overflow:hidden;margin-bottom:14px}
+    .cx .hd{display:flex;align-items:center;gap:14px;padding:14px 20px;background:#f7f5f0;flex-wrap:wrap;border-bottom:1px solid var(--line)}
+    .cx .hd .no{font-family:Georgia,serif;font-size:12.5px;font-weight:700;color:#fff;background:var(--blue);border-radius:4px;padding:3px 10px;letter-spacing:.06em}
+    .cx.inp .hd .no{background:var(--red)}
+    .cx .hd .yr{font-family:Georgia,serif;font-size:18px;font-weight:700}
+    .cx .hd .nm{font-size:14.8px;font-weight:700;color:var(--ink2);flex:1 1 220px}
+    .cx .bd{padding:14px 20px 18px;display:grid;grid-template-columns:repeat(auto-fit,minmax(206px,1fr));gap:11px}
+    .cx .b{background:#fbfaf6;border:1px solid var(--line);border-radius:8px;padding:10px 13px}
+    .cx .b .l{font-size:11.3px;letter-spacing:.13em;color:var(--muted);display:block;margin-bottom:3px}
+    .cx .b .v{font-size:13.6px;color:var(--ink2);line-height:1.72}
+    </style>
+
+    <div class="cx">
+      <div class="hd"><span class="no">危机一</span><span class="yr">1958—1960</span><span class="nm">苏联援华投资中断之后，中国发生了什么</span><span class="pill p-blue">内生型</span></div>
+      <div class="bd">
+        <div class="b"><span class="l">外资背景</span><span class="v">「一五」期间苏联援华投资带动高增长；1957 年中苏在主权与意识形态上矛盾激化，苏联停止对「二五」的整体投资。</span></div>
+        <div class="b"><span class="l">触发机制</span><span class="v">建国后第一次外资带动的工业化突然「资本趋零」。中央财力难以为继，转而动员<strong>地方工业化</strong>（1958 大跃进）。</span></div>
+        <div class="b"><span class="l">危机表现</span><span class="v">地方投资粗放扩张累积巨额赤字，投资拉动型国家工业化难以为继；城镇就业从 1.3 亿降至 4537 万，减少约 65%。</span></div>
+        <div class="b"><span class="l">应对与转嫁</span><span class="v">发起<strong>第一次城市青年「上山下乡」</strong>，靠农村集体化承载 1000 万以上城市过剩劳动力；同时用农产品对苏还账。</span></div>
+        <div class="b"><span class="l">结果</span><span class="v">城市危机向「三农」转嫁成功 → <strong>城市软着陆</strong>，原有体制得以维持。</span></div>
+      </div>
+    </div>
+
+    <div class="cx">
+      <div class="hd"><span class="no">危机二</span><span class="yr">1968—1970</span><span class="nm">「三线建设」中的国家战略调整与经济危机</span><span class="pill p-blue">内生型</span></div>
+      <div class="bd">
+        <div class="b"><span class="l">地缘背景</span><span class="v">60 年代美苏两极格局定型，中国周边「环形恶化」；国家工业被迫从沿海向内地山区「空间平移」（大分散、小集中）。</span></div>
+        <div class="b"><span class="l">触发机制</span><span class="v">三线建设与军事工业（含核武器）集中占用资源，加上偿还外资转化的国家债务，形成<strong>长期财政高投入</strong>。</span></div>
+        <div class="b"><span class="l">危机表现</span><span class="v">城市工业化投资下降、就业严重不足；第二次赤字型危机爆发。</span></div>
+        <div class="b"><span class="l">应对与转嫁</span><span class="v">第二次「上山下乡」，向农村转嫁上千万过剩城市劳动力；同期以「农业学大寨」发动农民<strong>以劳动投入替代资本</strong>，搞农田水利。</span></div>
+        <div class="b"><span class="l">结果</span><span class="v">城市危机再次「软着陆」。1969 年宣布既无内债也无外债，成为第三世界「去依附」的榜样。</span></div>
+      </div>
+    </div>
+
+    <div class="cx">
+      <div class="hd"><span class="no">危机三</span><span class="yr">1974—1976</span><span class="nm">最后一次「上山下乡」</span><span class="pill p-blue">内生型</span></div>
+      <div class="bd">
+        <div class="b"><span class="l">外资背景</span><span class="v">1971 年布雷顿森林体系解体、基辛格访华；1972 年周恩来提出、毛泽东认可的<strong>「四三方案」</strong>，从西方引进约 43 亿美元成套设备。</span></div>
+        <div class="b"><span class="l">触发机制</span><span class="v">设备引进与国内配套投资使国家债务演化为财政赤字，连续几年突破百亿；投资下降。</span></div>
+        <div class="b"><span class="l">危机表现</span><span class="v">1974 年城市就业危机；1975 年赤字连年突破 100 亿；连带引发「批林批孔」等政治运动。</span></div>
+        <div class="b"><span class="l">应对与转嫁</span><span class="v">第三次「上山下乡」向农村集体化输送约 1000 万过剩劳动力。</span></div>
+        <div class="b"><span class="l">结果</span><span class="v">与 50 年代情形「并无二致」——路径依赖地向农村转嫁，换取城市秩序延续。</span></div>
+      </div>
+    </div>
+
+    <div class="cx">
+      <div class="hd"><span class="no">危机四</span><span class="yr">1979—1980</span><span class="nm">改革以来的第一次经济危机及借助「三农」的复苏</span><span class="pill p-blue">内生型</span></div>
+      <div class="bd">
+        <div class="b"><span class="l">外资背景</span><span class="v">「四三方案」累积赤字未消，新任领导集体又提出引进 82 亿美元的<strong>「八二方案」</strong>（俗称「洋跃进」）。</span></div>
+        <div class="b"><span class="l">触发机制</span><span class="v">「过度投资」＋过渡期政府「休养生息」使福利补贴增长过快，双压财政。1979 年年度赤字接近 200 亿（相当于 50 年代累积赤字总额）。</span></div>
+        <div class="b"><span class="l">危机表现</span><span class="v">GDP 增速从 1978 年 11.7% 降到 1981 年 5.2%；国有单位固定资产投资增速 1981 年为 −10.51%；企业「关停并转」，约 4000 万「待业青年」滞留城市。</span></div>
+        <div class="b"><span class="l">应对与转嫁</span><span class="v">此次不同：集体化解体，已无法向农村直接转嫁 → <strong>城市硬着陆</strong>。应对是「财政甩包袱」式改革：城市「拨改贷」「利改税」，农村以一号文件推行家庭承包（大包干）；两个「严打」。</span></div>
+        <div class="b"><span class="l">结果</span><span class="v">危机恰与农村改革同步，乡镇企业「异军突起」，以农民为消费主体的内需拉动全国复苏——唯一一次<strong>借三农而复苏</strong>。</span></div>
+      </div>
+    </div>
+
+    <div class="cx">
+      <div class="hd"><span class="no">危机五</span><span class="yr">1988—1990</span><span class="nm">改革以来的第二次经济危机及「三农」应对<br><span style="font-size:12px;color:#6d6d78;font-weight:400">（书中该节标题记为「1989—1990」）</span></span><span class="pill p-blue">内生型</span></div>
+      <div class="bd">
+        <div class="b"><span class="l">制度背景</span><span class="v">80 年代「黄金十年」中并存三种原始积累：城市国家工业化、乡镇企业、以及官倒公司靠价格双轨制进行的「权贵资本」原始积累。</span></div>
+        <div class="b"><span class="l">触发机制</span><span class="v">1988 年「物价闯关」：官倒公司囤积居奇加剧「改革危机」，把原始积累的制度代价甩给社会；政府已把改革意识形态化，<strong>没有失败预案</strong>。</span></div>
+        <div class="b"><span class="l">危机表现</span><span class="v">全年 CPI 超 18%；为遏制挤兑骤然大幅提高存款利率，银行深度负利率的亏损直接转为<strong>高达 500 亿的财政赤字</strong>。1989 年「三角债」全面爆发，恶性通胀与生产停滞伴生，形成经典的<strong>滞胀</strong>。</span></div>
+        <div class="b"><span class="l">应对与转嫁</span><span class="v">代价部分向三农转嫁：<strong>乡镇企业首当其冲</strong>大面积关门歇业，农民非农就业与现金收入连续 3 年增速下降；1984 年后县以下「预算软约束」的上层建筑开支刚性，「头税轻，二税重，收费是个无底洞」。</span></div>
+        <div class="b"><span class="l">结果</span><span class="v">城市硬着陆；内需下降，国民经济部分转向由外需拉动。城乡收入差别再次拉大。</span></div>
+      </div>
+    </div>
+
+    <div class="cx">
+      <div class="hd"><span class="no">危机六</span><span class="yr">1993—1994</span><span class="nm">三大赤字同步爆发，危机的外向型转化</span><span class="pill p-blue">内生型</span></div>
+      <div class="bd">
+        <div class="b"><span class="l">触发机制</span><span class="v">1992 年南方谈话后地方「政府公司化」放手引资与资源资本化；1992 年取消票证启动「货币化元年」，证券、期货、房地产三大投机性市场同时开放，经济过热而债务推给中央。</span></div>
+        <div class="b"><span class="l">危机表现</span><span class="v"><strong>财政、金融、外汇三大领域赤字同步爆发</strong>；1993 年综合债务率超 GDP 的 140%（高于 2010 年欧债危机平均水平）；1994 年 CPI 升至 <strong>24.1%</strong>，为改革以来最高。</span></div>
+        <div class="b"><span class="l">应对（三大改革）</span><span class="v">① 外汇并轨，本币名义汇率一次性贬值约 57%；② 分税制改革（地方财税占比从 70%+ 调低到约 50%）；③ 国企「下岗分流、减员增效」，近 4000 万人失业。同期增发国债与货币。</span></div>
+        <div class="b"><span class="l">转嫁</span><span class="v">以「深化改革」为名的<strong>内向型成本转嫁</strong>：数千万国企职工「裸体下岗」、数万起群体事件、大众收入下降拖累内需；同期财政占 GDP 比重一度跌至不足 12%。</span></div>
+        <div class="b"><span class="l">结果</span><span class="v">1996 年「成功软着陆」，但旋即遭遇 1997 年东亚金融危机。作者评价：这一次危机可与西方 1929—1933 年大危机作比较研究。</span></div>
+      </div>
+    </div>
+
+    <div class="cx inp">
+      <div class="hd"><span class="no">危机七</span><span class="yr">1997—1998</span><span class="nm">第一次「输入型」危机：东南亚金融危机</span><span class="pill p-red">输入型</span></div>
+      <div class="bd">
+        <div class="b"><span class="l">背景变化</span><span class="v">1994 年起宏观调控使内需下降、对外依存度上升；1997 年出口对经济增长拉动 4.2 个百分点、贡献率 44.4%，出口已取代投资成为第一动力。</span></div>
+        <div class="b"><span class="l">触发机制</span><span class="v">外部：东南亚金融危机使外需骤降（出口增长率 1998 年陡降至 0.5%）；内部：中国刚进入「告别短缺、迎来过剩」的阶段转折。</span></div>
+        <div class="b"><span class="l">危机表现</span><span class="v">1997 年 10 月起物价连续 15 个月绝对下降，进入长达 4 年的<strong>通货紧缩</strong>；农民收入连续 4 年增速下降；群体性事件从 1997 年 1.5 万起升至 1999 年 3.2 万起。</span></div>
+        <div class="b"><span class="l">应对</span><span class="v">与以往「紧缩」完全相反的<strong>扩张性财政</strong>：大规模增发国债投基础设施（打造「第一资产池」）；1997 年全国金融工作会议启动银行市场化改革；住房货币化、教育医疗产业化以扩大货币需求；连续提高出口退税率。</span></div>
+        <div class="b"><span class="l">结果</span><span class="v">1997、1998 年 GDP 增速保持 7.8% 和 7.6%，避免探底大萧条；但代价沉重——城市导向的救市占用大量农村资源，乡村治理危机加重，农村高利贷大面积发生。</span></div>
+      </div>
+    </div>
+
+    <div class="cx inp">
+      <div class="hd"><span class="no">危机八</span><span class="yr">2008—2009</span><span class="nm">第二次「输入型」危机：华尔街金融海啸</span><span class="pill p-red">输入型</span></div>
+      <div class="bd">
+        <div class="b"><span class="l">前期伏笔</span><span class="v">2001 年加入 WTO 带来外资大举进入；2003 年起各地「第三轮圈地运动」，投资过热、对外依存度上升，连续超 11% 增长，同步恶化过剩产能。</span></div>
+        <div class="b"><span class="l">触发机制</span><span class="v">2007 年美国次贷危机引爆 2008 年华尔街金融海啸；热钱涌入商品期货推高初级产品价格，中国出现严重的<strong>输入型通胀</strong>（PPI 2008 年 4 月达 8.1%，CPI 月度最高 8.7%）。</span></div>
+        <div class="b"><span class="l">危机表现</span><span class="v">出口对 GDP 拉动从 2007 年 2.6% 降到 2008 年 0.8%；沿海外向型企业大面积倒闭，约 <strong>2500 万</strong>农民工失业；2008 年 GDP 增速降至 9%。</span></div>
+        <div class="b"><span class="l">应对</span><span class="v">2010 年底前新增投资 <strong>4 万亿元</strong>（中央安排约 1.18 万亿）。与 1998 年不同，此次投向以民生为主、涉农投资超 1/3（保障性安居 100 亿、农村民生与基础设施 340 亿等）；连续 7 次提高出口退税率。</span></div>
+        <div class="b"><span class="l">关键经验</span><span class="v">得益于 2003 年以来的三农新政与新农村建设——2003—2009 年三农投入累计约 3.1 万亿元，修复了「劳动力池」并强化县域「第二资本池」，使失业农民工返乡即有生计。</span></div>
+        <div class="b"><span class="l">结果</span><span class="v">以三农为载体的<strong>城乡双赢「软着陆」</strong>。但代价仍在：内地与农村基建占用大量土地，征地冲突等制度成本转嫁依旧存在。</span></div>
+      </div>
+    </div>
+
+    <h3>八次危机一览</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>次序</th><th>时间</th><th>性质</th><th>核心触发</th><th>关键表现</th><th>应对/转嫁</th><th>着陆</th></tr></thead>
+        <tbody>
+          <tr><td><strong>一</strong></td><td class="num">1958—1960</td><td>内生</td><td>苏联撤资，「二五」中辍</td><td>财政赤字爆发，城镇就业降 65%</td><td>第一次上山下乡（千万级）</td><td><span class="pill p-green">软着陆</span></td></tr>
+          <tr><td><strong>二</strong></td><td class="num">1968—1970</td><td>内生</td><td>三线建设、还债、战备</td><td>城市投资下降、就业不足</td><td>第二次上山下乡＋以劳动替代资本</td><td><span class="pill p-green">软着陆</span></td></tr>
+          <tr><td><strong>三</strong></td><td class="num">1974—1976</td><td>内生</td><td>四三方案引进西方设备</td><td>赤字连年破百亿，城市就业危机</td><td>第三次上山下乡（约 1000 万）</td><td><span class="pill p-green">软着陆</span></td></tr>
+          <tr><td><strong>四</strong></td><td class="num">1979—1980</td><td>内生</td><td>过度投资＋福利补贴（八二方案）</td><td>年度赤字近 200 亿，4000 万待业青年</td><td>城市硬着陆；财政甩包袱式改革</td><td><span class="pill p-green">借三农复苏</span></td></tr>
+          <tr><td><strong>五</strong></td><td class="num">1988—1990</td><td>内生</td><td>物价闯关＋官倒囤积</td><td>CPI 超 18%，三角债，滞胀</td><td>乡镇企业关门，农民收入连降 3 年</td><td><span class="pill p-red">硬着陆</span></td></tr>
+          <tr><td><strong>六</strong></td><td class="num">1993—1994</td><td>内生</td><td>投资过热＋货币化＋三大投机市场</td><td>三大赤字同步，CPI 24.1%</td><td>汇率并轨、分税制、下岗分流</td><td><span class="pill p-red">硬着陆</span></td></tr>
+          <tr><td><strong>七</strong></td><td class="num">1997—1998</td><td><span class="pill p-red">输入型</span></td><td>东南亚金融危机</td><td>4 年通缩，农民收入连降 4 年</td><td>国债投资基建、金融改革、房改教改</td><td><span class="pill p-green">软着陆</span></td></tr>
+          <tr><td><strong>八</strong></td><td class="num">2008—2009</td><td><span class="pill p-red">输入型</span></td><td>华尔街金融海啸</td><td>出口拉动骤降，2500 万农民工失业</td><td>4 万亿投资＋三农新政＋出口退税</td><td><span class="pill p-green">软着陆</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5 大事年表 ============ -->
+<section id="s5" class="anchor">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">05</span><h2 class="serif">大事年表与时间线</h2></div>
+    <p class="sec-sub">以书中附录《大事年表（1949—2011）》为底本，并按四阶段着色、标出八次危机爆发年。</p>
+
+    <figure>
+      <div class="fig-t">图 5-1　60 年时间轴总览：四次引资 × 八次危机</div>
+      <svg viewBox="0 0 900 300" role="img" aria-label="60年时间轴总览">
+        <!-- axis -->
+        <line x1="50" y1="180" x2="870" y2="180" stroke="#d8d0c0" stroke-width="2"/>
+        <!-- phase bands -->
+        <rect x="50" y="150" width="296" height="30" fill="#e6efe6" opacity=".85"/>
+        <rect x="346" y="150" width="272" height="30" fill="#faf6ec" opacity=".95"/>
+        <rect x="618" y="150" width="252" height="30" fill="#fdf3f1" opacity=".9"/>
+        <text x="198" y="170" text-anchor="middle" font-size="11.8" fill="#3f6b4a" font-weight="700">工业化初期·原始积累</text>
+        <text x="482" y="170" text-anchor="middle" font-size="11.8" fill="#a8812a" font-weight="700">工业化中期·结构调整</text>
+        <text x="744" y="170" text-anchor="middle" font-size="11.8" fill="#b5342a" font-weight="700">纳入全球化</text>
+        <!-- year ticks -->
+        <g font-size="11" fill="#6d6d78" text-anchor="middle">
+          <text x="50" y="200">1949</text><text x="186" y="200">1960</text>
+          <text x="322" y="200">1970</text><text x="482" y="200">1980</text>
+          <text x="618" y="200">1990</text><text x="744" y="200">2000</text>
+          <text x="870" y="200">2009</text>
+        </g>
+        <!-- foreign capital markers (above) -->
+        <g>
+          <rect x="60" y="60" width="150" height="34" rx="6" fill="#eef4f8" stroke="#c9dbe6"/>
+          <text x="135" y="82" text-anchor="middle" font-size="11.6" fill="#2c5773">① 苏联外资 54 亿美元</text>
+          <line x1="135" y1="94" x2="135" y2="148" stroke="#c9dbe6" stroke-width="1.4" stroke-dasharray="3 3"/>
+
+          <rect x="300" y="60" width="176" height="34" rx="6" fill="#eef4f8" stroke="#c9dbe6"/>
+          <text x="388" y="82" text-anchor="middle" font-size="11.6" fill="#2c5773">② 四三 43 亿 + 八二 82 亿</text>
+          <line x1="388" y1="94" x2="388" y2="148" stroke="#c9dbe6" stroke-width="1.4" stroke-dasharray="3 3"/>
+
+          <rect x="500" y="60" width="150" height="34" rx="6" fill="#eef4f8" stroke="#c9dbe6"/>
+          <text x="575" y="82" text-anchor="middle" font-size="11.6" fill="#2c5773">③ 放权让利·地方引资</text>
+          <line x1="575" y1="94" x2="575" y2="148" stroke="#c9dbe6" stroke-width="1.4" stroke-dasharray="3 3"/>
+
+          <rect x="700" y="60" width="160" height="34" rx="6" fill="#eef4f8" stroke="#c9dbe6"/>
+          <text x="780" y="82" text-anchor="middle" font-size="11.6" fill="#2c5773">④ 纳入全球化·FDI 第一</text>
+          <line x1="780" y1="94" x2="780" y2="148" stroke="#c9dbe6" stroke-width="1.4" stroke-dasharray="3 3"/>
+        </g>
+        <!-- crisis markers (below) -->
+        <g>
+          <line x1="186" y1="180" x2="186" y2="222" stroke="#b5342a" stroke-width="1.6"/>
+          <circle cx="186" cy="180" r="5.5" fill="#b5342a"/>
+          <text x="186" y="240" text-anchor="middle" font-size="11.6" font-weight="700" fill="#b5342a">1960 ①</text>
+
+          <line x1="330" y1="180" x2="330" y2="222" stroke="#b5342a" stroke-width="1.6"/>
+          <circle cx="330" cy="180" r="5.5" fill="#b5342a"/>
+          <text x="336" y="240" text-anchor="middle" font-size="11.6" font-weight="700" fill="#b5342a">1968 ②</text>
+
+          <line x1="450" y1="180" x2="450" y2="222" stroke="#b5342a" stroke-width="1.6"/>
+          <circle cx="450" cy="180" r="5.5" fill="#b5342a"/>
+          <text x="452" y="240" text-anchor="middle" font-size="11.6" font-weight="700" fill="#b5342a">1974 ③</text>
+
+          <line x1="512" y1="180" x2="512" y2="222" stroke="#b5342a" stroke-width="1.6"/>
+          <circle cx="512" cy="180" r="5.5" fill="#b5342a"/>
+          <text x="514" y="240" text-anchor="middle" font-size="11.6" font-weight="700" fill="#b5342a">1979 ④</text>
+
+          <line x1="618" y1="180" x2="618" y2="222" stroke="#b5342a" stroke-width="1.6"/>
+          <circle cx="618" cy="180" r="5.5" fill="#b5342a"/>
+          <text x="622" y="240" text-anchor="middle" font-size="11.6" font-weight="700" fill="#b5342a">1988 ⑤</text>
+
+          <line x1="676" y1="180" x2="676" y2="222" stroke="#b5342a" stroke-width="1.6"/>
+          <circle cx="676" cy="180" r="5.5" fill="#b5342a"/>
+          <text x="688" y="240" text-anchor="middle" font-size="11.6" font-weight="700" fill="#b5342a">1993 ⑥</text>
+
+          <line x1="732" y1="180" x2="732" y2="222" stroke="#b5342a" stroke-width="1.6"/>
+          <circle cx="732" cy="180" r="5.5" fill="#b5342a"/>
+          <text x="748" y="240" text-anchor="middle" font-size="11.6" font-weight="700" fill="#b5342a">1997 ⑦</text>
+
+          <line x1="856" y1="180" x2="856" y2="222" stroke="#b5342a" stroke-width="1.6"/>
+          <circle cx="856" cy="180" r="5.5" fill="#b5342a"/>
+          <text x="852" y="240" text-anchor="middle" font-size="11.6" font-weight="700" fill="#b5342a">2008 ⑧</text>
+        </g>
+        <text x="450" y="278" text-anchor="middle" font-size="12" fill="#6d6d78">上方：四次引进外资 · 下方：八次危机爆发年（红色序号）</text>
+      </svg>
+      <figcaption>危机大约 7—8 年一次（1958/1968/1974/1979/1988），但在 1992 年后缩短到 5 年（1988→1993）；1997 年之后转为外部输入型。</figcaption>
+    </figure>
+
+    <h3>分阶段年表</h3>
+
+    <div class="tl-phase"><span class="ttl" style="color:#3f6b4a">阶段一 · 工业化初期与内向型原始积累</span><span class="yr">1949 — 1976</span><span class="bar"></span></div>
+    <div class="tl">
+      <div class="tl-item"><span class="y">1949</span><span class="t">土地革命缓解通胀。均分制土改让占人口 88% 的农民对城市资本经济「去依附」，缓解了民国的通胀与饥饿，但也留下分散小农与工业化之间的对立矛盾。</span></div>
+      <div class="tl-item"><span class="y">1950</span><span class="t">朝鲜战争爆发，中国纳入苏联地缘战略体系，获苏联援助与军事工业投资——<strong>第一次引进外资</strong>，催生以军重工业为主的「国家工业化」。</span></div>
+      <div class="tl-item"><span class="y">1951</span><span class="t">国家号召 2000 万农民进城支援工业化建设；「一五计划」开始编制。</span></div>
+      <div class="tl-item"><span class="y">1952</span><span class="t">国家计委正式成立。农村出现以「插犋换工」为主的互助组，初级合作社起步。</span></div>
+      <div class="tl-item"><span class="y">1953</span><span class="t">朝鲜停战、斯大林去世。「社会主义过渡时期总路线」取代新民主主义路线，实质是国家资本对民族资本的改造；「统购统销」＋合作化把 4 亿农民纳入 400 万个初级社。</span></div>
+      <div class="tl-item"><span class="y">1955</span><span class="t">苏共二十大赫鲁晓夫秘密报告；万隆会议，中国参与不结盟运动；苏联撤回旅顺驻军；12 月毛泽东主持讨论「全盘苏化」倾向。</span></div>
+      <div class="tl-item"><span class="y">1956</span><span class="t">提出「农业现代化」＝集体化＋机械化，实质是提取农业剩余完成内向型原始积累；国家资本完成对私人资本的改造。</span></div>
+      <div class="tl-item"><span class="y">1957</span><span class="t"><strong>「二五计划」中辍</strong>——苏联停止投资。中央财税占比「坐滑梯」，潜在危机云谲波诡；「反右运动」开始。</span></div>
+      <div class="tl-item"><span class="y">1958</span><span class="t">「大跃进」与服务国家工业化的农村公社化：发动地方投资接续难以为继的国家工业化，以劳动替代资本；11 月即须纠正冒进。</span></div>
+      <div class="tl-item"><span class="y">1959</span><span class="t">苏联减少专家与援助，中苏分歧公开化。建国后第一次外资带动的工业化突然「资本趋零」，赤字危机初现。</span></div>
+      <div class="tl-item crisis-hl"><span class="y">1960</span><span class="t"><strong>危机一爆发。</strong>第一次城市资本危机代价向三农转嫁，发起第一次「上山下乡」，靠农村集体化承载 1000 万以上城市过剩劳动人口；同时开始对苏还账。</span></div>
+      <div class="tl-item"><span class="y">1961</span><span class="t">七千人大会上的争论；提出「三自一包」；中央上收部分财政权以统筹救灾。</span></div>
+      <div class="tl-item"><span class="y">1962</span><span class="t">财政收权与农村部分恢复小农村社制见效，经济初显复苏；但周边地缘环境「环形恶化」（中苏论战、中印边境冲突、美机舰入侵）。</span></div>
+      <div class="tl-item"><span class="y">1963</span><span class="t">「三五计划」因战备建设胎死腹中；领导人在两会宣布要实现「四个现代化」。</span></div>
+      <div class="tl-item"><span class="y">1964</span><span class="t"><strong>三线建设展开</strong>，工业从沿海向内陆山区「空间平移」，国家工业化成本陡然上升，种下第二次财政赤字危机的种子。</span></div>
+      <div class="tl-item"><span class="y">1966</span><span class="t">「文化大革命」爆发，城市工业停摆；李先念宣布中国从此没有外债（仅用 5 年还清含朝鲜战争开支的对苏负债）。</span></div>
+      <div class="tl-item"><span class="y">1967</span><span class="t">财政赤字增加；以「农业学大寨」发动农民以成规模劳动投入替代稀缺资本，兴修农田水利；签订援建坦赞铁路协定。</span></div>
+      <div class="tl-item crisis-hl"><span class="y">1968</span><span class="t"><strong>危机二爆发。</strong>三线投资与军事战备的长周期高投入使累积赤字第二次发生；第二次「上山下乡」，城市危机再次「软着陆」。</span></div>
+      <div class="tl-item"><span class="y">1969</span><span class="t">周恩来宣布既无内债也无外债，中国成为第三世界「去依附」的榜样；四位元帅研判「中国 20 年无大战」。</span></div>
+      <div class="tl-item"><span class="y">1971</span><span class="t"><strong>布雷顿森林体系解体</strong>，美国率先进入金融资本阶段；中国启动「乒乓外交」，美国宣布解除对华封锁。</span></div>
+      <div class="tl-item"><span class="y">1972</span><span class="t">周恩来提出、毛泽东认可<strong>「四三方案」</strong>，从西方国家引进设备以改造「军重偏斜」的工业结构——<strong>第二次引进外资</strong>。同年美国开始从贸易顺差转为逆差。</span></div>
+      <div class="tl-item"><span class="y">1973</span><span class="t">第四次中东战争爆发，油价大幅上涨，形成世界性能源危机。</span></div>
+      <div class="tl-item crisis-hl"><span class="y">1974</span><span class="t"><strong>危机三爆发。</strong>引进西方设备与国内配套投资使财政赤字突破百亿；同年启动最后一次「上山下乡」，向农村输送约 1000 万过剩劳动力。</span></div>
+      <div class="tl-item"><span class="y">1975</span><span class="t">财政赤字连年突破 100 亿；连带引发「批林批孔」「批邓反击右倾翻案风」等政治运动。</span></div>
+      <div class="tl-item"><span class="y">1976</span><span class="t">唐山地震；周恩来、毛泽东相继去世。华国锋、邓小平继续「以外资改造国内工业结构」的路径依赖，提出更大规模的「八二方案」；地方工业化再度起步。</span></div>
+    </div>
+
+    <div class="tl-phase"><span class="ttl" style="color:#a8812a">阶段二 · 工业化中期与结构性调整</span><span class="yr">1977 — 1997</span><span class="bar"></span></div>
+    <div class="tl">
+      <div class="tl-item"><span class="y">1977</span><span class="t">「八二方案」与「洋跃进」促进高增长，财政赤字再次突破百亿。</span></div>
+      <div class="tl-item"><span class="y">1978</span><span class="t">中国经济面临崩溃边缘；「上山下乡」转为「知青回城」；小岗村 18 位村民按下包产到户红手印。</span></div>
+      <div class="tl-item crisis-hl"><span class="y">1979</span><span class="t"><strong>危机四爆发。</strong>年度财政赤字接近 200 亿（相当于 50 年代累积赤字总额）；开始价格双轨制改革与外贸体制转变。</span></div>
+      <div class="tl-item"><span class="y">1980</span><span class="t">农村集体化趋于解体；第一次城市「硬着陆」触发的大调整被称为「改革」；「财政甩包袱」式改革从农业起步，农民得以「休养生息」。</span></div>
+      <div class="tl-item"><span class="y">1981</span><span class="t">约 4000 万「待业青年」滞留城市，社会治安严峻，政府发起两个「严打」运动；中美关系进入蜜月期。</span></div>
+      <div class="tl-item"><span class="y">1982</span><span class="t">第一个中央「一号文件」允许家庭承包，此后连续 5 个一号文件「可以可以也可以，允许允许也允许」；城市企业「拨改贷」「利改税」。</span></div>
+      <div class="tl-item"><span class="y">1983</span><span class="t">政府靠「单位制」化解城市危机（「5 个人的饭 10 个人吃」）；「机关办三产」，初期的「官倒公司」横空出世。</span></div>
+      <div class="tl-item"><span class="y">1984</span><span class="t">「财政分灶吃饭」实现地方分权；「撤社建乡、撤队建村」；乡镇企业带动的<strong>第一轮圈地高潮</strong>，被媒体称为「异军突起」。</span></div>
+      <div class="tl-item"><span class="y">1985</span><span class="t">西方联手促日本接受「广场协议」力推日元升值；中国兰州「西部会议」强调「梯度理论」，沿海率先开放。</span></div>
+      <div class="tl-item"><span class="y">1986</span><span class="t">经济高速增长致经济关系全面紧张，通胀凸显、宏观调控乏力；官倒囤积居奇，腐败泛滥；但城乡收入差别缩小到历史最低。</span></div>
+      <div class="tl-item"><span class="y">1987</span><span class="t">「大方案」式价格—财政—税收联动改革未获批准；推出沿海与乡镇企业「大进大出」的进一步开放战略。</span></div>
+      <div class="tl-item crisis-hl"><span class="y">1988</span><span class="t"><strong>危机五爆发。</strong>物价闯关失败，官倒囤积居奇，全年 CPI 超 18%；政府为遏制挤兑骤然大幅提息，银行亏损转化为 500 亿财政赤字。</span></div>
+      <div class="tl-item"><span class="y">1989</span><span class="t">「三角债」全面爆发，恶性通胀与生产停滞伴生，形成「滞胀危机」；诱发反官倒、反腐败的群众抗议浪潮。</span></div>
+      <div class="tl-item"><span class="y">1990</span><span class="t">萧条阶段：农产品与乡镇企业产品全面滞销，农民现金收入从此连续 3 年增速下降；「头税轻，二税重，收费是个无底洞」。</span></div>
+      <div class="tl-item"><span class="y">1991</span><span class="t">苏联东欧地缘政治格局解体，国家金融体系崩塌；朝鲜因失去苏联石油与拖拉机供给转向「先军政治」。</span></div>
+      <div class="tl-item"><span class="y">1992</span><span class="t">邓小平南方谈话；取消粮票等几乎一切票证，启动「<strong>货币化元年</strong>」；证券、期货、房地产三大投机性资本市场开放，经济随即过热。</span></div>
+      <div class="tl-item crisis-hl"><span class="y">1993</span><span class="t"><strong>危机六爆发。</strong>财政、外汇、金融三大领域均发生严重赤字，国家综合负债超过 GDP 的一倍以上；四川仁寿县发生改革以来农村第一起群体性事件。</span></div>
+      <div class="tl-item"><span class="y">1994</span><span class="t">CPI 攀升至 24.1%（改革以来最高）。推出三大改革：<strong>外汇并轨</strong>（本币一次性贬值约 57%）、<strong>分税制</strong>、国企<strong>「下岗分流、减员增效」</strong>（近 4000 万人失业）。同期 NAFTA、EU 问世，WTO 取代 GATT。</span></div>
+      <div class="tl-item"><span class="y">1996</span><span class="t">财政总收入／GDP 下降到历史最低（不足 12%），教育、医疗等公共事业「被产业化」；城乡群体性事件迅速增加。</span></div>
+    </div>
+
+    <div class="tl-phase"><span class="ttl" style="color:#b5342a">阶段三 · 纳入全球化与输入型危机</span><span class="yr">1997 — 2011</span><span class="bar"></span></div>
+    <div class="tl">
+      <div class="tl-item crisis-hl"><span class="y">1997</span><span class="t"><strong>危机七爆发（第一次输入型）。</strong>政府刚宣布「软着陆」即遭遇东南亚金融危机，随之进入连续 4 年通货紧缩；十五大报告首次公开使用「资本」概念，提出国有银行商业化改制。</span></div>
+      <div class="tl-item"><span class="y">1998</span><span class="t">首次主要依靠扩张性财政手段应对输入型危机：增发国债、拉动内需，力保 GDP「七上八下」（实为 7.8%）；高校扩招、住房货币化、延长土地承包期、加快加入 WTO 谈判。长江特大洪水。</span></div>
+      <div class="tl-item"><span class="y">1999</span><span class="t">欧元启动与巴尔干危机同步；中国驻南斯拉夫大使馆被炸；叶利钦辞职、普京上台。中国提出「以人为本」。</span></div>
+      <div class="tl-item"><span class="y">2000</span><span class="t">中国在世纪之交告别百年短缺，进入「生产过剩」：千种商品供求统计中需求大于供给的一种也没有；决定增加超 2 万亿元国债投资于基本建设。</span></div>
+      <div class="tl-item"><span class="y">2001</span><span class="t"><strong>中国加入 WTO</strong>，勉力保住货币主权与资本市场控制权；中央领导人认识到「三农」问题形势严峻。美国遭遇「9·11」，发起阿富汗战争。</span></div>
+      <div class="tl-item"><span class="y">2002</span><span class="t">中共十六大提出全面建设小康社会；四大国有银行商业化改制基本完成——中国的「<strong>商业银行元年</strong>」。</span></div>
+      <div class="tl-item"><span class="y">2003</span><span class="t">胡锦涛在中央农村工作会议首次提出「<strong>三农问题是全党工作的重中之重</strong>」；出现基建投资拉动型的宏观过热，地方政府「以地套现」的<strong>第三轮圈地运动</strong>进入高潮。</span></div>
+      <div class="tl-item"><span class="y">2004</span><span class="t">中央四中全会提出「和谐社会」；中央提出取消农业税；严查江苏「铁本事件」，对地方政府公司化敲山震虎。</span></div>
+      <div class="tl-item"><span class="y">2005</span><span class="t">十六届五中全会正式把「<strong>建设社会主义新农村</strong>」列为八项战略任务之首；清理黑龙江韩桂芝窝案、政治局委员陈良宇被双规，宏观调控终于得到贯彻。</span></div>
+      <div class="tl-item"><span class="y">2006</span><span class="t"><strong>全面取消农业税</strong>——延续 2000 多年的农业税走入历史；基层累积公共负债问题暴露；人民币汇率体制改革；股市大跌销蚀 7000 亿社会投资。</span></div>
+      <div class="tl-item"><span class="y">2007</span><span class="t">中共十七大提出「<strong>生态文明</strong>」；《农民专业合作社法》出台；美国房市下跌引发「次贷」危机。</span></div>
+      <div class="tl-item crisis-hl"><span class="y">2008</span><span class="t"><strong>危机八爆发（第二次输入型）。</strong>华尔街金融海啸；中国遭遇「输入型通胀」，两大油企巨亏，「中国威胁论」蔓延；汶川大地震、北京奥运会。</span></div>
+      <div class="tl-item crisis-hl"><span class="y">2009</span><span class="t">中国政府以 <strong>4 万亿</strong>巨资救市；沿海数万企业倒闭致 2500 万打工者失业，借三农新政使失业农民工返乡得到就业；把刺激出口的退税补贴中的 13% 转用做补贴农民以扩大内需。</span></div>
+      <div class="tl-item"><span class="y">2010</span><span class="t">全球危机深化为西方现代化的综合性危机；中国外汇储备超 3 万亿美元，成为美国第一大债权国；上海世博会。</span></div>
+      <div class="tl-item"><span class="y">2011</span><span class="t">中国基本实现宏观调控；美国击毙本·拉登；始于纽约的「99% 民众」街头政治在全球多个城市发生，「地中海危机圈」浮现。</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 6 数据佐证 ============ -->
+<section id="s6" class="anchor">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">06</span><h2 class="serif">数据佐证</h2></div>
+    <p class="sec-sub">全部数据取自书中正文与专栏，用来给「危机—转嫁」这条主线做定量支撑。</p>
+
+    <div class="grid4" style="margin:8px 0 26px">
+      <div class="card kpi"><b>17.3万亿</b><span>1949 年来农民对国家建设的资金贡献（元）</span></div>
+      <div class="card kpi"><b>约2000万</b><span>三次上山下乡的城市知青人数</span></div>
+      <div class="card kpi"><b>24.1%</b><span>1994 年 CPI，改革以来最高</span></div>
+      <div class="card kpi"><b>3.1万亿</b><span>2003—2009 年三农投入累计（元）</span></div>
+    </div>
+
+    <div class="grid2">
+      <figure style="margin:0">
+        <div class="fig-t">图 6-1　关键年份 CPI（%）</div>
+        <svg viewBox="0 0 420 250" role="img" aria-label="关键年份CPI">
+          <line x1="52" y1="200" x2="400" y2="200" stroke="#d8d0c0" stroke-width="1.4"/>
+          <line x1="52" y1="30" x2="52" y2="200" stroke="#d8d0c0" stroke-width="1.4"/>
+          <g font-size="10.5" fill="#6d6d78" text-anchor="end">
+            <text x="46" y="204">0</text><text x="46" y="159">10</text>
+            <text x="46" y="114">20</text><text x="46" y="69">30</text>
+          </g>
+          <g stroke="#efece4"><line x1="52" y1="155" x2="400" y2="155"/><line x1="52" y1="110" x2="400" y2="110"/><line x1="52" y1="65" x2="400" y2="65"/></g>
+          <!-- bars: 1988=18.5, 1994=24.1, 2008=8.7 -->
+          <rect x="96" y="116.8" width="66" height="83.2" rx="3" fill="#b5342a"/>
+          <text x="129" y="108" text-anchor="middle" font-size="13" font-weight="700" fill="#b5342a">18.5</text>
+          <text x="129" y="220" text-anchor="middle" font-size="11.5" fill="#3d3d44">1988</text>
+          <rect x="196" y="91.6" width="66" height="108.4" rx="3" fill="#8b2318"/>
+          <text x="229" y="83" text-anchor="middle" font-size="13" font-weight="700" fill="#8b2318">24.1</text>
+          <text x="229" y="220" text-anchor="middle" font-size="11.5" fill="#3d3d44">1994</text>
+          <rect x="296" y="160.9" width="66" height="39.1" rx="3" fill="#c96a5f"/>
+          <text x="329" y="152" text-anchor="middle" font-size="13" font-weight="700" fill="#b5342a">8.7</text>
+          <text x="329" y="220" text-anchor="middle" font-size="11.5" fill="#3d3d44">2008</text>
+          <text x="226" y="243" text-anchor="middle" font-size="11" fill="#6d6d78">（2008 年为月度最高值）</text>
+        </svg>
+        <figcaption>通胀是内生危机的直接体温：1988「物价闯关」与 1994 三大改革，都以两位数的 CPI 为背景。</figcaption>
+      </figure>
+
+      <figure style="margin:0">
+        <div class="fig-t">图 6-2　群体性事件（万起）</div>
+        <svg viewBox="0 0 420 250" role="img" aria-label="群体性事件增长">
+          <line x1="52" y1="200" x2="400" y2="200" stroke="#d8d0c0" stroke-width="1.4"/>
+          <line x1="52" y1="30" x2="52" y2="200" stroke="#d8d0c0" stroke-width="1.4"/>
+          <g font-size="10.5" fill="#6d6d78" text-anchor="end">
+            <text x="46" y="204">0</text><text x="46" y="159">5</text>
+            <text x="46" y="114">10</text><text x="46" y="69">15</text><text x="46" y="36">20</text>
+          </g>
+          <g stroke="#efece4"><line x1="52" y1="155" x2="400" y2="155"/><line x1="52" y1="110" x2="400" y2="110"/><line x1="52" y1="65" x2="400" y2="65"/><line x1="52" y1="38" x2="400" y2="38"/></g>
+          <polyline points="76,186.5 126,171.2 176,146 200,133.4 226,122.6 290,20"
+                    fill="none" stroke="#b5342a" stroke-width="2.4"/>
+          <g fill="#b5342a">
+            <circle cx="76" cy="186.5" r="4"/><circle cx="126" cy="171.2" r="4"/><circle cx="176" cy="146" r="4"/>
+            <circle cx="200" cy="133.4" r="4"/><circle cx="226" cy="122.6" r="4"/><circle cx="290" cy="20" r="5"/>
+          </g>
+          <g font-size="10.6" fill="#3d3d44" text-anchor="middle">
+            <text x="76" y="218">1997</text><text x="126" y="218">1999</text><text x="176" y="218">2003</text>
+            <text x="204" y="218">2004</text><text x="230" y="218">2005</text><text x="292" y="218">2009</text>
+          </g>
+          <g font-size="10.8" font-weight="700" fill="#b5342a" text-anchor="middle">
+            <text x="76" y="178">1.5</text><text x="126" y="163">3.2</text><text x="176" y="138">6.0</text>
+            <text x="202" y="125">7.4</text><text x="228" y="114">8.6</text><text x="300" y="16">约20</text>
+          </g>
+          <text x="226" y="243" text-anchor="middle" font-size="11" fill="#6d6d78">1997 年后大幅上升，约 1/3 为农民维权事件</text>
+        </svg>
+        <figcaption>危机代价向内转嫁的社会后果，在数据上表现为群体性事件的持续攀升。</figcaption>
+      </figure>
+
+      <figure style="margin:0">
+        <div class="fig-t">图 6-3　国有单位固定资产投资增速（%）</div>
+        <svg viewBox="0 0 420 250" role="img" aria-label="投资增速波动">
+          <line x1="40" y1="140" x2="400" y2="140" stroke="#b8b0a2" stroke-width="1.4"/>
+          <g font-size="10.5" fill="#6d6d78" text-anchor="end">
+            <text x="34" y="52">+60</text><text x="34" y="100">+30</text>
+            <text x="34" y="144">0</text><text x="34" y="188">-15</text>
+          </g>
+          <g stroke="#efece4"><line x1="40" y1="52" x2="400" y2="52"/><line x1="40" y1="100" x2="400" y2="100"/><line x1="40" y1="188" x2="400" y2="188"/></g>
+          <!-- 1978 22 | 1979 4.58 | 1980 6.65 | 1981 -10.51 | 1989 -8.23 | 1993 61.8 | 1997 8.9 -->
+          <rect x="56" y="101.9" width="34" height="38.1" rx="2" fill="#2c5773"/>
+          <text x="73" y="95" text-anchor="middle" font-size="10.6" font-weight="700" fill="#2c5773">22</text>
+          <rect x="106" y="132.7" width="34" height="7.3" rx="2" fill="#3f7a9e"/>
+          <text x="123" y="126" text-anchor="middle" font-size="10.6" fill="#3d3d44">4.6</text>
+          <rect x="156" y="129.4" width="34" height="10.6" rx="2" fill="#3f7a9e"/>
+          <text x="173" y="123" text-anchor="middle" font-size="10.6" fill="#3d3d44">6.7</text>
+          <rect x="206" y="140" width="34" height="16.8" rx="2" fill="#b5342a"/>
+          <text x="223" y="172" text-anchor="middle" font-size="10.6" font-weight="700" fill="#b5342a">-10.5</text>
+          <rect x="262" y="140" width="34" height="13.2" rx="2" fill="#b5342a"/>
+          <text x="279" y="168" text-anchor="middle" font-size="10.6" font-weight="700" fill="#b5342a">-8.2</text>
+          <rect x="310" y="41.1" width="34" height="98.9" rx="2" fill="#8b2318"/>
+          <text x="327" y="34" text-anchor="middle" font-size="10.6" font-weight="700" fill="#8b2318">61.8</text>
+          <rect x="358" y="125.8" width="34" height="14.2" rx="2" fill="#3f7a9e"/>
+          <text x="375" y="119" text-anchor="middle" font-size="10.6" fill="#3d3d44">8.9</text>
+          <g font-size="10.4" fill="#3d3d44" text-anchor="middle">
+            <text x="73" y="206">'78</text><text x="123" y="206">'79</text><text x="173" y="206">'80</text>
+            <text x="223" y="206">'81</text><text x="279" y="206">'89</text><text x="327" y="206">'93</text><text x="375" y="206">'97</text>
+          </g>
+          <text x="220" y="234" text-anchor="middle" font-size="11" fill="#6d6d78">蓝＝紧缩前的高速；红＝紧缩后的负增长；1993 年过热达 61.8%</text>
+        </svg>
+        <figcaption>投资的剧烈起落是内生危机的发动机与刹车片：1993 年到 1997 年从 61.8% 压到 8.9%。</figcaption>
+      </figure>
+
+      <figure style="margin:0">
+        <div class="fig-t">图 6-4　四次引进外资的规模对照（亿美元）</div>
+        <svg viewBox="0 0 420 250" role="img" aria-label="四次引资规模">
+          <line x1="90" y1="24" x2="90" y2="206" stroke="#d8d0c0" stroke-width="1.4"/>
+          <g font-size="11.6" fill="#3d3d44">
+            <text x="84" y="46" text-anchor="end">苏联援华</text>
+            <text x="84" y="90" text-anchor="end">四三方案</text>
+            <text x="84" y="134" text-anchor="end">八二方案</text>
+            <text x="84" y="178" text-anchor="end">FDI（累计）</text>
+          </g>
+          <rect x="90" y="32" width="98" height="20" rx="3" fill="#2c5773"/>
+          <text x="194" y="47" font-size="11.8" font-weight="700" fill="#2c5773">约 54</text>
+          <rect x="90" y="76" width="78" height="20" rx="3" fill="#2c5773"/>
+          <text x="174" y="91" font-size="11.8" font-weight="700" fill="#2c5773">43</text>
+          <rect x="90" y="120" width="148" height="20" rx="3" fill="#2c5773"/>
+          <text x="244" y="135" font-size="11.8" font-weight="700" fill="#2c5773">82</text>
+          <rect x="90" y="164" width="300" height="20" rx="3" fill="#b5342a"/>
+          <text x="396" y="179" font-size="11.8" font-weight="700" fill="#b5342a" text-anchor="end" opacity="0">—</text>
+          <text x="100" y="179" font-size="11.2" font-weight="700" fill="#ffffff">1990 年代后世界 500 强全面进入，规模断层式放大</text>
+          <text x="210" y="228" text-anchor="middle" font-size="11" fill="#6d6d78">前三轮为「国家举债引进设备」，第四轮为「引入外商直接投资」</text>
+        </svg>
+        <figcaption>引资方式从「国家负债买设备」转向「直接引入外商」，规模量级发生跃迁。</figcaption>
+      </figure>
+    </div>
+
+    <h3>书中引用的关键数据（摘录）</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>指标</th><th>数值</th><th>说明</th></tr></thead>
+        <tbody>
+          <tr><td>农民对国家建设贡献</td><td class="num">约 17.3 万亿元</td><td>剪刀差（1952—1997 约 12641 亿）＋廉价劳动力＋土地与资源三项合计</td></tr>
+          <tr><td>城镇就业人数变化</td><td class="num">1.3 亿 → 4537 万</td><td>1960 → 1962 年，危机后萧条期城镇就业减少约 65%</td></tr>
+          <tr><td>上山下乡知青规模</td><td class="num">约 2000 万</td><td>另有大致同规模的农村「回乡青年」，知青分布于 9 万个人民公社的 400 万个生产队</td></tr>
+          <tr><td>国有单位投资增速</td><td class="num">1981 年 −10.51%</td><td>1989 年为 −8.23%；1993 年高峰为 61.8%，1997 年回落至 8.9%</td></tr>
+          <tr><td>1988 年财政赤字（转成）</td><td class="num">约 500 亿元</td><td>为遏制挤兑骤然大幅提息，银行深度负利率亏损直接转为财政赤字</td></tr>
+          <tr><td>1993 年综合债务率</td><td class="num">＞140% GDP</td><td>高于 2010 年欧债危机爆发时的平均水平</td></tr>
+          <tr><td>1994 年 CPI</td><td class="num">24.1%</td><td>改革以来最高点；同年本币一次性贬值约 57%</td></tr>
+          <tr><td>国企下岗人数</td><td class="num">近 4000 万</td><td>1994 年「下岗分流、减员增效」；90 年代累计 3000 多万</td></tr>
+          <tr><td>群体性事件</td><td class="num">1997 年 1.5 万起 → 2009 年约 20 万起</td><td>2003 年 6 万、2004 年 7.4 万、2005 年 8.6 万；约 1/3 为农民维权</td></tr>
+          <tr><td>失地农民</td><td class="num">2005 年约 4000—5000 万</td><td>以每年 200—300 万速度递增，未来 20—30 年将增至 1 亿以上</td></tr>
+          <tr><td>三农投入</td><td class="num">2003—2009 累计约 30967.52 亿元</td><td>平均每农户约 1.5 万元、年均约 2500 元</td></tr>
+          <tr><td>2009 年失业农民工</td><td class="num">约 2500 万</td><td>主要因沿海外向型企业受全球危机打击倒闭</td></tr>
+          <tr><td>2008 年救市</td><td class="num">4 万亿元</td><td>中央安排约 1.18 万亿；新增 1200 亿中涉农投资超 1/3</td></tr>
+          <tr><td>出口对 GDP 拉动</td><td class="num">1997 年 4.2 个百分点 → 2008 年 0.8 个百分点</td><td>1997 年贡献率 44.4%，出口已成第一动力</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 7 总结 ============ -->
+<section id="s7" class="anchor">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">07</span><h2 class="serif">把全书收成一句逻辑闭环</h2></div>
+
+    <figure>
+      <div class="fig-t">图 7-1　全书的逻辑闭环</div>
+      <svg viewBox="0 0 900 320" role="img" aria-label="逻辑闭环">
+        <defs>
+          <marker id="ar2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="#8b8375"/>
+          </marker>
+        </defs>
+        <rect x="30" y="30" width="196" height="86" rx="9" fill="#fdf3f1" stroke="#e7c6c1"/>
+        <text x="128" y="58" text-anchor="middle" font-size="12.8" font-weight="700" fill="#b5342a">① 初始条件</text>
+        <text x="128" y="80" text-anchor="middle" font-size="12.2" fill="#3d3d44">资本绝对稀缺</text>
+        <text x="128" y="99" text-anchor="middle" font-size="12.2" fill="#3d3d44">＋ 分散小农（交易费用高）</text>
+
+        <line x1="226" y1="73" x2="272" y2="73" stroke="#8b8375" stroke-width="1.7" marker-end="url(#ar2)"/>
+        <rect x="276" y="30" width="196" height="86" rx="9" fill="#eef4f8" stroke="#c9dbe6"/>
+        <text x="374" y="58" text-anchor="middle" font-size="12.8" font-weight="700" fill="#2c5773">② 唯一选择</text>
+        <text x="374" y="80" text-anchor="middle" font-size="12.2" fill="#3d3d44">国家工业化 = 内向型原始积累</text>
+        <text x="374" y="99" text-anchor="middle" font-size="12.2" fill="#3d3d44">→ 举债引外资 → 制度「亲资本」</text>
+
+        <line x1="472" y1="73" x2="518" y2="73" stroke="#8b8375" stroke-width="1.7" marker-end="url(#ar2)"/>
+        <rect x="522" y="30" width="196" height="86" rx="9" fill="#faf6ec" stroke="#e6dcc2"/>
+        <text x="620" y="58" text-anchor="middle" font-size="12.8" font-weight="700" fill="#a8812a">③ 必然代价</text>
+        <text x="620" y="80" text-anchor="middle" font-size="12.2" fill="#3d3d44">外债 → 财政赤字 → 就业危机</text>
+        <text x="620" y="99" text-anchor="middle" font-size="12.2" fill="#3d3d44">→ 周期性经济危机</text>
+
+        <line x1="718" y1="73" x2="764" y2="73" stroke="#8b8375" stroke-width="1.7" marker-end="url(#ar2)"/>
+        <rect x="768" y="30" width="112" height="86" rx="9" fill="#fdf3f1" stroke="#e7c6c1"/>
+        <text x="824" y="62" text-anchor="middle" font-size="12.6" font-weight="700" fill="#b5342a">④ 关键</text>
+        <text x="824" y="82" text-anchor="middle" font-size="12.2" fill="#3d3d44">能否向内</text>
+        <text x="824" y="100" text-anchor="middle" font-size="12.2" fill="#3d3d44">转嫁？</text>
+
+        <path d="M824,116 C824,160 128,160 128,196" fill="none" stroke="#8b8375" stroke-width="1.7" marker-end="url(#ar2)"/>
+
+        <rect x="30" y="200" width="404" height="94" rx="9" fill="#e6efe6" stroke="#c3dac3"/>
+        <text x="232" y="226" text-anchor="middle" font-size="12.8" font-weight="700" fill="#3f6b4a">能转嫁 → 城市「软着陆」→ 体制延续</text>
+        <text x="232" y="248" text-anchor="middle" font-size="12.2" fill="#3d3d44">第 1—3 次：上山下乡，向集体化农村转嫁千万过剩劳动力</text>
+        <text x="232" y="267" text-anchor="middle" font-size="12.2" fill="#3d3d44">第 7—8 次：三农新政＋县域资本池，主动承接（城乡双赢）</text>
+        <text x="232" y="286" text-anchor="middle" font-size="12" fill="#6d6d78">代价主要落在农村与农民身上</text>
+
+        <rect x="466" y="200" width="404" height="94" rx="9" fill="#fdf3f1" stroke="#e7c6c1"/>
+        <text x="668" y="226" text-anchor="middle" font-size="12.8" font-weight="700" fill="#b5342a">不能转嫁 → 城市「硬着陆」→「改革」</text>
+        <text x="668" y="248" text-anchor="middle" font-size="12.2" fill="#3d3d44">第 4 次：财政甩包袱 → 大包干、财政分灶吃饭</text>
+        <text x="668" y="267" text-anchor="middle" font-size="12.2" fill="#3d3d44">第 5—6 次：滞胀与三大赤字 → 汇率并轨、分税制、下岗分流</text>
+        <text x="668" y="286" text-anchor="middle" font-size="12" fill="#6d6d78">代价主要落在城市大众与国企职工身上</text>
+      </svg>
+      <figcaption>八次危机不是八件孤立的事，而是同一个机制在 60 年里的八次重复：<strong>外资节拍 → 赤字累积 → 危机 → 转嫁方向决定软着陆或硬着陆</strong>。</figcaption>
+    </figure>
+
+    <div class="callout">
+      <span class="tag">一句话总结</span>
+      中国 60 年的真实经验，是「<strong>以乡村承接城市危机</strong>」的经验：城与乡的二元结构既是制度约束，也是这个后发大国能够反复从危机中爬起来、而不坠入发展陷阱的<strong>隐性缓冲机制</strong>。而随着城市化率突破 50%、土地不再均分、农村人口老龄化女性化，这道缓冲垫正在变薄——这正是作者在书末最深的忧虑。
+    </div>
+
+    <h3>本书给读者的三条「读法」</h3>
+    <div class="grid3">
+      <div class="card">
+        <span class="pill p-blue">读法一</span>
+        <h4>把「政策史」换成「代价史」</h4>
+        <p style="font-size:14.2px">不要只问某项政策对错，要问<strong>这次危机的代价，最终由谁承担了</strong>。这是全书最锋利的一问。</p>
+      </div>
+      <div class="card">
+        <span class="pill p-gold">读法二</span>
+        <h4>把「改革」理解为「应对」</h4>
+        <p style="font-size:14.2px">书中的「改革」几乎都起于危机应对：80 年代的承包制、1994 年的分税制与下岗分流，本质上都是硬着陆后的制度调整。</p>
+      </div>
+      <div class="card">
+        <span class="pill p-red">读法三</span>
+        <h4>把「三农」当作主角之一</h4>
+        <p style="font-size:14.2px">在三农问题上不要只看农业政策，要看它作为<strong>劳动力池、资本池、风险内部化装置</strong>的宏观功能。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p><strong>说明</strong>：本页为《八次危机：中国的真实经验 1949—2009》（温铁军 等著，东方出版社，2013）的结构化阅读笔记与可视化重构，用于帮助理解原书的问题意识、变量模型、解释框架与史实脉络。文中所有数据、引语、章节与年表内容均取自原书正文、专栏及附录《大事年表》，图式为对原书逻辑的图形化表达，不代表原著配图。</p>
+    <p>图表为便于理解作了简化与合并，个别年份／数字在不同章节的表述略有差异时，以书中相应章节的原始表述为准（例如第 5 次危机在章节标题中记为「1989—1990」，在第三章引言与大事年表中记为「1988—1990」）。</p>
+  </div>
+</footer>
+
+</body>
+</html>
